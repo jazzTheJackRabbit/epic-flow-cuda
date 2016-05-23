@@ -1,0 +1,792 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		5469A4B8901E4C7083A841FC /* ALL_BUILD */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = F40F581768BE471BB539CDA8 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
+			buildPhases = (
+				B43449B1464B4BF5ADA2F1E1 /* CMake Rules */,
+			);
+			dependencies = (
+				BF87578216CB43BDA986339D /* PBXTargetDependency */,
+				F1CAE47D780F4163A85723B9 /* PBXTargetDependency */,
+			);
+			name = ALL_BUILD;
+			productName = ALL_BUILD;
+		};
+		6975F906F024454D966BBBA3 /* ZERO_CHECK */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = E0CC80C4A84C429A8C8243D5 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
+			buildPhases = (
+				6E9DB3BB74CF4E94AD1D5E76 /* CMake Rules */,
+			);
+			dependencies = (
+			);
+			name = ZERO_CHECK;
+			productName = ZERO_CHECK;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		08B3E75189684070AA109982 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/test_cuda.cu */ = {isa = PBXBuildFile; fileRef = 043FB4D093D94F4F8E910F51 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/test_cuda.cu */; settings = {COMPILER_FLAGS = ""; }; };
+		155736685DB342E28314DF6D /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/solver.cpp */ = {isa = PBXBuildFile; fileRef = 3D0EC6E2281C4007B11CFB1A /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/solver.cpp */; settings = {COMPILER_FLAGS = ""; }; };
+		19F6BF20B0F249DCA59D78CF /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/variational.h */ = {isa = PBXBuildFile; fileRef = A3439FB5B3AB4D6EAFD83BA8 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/variational.h */; settings = {COMPILER_FLAGS = ""; }; };
+		1EE2C4F1C8154E9EA9B249CB /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/epic.h */ = {isa = PBXBuildFile; fileRef = 01A7223C13D34788BC3CFD02 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/epic.h */; settings = {COMPILER_FLAGS = ""; }; };
+		396F3F9E0D66493B8C75296B /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/image.c */ = {isa = PBXBuildFile; fileRef = 4AD1482145414F16A0B9540E /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/image.c */; settings = {COMPILER_FLAGS = ""; }; };
+		55BF6CF1585946F8910D9EE6 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/solver.h */ = {isa = PBXBuildFile; fileRef = 217B3681BFE24C9494A984BA /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/solver.h */; settings = {COMPILER_FLAGS = ""; }; };
+		60EFF99CEEBA4F3A8D017F46 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/epic_aux.cpp */ = {isa = PBXBuildFile; fileRef = 2EBDA47FFB394D828EF67DEC /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/epic_aux.cpp */; settings = {COMPILER_FLAGS = ""; }; };
+		6CD328D1ABE94532B37C3CE7 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/image.h */ = {isa = PBXBuildFile; fileRef = D6E10A8A366D4C7597F6CB32 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/image.h */; settings = {COMPILER_FLAGS = ""; }; };
+		7B63E32DC6BD454CAA05F08F /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/variational_aux.c */ = {isa = PBXBuildFile; fileRef = 1B3FC68E26384DBE80E3DEDF /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/variational_aux.c */; settings = {COMPILER_FLAGS = ""; }; };
+		803F49E6868D46C49953B58B /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/io.c */ = {isa = PBXBuildFile; fileRef = 00CE5793D1A145229B5B69EB /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/io.c */; settings = {COMPILER_FLAGS = ""; }; };
+		8A7FF2836DF540ABA2BE4184 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/CMakeLists.txt */ = {isa = PBXBuildFile; fileRef = 00115D81B2F44C0893109BE5 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/CMakeLists.txt */; settings = {COMPILER_FLAGS = ""; }; };
+		8EEA932B056F4594B104DF5A /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/io.h */ = {isa = PBXBuildFile; fileRef = 2E339D90D3CE4786A0E097AD /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/io.h */; settings = {COMPILER_FLAGS = ""; }; };
+		9476BB6BC22243019435B68E /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/utils.h */ = {isa = PBXBuildFile; fileRef = 988A2159181A4AF9A16F8E26 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/utils.h */; settings = {COMPILER_FLAGS = ""; }; };
+		A1CE1B4AB53A4B28B701BF7C /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/array_types.h */ = {isa = PBXBuildFile; fileRef = 275251BFB40F4D14AB08A2FA /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/array_types.h */; settings = {COMPILER_FLAGS = ""; }; };
+		A2B09210DF344BCCA48E5A4F /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/epic.cpp */ = {isa = PBXBuildFile; fileRef = 4B3B6CA036F547498AAE22A5 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/epic.cpp */; settings = {COMPILER_FLAGS = ""; }; };
+		AB49F44B6EBE43D1A997B8F8 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/variational_aux.h */ = {isa = PBXBuildFile; fileRef = FA2305D208E64F829D7000DD /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/variational_aux.h */; settings = {COMPILER_FLAGS = ""; }; };
+		B120E62AEC284B5294BEE1E8 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/epic_aux.h */ = {isa = PBXBuildFile; fileRef = BB39DD1F4AE44CB69D2E3513 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/epic_aux.h */; settings = {COMPILER_FLAGS = ""; }; };
+		C72190E19EA8406FA76E2EEE /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/epicflow.cpp */ = {isa = PBXBuildFile; fileRef = 6455F5B7031445B78C741A94 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/epicflow.cpp */; settings = {COMPILER_FLAGS = ""; }; };
+		CBA823201C6640EBA48D442A /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/variational.cpp */ = {isa = PBXBuildFile; fileRef = 888C5EE38B6446A5BFB0C22C /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/variational.cpp */; settings = {COMPILER_FLAGS = ""; }; };
+		DD6B898677E340E2AC9D9E04 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/xcode/CMakeFiles/epic_flow.dir/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/epic_flow_generated_cuda-solver.cu.o */ = {isa = PBXBuildFile; fileRef = 4BD5F704FBF14029ACA746D0 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/xcode/CMakeFiles/epic_flow.dir/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/epic_flow_generated_cuda-solver.cu.o */; settings = {COMPILER_FLAGS = ""; }; };
+		E339D285E8304577A9338087 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/cuda-solver.cu */ = {isa = PBXBuildFile; fileRef = 9D7AE7AFA59F43EEB8615176 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/cuda-solver.cu */; settings = {COMPILER_FLAGS = ""; }; };
+		FEE1492558EE40BBB8645A55 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/xcode/CMakeFiles/epic_flow.dir/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/epic_flow_generated_test_cuda.cu.o */ = {isa = PBXBuildFile; fileRef = EA058E5E62C44CE182AA4277 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/xcode/CMakeFiles/epic_flow.dir/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/epic_flow_generated_test_cuda.cu.o */; settings = {COMPILER_FLAGS = ""; }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXBuildStyle section */
+		09AE735FA53A4E4FBE4F1B13 /* Release */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Release;
+		};
+		17353930B65F4362B07E4A94 /* Debug */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Debug;
+		};
+		19E2E0C99DE544EC9D75169A /* RelWithDebInfo */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = RelWithDebInfo;
+		};
+		BEC8ACD8796040C1BC9B2FDF = {
+			isa = PBXBuildStyle;
+		};
+		FCDFB963F81A4D44A3AB3FA1 /* MinSizeRel */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = MinSizeRel;
+		};
+/* End PBXBuildStyle section */
+
+/* Begin PBXContainerItemProxy section */
+		7FDD7670220548AE80B4B8C6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 671DC9556DDD4EE7A7A7C9BF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6975F906F024454D966BBBA3;
+			remoteInfo = ZERO_CHECK;
+		};
+		8A8408DDB18340418CDFEAAC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 671DC9556DDD4EE7A7A7C9BF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6975F906F024454D966BBBA3;
+			remoteInfo = ZERO_CHECK;
+		};
+		9A7BCBB234884D3F9354AB4D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 671DC9556DDD4EE7A7A7C9BF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F61080D6D31A4A47A2A428BD;
+			remoteInfo = epic_flow;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		00115D81B2F44C0893109BE5 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		00CE5793D1A145229B5B69EB /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/io.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = io.c; path = io.c; sourceTree = SOURCE_ROOT; };
+		01A7223C13D34788BC3CFD02 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/epic.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = epic.h; path = epic.h; sourceTree = SOURCE_ROOT; };
+		043FB4D093D94F4F8E910F51 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/test_cuda.cu */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = test_cuda.cu; path = test_cuda.cu; sourceTree = SOURCE_ROOT; };
+		19976975834246798A979585 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		1B3FC68E26384DBE80E3DEDF /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/variational_aux.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = variational_aux.c; path = variational_aux.c; sourceTree = SOURCE_ROOT; };
+		217B3681BFE24C9494A984BA /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/solver.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = solver.h; path = solver.h; sourceTree = SOURCE_ROOT; };
+		275251BFB40F4D14AB08A2FA /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/array_types.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = array_types.h; path = array_types.h; sourceTree = SOURCE_ROOT; };
+		2E339D90D3CE4786A0E097AD /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/io.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = io.h; path = io.h; sourceTree = SOURCE_ROOT; };
+		2EBDA47FFB394D828EF67DEC /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/epic_aux.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = epic_aux.cpp; path = epic_aux.cpp; sourceTree = SOURCE_ROOT; };
+		3D0EC6E2281C4007B11CFB1A /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/solver.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = solver.cpp; path = solver.cpp; sourceTree = SOURCE_ROOT; };
+		4AD1482145414F16A0B9540E /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/image.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = image.c; path = image.c; sourceTree = SOURCE_ROOT; };
+		4B3B6CA036F547498AAE22A5 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/epic.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = epic.cpp; path = epic.cpp; sourceTree = SOURCE_ROOT; };
+		4BD5F704FBF14029ACA746D0 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/xcode/CMakeFiles/epic_flow.dir/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/epic_flow_generated_cuda-solver.cu.o */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.objfile"; fileEncoding = 4; name = "epic_flow_generated_cuda-solver.cu.o"; path = "xcode/CMakeFiles/epic_flow.dir/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/epic_flow_generated_cuda-solver.cu.o"; sourceTree = SOURCE_ROOT; };
+		6455F5B7031445B78C741A94 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/epicflow.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = epicflow.cpp; path = epicflow.cpp; sourceTree = SOURCE_ROOT; };
+		888C5EE38B6446A5BFB0C22C /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/variational.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = variational.cpp; path = variational.cpp; sourceTree = SOURCE_ROOT; };
+		8C9DFE3EAC9C4F2D822B6DF1 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		988A2159181A4AF9A16F8E26 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/utils.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = utils.h; path = utils.h; sourceTree = SOURCE_ROOT; };
+		999CE7F41BAD4A6C944D5A0B /* epic_flow */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = epic_flow; refType = 0; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D7AE7AFA59F43EEB8615176 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/cuda-solver.cu */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = "cuda-solver.cu"; path = "cuda-solver.cu"; sourceTree = SOURCE_ROOT; };
+		A3439FB5B3AB4D6EAFD83BA8 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/variational.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = variational.h; path = variational.h; sourceTree = SOURCE_ROOT; };
+		BB39DD1F4AE44CB69D2E3513 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/epic_aux.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = epic_aux.h; path = epic_aux.h; sourceTree = SOURCE_ROOT; };
+		D6E10A8A366D4C7597F6CB32 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/image.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = image.h; path = image.h; sourceTree = SOURCE_ROOT; };
+		EA058E5E62C44CE182AA4277 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/xcode/CMakeFiles/epic_flow.dir/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/epic_flow_generated_test_cuda.cu.o */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.objfile"; fileEncoding = 4; name = epic_flow_generated_test_cuda.cu.o; path = "xcode/CMakeFiles/epic_flow.dir/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/epic_flow_generated_test_cuda.cu.o"; sourceTree = SOURCE_ROOT; };
+		FA2305D208E64F829D7000DD /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/variational_aux.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = variational_aux.h; path = variational_aux.h; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		62CE9B21E15144BA835B3C08 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD6B898677E340E2AC9D9E04 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/xcode/CMakeFiles/epic_flow.dir/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/epic_flow_generated_cuda-solver.cu.o */,
+				FEE1492558EE40BBB8645A55 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/xcode/CMakeFiles/epic_flow.dir/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/epic_flow_generated_test_cuda.cu.o */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0223BC37A83244059FC87941 /* epic_flow */ = {
+			isa = PBXGroup;
+			children = (
+				94F4E6826D4149B8B8876A5E /* Object Files */,
+				0250FF77E5F547A1B42E570C /* Header Files */,
+				A8906FA6A7BF4C1EAB5A4893 /* Source Files */,
+				00115D81B2F44C0893109BE5 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/CMakeLists.txt */,
+				9D7AE7AFA59F43EEB8615176 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/cuda-solver.cu */,
+				043FB4D093D94F4F8E910F51 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/test_cuda.cu */,
+			);
+			name = epic_flow;
+			sourceTree = "<group>";
+		};
+		0250FF77E5F547A1B42E570C /* Header Files */ = {
+			isa = PBXGroup;
+			children = (
+				275251BFB40F4D14AB08A2FA /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/array_types.h */,
+				01A7223C13D34788BC3CFD02 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/epic.h */,
+				BB39DD1F4AE44CB69D2E3513 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/epic_aux.h */,
+				D6E10A8A366D4C7597F6CB32 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/image.h */,
+				2E339D90D3CE4786A0E097AD /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/io.h */,
+				217B3681BFE24C9494A984BA /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/solver.h */,
+				988A2159181A4AF9A16F8E26 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/utils.h */,
+				A3439FB5B3AB4D6EAFD83BA8 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/variational.h */,
+				FA2305D208E64F829D7000DD /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/variational_aux.h */,
+			);
+			name = "Header Files";
+			sourceTree = "<group>";
+		};
+		10DC1229CF8748C7937A20C2 /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+		25AF7A546C634B018255C6E2 = {
+			isa = PBXGroup;
+			children = (
+				A1682488E04B4680B29D098E /* Sources */,
+				631FECF4FEAB47BCAC4B799C /* Resources */,
+				6265E8BA809145DF8D746AF8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6265E8BA809145DF8D746AF8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				999CE7F41BAD4A6C944D5A0B /* epic_flow */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		631FECF4FEAB47BCAC4B799C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		94F4E6826D4149B8B8876A5E /* Object Files */ = {
+			isa = PBXGroup;
+			children = (
+				4BD5F704FBF14029ACA746D0 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/xcode/CMakeFiles/epic_flow.dir/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/epic_flow_generated_cuda-solver.cu.o */,
+				EA058E5E62C44CE182AA4277 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/xcode/CMakeFiles/epic_flow.dir/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/epic_flow_generated_test_cuda.cu.o */,
+			);
+			name = "Object Files";
+			sourceTree = "<group>";
+		};
+		A14FEA849216437AAB659688 /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+		A1682488E04B4680B29D098E /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				0223BC37A83244059FC87941 /* epic_flow */,
+				CF96F0DCCB804B8382F98B3E /* ALL_BUILD */,
+				D2403A033E20474BB91B0D8A /* ZERO_CHECK */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
+		A8906FA6A7BF4C1EAB5A4893 /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				4B3B6CA036F547498AAE22A5 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/epic.cpp */,
+				2EBDA47FFB394D828EF67DEC /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/epic_aux.cpp */,
+				6455F5B7031445B78C741A94 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/epicflow.cpp */,
+				4AD1482145414F16A0B9540E /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/image.c */,
+				00CE5793D1A145229B5B69EB /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/io.c */,
+				3D0EC6E2281C4007B11CFB1A /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/solver.cpp */,
+				888C5EE38B6446A5BFB0C22C /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/variational.cpp */,
+				1B3FC68E26384DBE80E3DEDF /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/variational_aux.c */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		CF96F0DCCB804B8382F98B3E /* ALL_BUILD */ = {
+			isa = PBXGroup;
+			children = (
+				A14FEA849216437AAB659688 /* CMake Rules */,
+				8C9DFE3EAC9C4F2D822B6DF1 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/CMakeLists.txt */,
+			);
+			name = ALL_BUILD;
+			sourceTree = "<group>";
+		};
+		D2403A033E20474BB91B0D8A /* ZERO_CHECK */ = {
+			isa = PBXGroup;
+			children = (
+				10DC1229CF8748C7937A20C2 /* CMake Rules */,
+				19976975834246798A979585 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/CMakeLists.txt */,
+			);
+			name = ZERO_CHECK;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F61080D6D31A4A47A2A428BD /* epic_flow */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B8BEA75341DB48F09C714E8D /* Build configuration list for PBXNativeTarget "epic_flow" */;
+			buildPhases = (
+				62F7F3034A954AF4B08AB820 /* CMake Rules */,
+				649071FCFC7A4C438AE7CD21 /* Sources */,
+				62CE9B21E15144BA835B3C08 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				489105F1FB3A42D08CAC6885 /* PBXTargetDependency */,
+			);
+			name = epic_flow;
+			productName = epic_flow;
+			productReference = 999CE7F41BAD4A6C944D5A0B /* epic_flow */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		671DC9556DDD4EE7A7A7C9BF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 0730;
+			};
+			buildConfigurationList = 37B8873414D1437BBC9A6195 /* Build configuration list for PBXProject "Project" */;
+			buildSettings = {
+			};
+			buildStyles = (
+				17353930B65F4362B07E4A94 /* Debug */,
+				09AE735FA53A4E4FBE4F1B13 /* Release */,
+				FCDFB963F81A4D44A3AB3FA1 /* MinSizeRel */,
+				19E2E0C99DE544EC9D75169A /* RelWithDebInfo */,
+			);
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 0;
+			mainGroup = 25AF7A546C634B018255C6E2;
+			projectDirPath = ../;
+			projectRoot = "";
+			targets = (
+				5469A4B8901E4C7083A841FC /* ALL_BUILD */,
+				6975F906F024454D966BBBA3 /* ZERO_CHECK */,
+				F61080D6D31A4A47A2A428BD /* epic_flow */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		62F7F3034A954AF4B08AB820 /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/xcode -f /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/xcode/CMakeScripts/epic_flow_cmakeRulesBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+		6E9DB3BB74CF4E94AD1D5E76 /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/xcode -f /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/xcode/CMakeScripts/ZERO_CHECK_cmakeRulesBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+		91A88584C449469486C0A5FF = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+		B43449B1464B4BF5ADA2F1E1 /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/xcode -f /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/xcode/CMakeScripts/ALL_BUILD_cmakeRulesBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+		FB381F7BEA6148B58DA2361E = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		649071FCFC7A4C438AE7CD21 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A2B09210DF344BCCA48E5A4F /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/epic.cpp */,
+				60EFF99CEEBA4F3A8D017F46 /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/epic_aux.cpp */,
+				C72190E19EA8406FA76E2EEE /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/epicflow.cpp */,
+				396F3F9E0D66493B8C75296B /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/image.c */,
+				803F49E6868D46C49953B58B /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/io.c */,
+				155736685DB342E28314DF6D /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/solver.cpp */,
+				CBA823201C6640EBA48D442A /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/variational.cpp */,
+				7B63E32DC6BD454CAA05F08F /* /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/variational_aux.c */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		489105F1FB3A42D08CAC6885 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6975F906F024454D966BBBA3 /* ZERO_CHECK */;
+			targetProxy = 7FDD7670220548AE80B4B8C6 /* PBXContainerItemProxy */;
+		};
+		BF87578216CB43BDA986339D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6975F906F024454D966BBBA3 /* ZERO_CHECK */;
+			targetProxy = 8A8408DDB18340418CDFEAAC /* PBXContainerItemProxy */;
+		};
+		F1CAE47D780F4163A85723B9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F61080D6D31A4A47A2A428BD /* epic_flow */;
+			targetProxy = 9A7BCBB234884D3F9354AB4D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0243ABC5DB9F45EA991C2F8D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/usr/include/malloc, /usr/local/cuda/include, );
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = "    ";
+				OTHER_CPLUSPLUSFLAGS = " -std=c++11 -fPIC -Wall        -msse4 -ljpeg -lpng -fopenmp     ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  /usr/local/cuda/lib/libcudart_static.a -Wl,-rpath,/usr/local/cuda/lib -framework Accelerate";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = epic_flow;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/xcode";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", "$(inherited)", );
+			};
+			name = Debug;
+		};
+		127ACEF6528649BA83161B8A /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/usr/include/malloc, /usr/local/cuda/include, );
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/xcode";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", "$(inherited)", );
+			};
+			name = MinSizeRel;
+		};
+		1A616F9B15EE4F879A3B3F3C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = "/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk";
+				SYMROOT = "/Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/xcode/build";
+			};
+			name = Release;
+		};
+		3B00684C22C6437BA481C900 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/usr/include/malloc, /usr/local/cuda/include, );
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/xcode";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", "$(inherited)", );
+			};
+			name = MinSizeRel;
+		};
+		4EC2909BA1B74FF6916D7A47 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = "/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk";
+				SYMROOT = "/Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/xcode/build";
+			};
+			name = Debug;
+		};
+		69E8AFB36AEF4AFA80662D69 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/usr/include/malloc, /usr/local/cuda/include, );
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = "    -DNDEBUG   ";
+				OTHER_CPLUSPLUSFLAGS = " -std=c++11 -fPIC -Wall        -msse4 -ljpeg -lpng -fopenmp     -DNDEBUG -g  ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  /usr/local/cuda/lib/libcudart_static.a -Wl,-rpath,/usr/local/cuda/lib -framework Accelerate";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = epic_flow;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/xcode";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", "$(inherited)", );
+			};
+			name = MinSizeRel;
+		};
+		759AAB3AC5984977B6A49C81 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/usr/include/malloc, /usr/local/cuda/include, );
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/xcode";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", "$(inherited)", );
+			};
+			name = Debug;
+		};
+		97B69306B2F54491B0A20C24 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/usr/include/malloc, /usr/local/cuda/include, );
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = "    -DNDEBUG   ";
+				OTHER_CPLUSPLUSFLAGS = " -std=c++11 -fPIC -Wall        -msse4 -ljpeg -lpng -fopenmp     -DNDEBUG -g  ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  /usr/local/cuda/lib/libcudart_static.a -Wl,-rpath,/usr/local/cuda/lib -framework Accelerate";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = epic_flow;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/xcode";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", "$(inherited)", );
+			};
+			name = Release;
+		};
+		A0A2668A02B74959A9FEF3BB /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/usr/include/malloc, /usr/local/cuda/include, );
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = "       -DNDEBUG  ";
+				OTHER_CPLUSPLUSFLAGS = " -std=c++11 -fPIC -Wall        -msse4 -ljpeg -lpng -fopenmp        -DNDEBUG  ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  /usr/local/cuda/lib/libcudart_static.a -Wl,-rpath,/usr/local/cuda/lib -framework Accelerate";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = epic_flow;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/xcode";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", "$(inherited)", );
+			};
+			name = RelWithDebInfo;
+		};
+		A219C747644943C9B0A8A5DE /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = "/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk";
+				SYMROOT = "/Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/xcode/build";
+			};
+			name = RelWithDebInfo;
+		};
+		B434E68ABFD74E58AB80B14F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/usr/include/malloc, /usr/local/cuda/include, );
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/xcode";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", "$(inherited)", );
+			};
+			name = Release;
+		};
+		B8A71074B2CB4BACB7F9CD0D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/usr/include/malloc, /usr/local/cuda/include, );
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/xcode";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", "$(inherited)", );
+			};
+			name = Debug;
+		};
+		BCB4264E8B2849AC8B439F37 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/usr/include/malloc, /usr/local/cuda/include, );
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/xcode";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", "$(inherited)", );
+			};
+			name = Release;
+		};
+		DE0644ECF6E046269269E6E0 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/usr/include/malloc, /usr/local/cuda/include, );
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/xcode";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", "$(inherited)", );
+			};
+			name = RelWithDebInfo;
+		};
+		E447A4547B3540A9B74E4C19 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = "/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk";
+				SYMROOT = "/Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/xcode/build";
+			};
+			name = MinSizeRel;
+		};
+		FDAF7C9B2B4C4A8088DA92A6 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/usr/include/malloc, /usr/local/cuda/include, );
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/xcode";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", "$(inherited)", );
+			};
+			name = RelWithDebInfo;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		37B8873414D1437BBC9A6195 /* Build configuration list for PBXProject "Project" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4EC2909BA1B74FF6916D7A47 /* Debug */,
+				1A616F9B15EE4F879A3B3F3C /* Release */,
+				E447A4547B3540A9B74E4C19 /* MinSizeRel */,
+				A219C747644943C9B0A8A5DE /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B8BEA75341DB48F09C714E8D /* Build configuration list for PBXNativeTarget "epic_flow" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0243ABC5DB9F45EA991C2F8D /* Debug */,
+				97B69306B2F54491B0A20C24 /* Release */,
+				69E8AFB36AEF4AFA80662D69 /* MinSizeRel */,
+				A0A2668A02B74959A9FEF3BB /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		E0CC80C4A84C429A8C8243D5 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				759AAB3AC5984977B6A49C81 /* Debug */,
+				B434E68ABFD74E58AB80B14F /* Release */,
+				127ACEF6528649BA83161B8A /* MinSizeRel */,
+				DE0644ECF6E046269269E6E0 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		F40F581768BE471BB539CDA8 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B8A71074B2CB4BACB7F9CD0D /* Debug */,
+				BCB4264E8B2849AC8B439F37 /* Release */,
+				3B00684C22C6437BA481C900 /* MinSizeRel */,
+				FDAF7C9B2B4C4A8088DA92A6 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 671DC9556DDD4EE7A7A7C9BF /* Project object */;
+}

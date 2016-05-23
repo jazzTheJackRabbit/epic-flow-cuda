@@ -1,0 +1,491 @@
+The system is: Darwin - 15.3.0 - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc 
+Build flags: 
+Id flags: 
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is AppleClang, found in "/Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/build/CMakeFiles/3.5.2/CompilerIdC/a.out"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ 
+Build flags: 
+Id flags: 
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is AppleClang, found in "/Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/build/CMakeFiles/3.5.2/CompilerIdCXX/a.out"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_f3dab/fast"
+/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_f3dab.dir/build.make CMakeFiles/cmTC_f3dab.dir/build
+Building C object CMakeFiles/cmTC_f3dab.dir/testCCompiler.c.o
+/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc     -o CMakeFiles/cmTC_f3dab.dir/testCCompiler.c.o   -c /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/build/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_f3dab
+/usr/local/Cellar/cmake/3.5.2/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f3dab.dir/link.txt --verbose=1
+/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_f3dab.dir/testCCompiler.c.o  -o cmTC_f3dab  
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_60d5c/fast"
+/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_60d5c.dir/build.make CMakeFiles/cmTC_60d5c.dir/build
+Building C object CMakeFiles/cmTC_60d5c.dir/CMakeCCompilerABI.c.o
+/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc     -o CMakeFiles/cmTC_60d5c.dir/CMakeCCompilerABI.c.o   -c /usr/local/Cellar/cmake/3.5.2/share/cmake/Modules/CMakeCCompilerABI.c
+Linking C executable cmTC_60d5c
+/usr/local/Cellar/cmake/3.5.2/bin/cmake -E cmake_link_script CMakeFiles/cmTC_60d5c.dir/link.txt --verbose=1
+/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_60d5c.dir/CMakeCCompilerABI.c.o  -o cmTC_60d5c   
+Apple LLVM version 7.0.2 (clang-700.1.81)
+Target: x86_64-apple-darwin15.3.0
+Thread model: posix
+ "/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -dynamic -arch x86_64 -macosx_version_min 10.11.0 -o cmTC_60d5c -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_60d5c.dir/CMakeCCompilerABI.c.o -lSystem /Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/lib/darwin/libclang_rt.osx.a
+@(#)PROGRAM:ld  PROJECT:ld64-253.9
+configured to support archs: armv6 armv7 armv7s arm64 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em (tvOS)
+Library search paths:
+	/usr/lib
+	/usr/local/lib
+Framework search paths:
+	/Library/Frameworks/
+	/System/Library/Frameworks/
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/build/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_60d5c/fast"]
+  ignore line: [/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_60d5c.dir/build.make CMakeFiles/cmTC_60d5c.dir/build]
+  ignore line: [Building C object CMakeFiles/cmTC_60d5c.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc     -o CMakeFiles/cmTC_60d5c.dir/CMakeCCompilerABI.c.o   -c /usr/local/Cellar/cmake/3.5.2/share/cmake/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTC_60d5c]
+  ignore line: [/usr/local/Cellar/cmake/3.5.2/bin/cmake -E cmake_link_script CMakeFiles/cmTC_60d5c.dir/link.txt --verbose=1]
+  ignore line: [/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_60d5c.dir/CMakeCCompilerABI.c.o  -o cmTC_60d5c   ]
+  ignore line: [Apple LLVM version 7.0.2 (clang-700.1.81)]
+  ignore line: [Target: x86_64-apple-darwin15.3.0]
+  ignore line: [Thread model: posix]
+  link line: [ "/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -dynamic -arch x86_64 -macosx_version_min 10.11.0 -o cmTC_60d5c -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_60d5c.dir/CMakeCCompilerABI.c.o -lSystem /Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/lib/darwin/libclang_rt.osx.a]
+    arg [/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld] ==> ignore
+    arg [-demangle] ==> ignore
+    arg [-dynamic] ==> ignore
+    arg [-arch] ==> ignore
+    arg [x86_64] ==> ignore
+    arg [-macosx_version_min] ==> ignore
+    arg [10.11.0] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_60d5c] ==> ignore
+    arg [-search_paths_first] ==> ignore
+    arg [-headerpad_max_install_names] ==> ignore
+    arg [-v] ==> ignore
+    arg [CMakeFiles/cmTC_60d5c.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lSystem] ==> lib [System]
+    arg [/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/lib/darwin/libclang_rt.osx.a] ==> lib [/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/lib/darwin/libclang_rt.osx.a]
+  Library search paths: [;/usr/lib;/usr/local/lib]
+  Framework search paths: [;/Library/Frameworks/;/System/Library/Frameworks/]
+  remove lib [System]
+  collapse lib [/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/lib/darwin/libclang_rt.osx.a] ==> [/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/7.0.2/lib/darwin/libclang_rt.osx.a]
+  collapse library dir [/usr/lib] ==> [/usr/lib]
+  collapse library dir [/usr/local/lib] ==> [/usr/local/lib]
+  collapse framework dir [/Library/Frameworks/] ==> [/Library/Frameworks]
+  collapse framework dir [/System/Library/Frameworks/] ==> [/System/Library/Frameworks]
+  implicit libs: [/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/7.0.2/lib/darwin/libclang_rt.osx.a]
+  implicit dirs: [/usr/lib;/usr/local/lib]
+  implicit fwks: [/Library/Frameworks;/System/Library/Frameworks]
+
+
+
+
+Detecting C [-std=c11] compiler features compiled with the following output:
+Change Dir: /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_bba3a/fast"
+/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_bba3a.dir/build.make CMakeFiles/cmTC_bba3a.dir/build
+Building C object CMakeFiles/cmTC_bba3a.dir/feature_tests.c.o
+/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -std=c11 -o CMakeFiles/cmTC_bba3a.dir/feature_tests.c.o   -c /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_bba3a
+/usr/local/Cellar/cmake/3.5.2/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bba3a.dir/link.txt --verbose=1
+/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_bba3a.dir/feature_tests.c.o  -o cmTC_bba3a  
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:1c_restrict
+    Feature record: C_FEATURE:1c_static_assert
+    Feature record: C_FEATURE:1c_variadic_macros
+
+
+Detecting C [-std=c99] compiler features compiled with the following output:
+Change Dir: /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_257df/fast"
+/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_257df.dir/build.make CMakeFiles/cmTC_257df.dir/build
+Building C object CMakeFiles/cmTC_257df.dir/feature_tests.c.o
+/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -std=c99 -o CMakeFiles/cmTC_257df.dir/feature_tests.c.o   -c /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_257df
+/usr/local/Cellar/cmake/3.5.2/bin/cmake -E cmake_link_script CMakeFiles/cmTC_257df.dir/link.txt --verbose=1
+/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_257df.dir/feature_tests.c.o  -o cmTC_257df  
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:1c_restrict
+    Feature record: C_FEATURE:0c_static_assert
+    Feature record: C_FEATURE:1c_variadic_macros
+
+
+Detecting C [-std=c90] compiler features compiled with the following output:
+Change Dir: /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_bf0c0/fast"
+/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_bf0c0.dir/build.make CMakeFiles/cmTC_bf0c0.dir/build
+Building C object CMakeFiles/cmTC_bf0c0.dir/feature_tests.c.o
+/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -std=c90 -o CMakeFiles/cmTC_bf0c0.dir/feature_tests.c.o   -c /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_bf0c0
+/usr/local/Cellar/cmake/3.5.2/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bf0c0.dir/link.txt --verbose=1
+/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_bf0c0.dir/feature_tests.c.o  -o cmTC_bf0c0  
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:0c_restrict
+    Feature record: C_FEATURE:0c_static_assert
+    Feature record: C_FEATURE:0c_variadic_macros
+Determining if the CXX compiler works passed with the following output:
+Change Dir: /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_380a3/fast"
+/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_380a3.dir/build.make CMakeFiles/cmTC_380a3.dir/build
+Building CXX object CMakeFiles/cmTC_380a3.dir/testCXXCompiler.cxx.o
+/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++      -o CMakeFiles/cmTC_380a3.dir/testCXXCompiler.cxx.o -c /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTC_380a3
+/usr/local/Cellar/cmake/3.5.2/bin/cmake -E cmake_link_script CMakeFiles/cmTC_380a3.dir/link.txt --verbose=1
+/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_380a3.dir/testCXXCompiler.cxx.o  -o cmTC_380a3  
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_9f5eb/fast"
+/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_9f5eb.dir/build.make CMakeFiles/cmTC_9f5eb.dir/build
+Building CXX object CMakeFiles/cmTC_9f5eb.dir/CMakeCXXCompilerABI.cpp.o
+/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++      -o CMakeFiles/cmTC_9f5eb.dir/CMakeCXXCompilerABI.cpp.o -c /usr/local/Cellar/cmake/3.5.2/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTC_9f5eb
+/usr/local/Cellar/cmake/3.5.2/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9f5eb.dir/link.txt --verbose=1
+/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_9f5eb.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_9f5eb   
+Apple LLVM version 7.0.2 (clang-700.1.81)
+Target: x86_64-apple-darwin15.3.0
+Thread model: posix
+ "/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -dynamic -arch x86_64 -macosx_version_min 10.11.0 -o cmTC_9f5eb -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_9f5eb.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lSystem /Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/lib/darwin/libclang_rt.osx.a
+@(#)PROGRAM:ld  PROJECT:ld64-253.9
+configured to support archs: armv6 armv7 armv7s arm64 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em (tvOS)
+Library search paths:
+	/usr/lib
+	/usr/local/lib
+Framework search paths:
+	/Library/Frameworks/
+	/System/Library/Frameworks/
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/build/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_9f5eb/fast"]
+  ignore line: [/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_9f5eb.dir/build.make CMakeFiles/cmTC_9f5eb.dir/build]
+  ignore line: [Building CXX object CMakeFiles/cmTC_9f5eb.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++      -o CMakeFiles/cmTC_9f5eb.dir/CMakeCXXCompilerABI.cpp.o -c /usr/local/Cellar/cmake/3.5.2/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTC_9f5eb]
+  ignore line: [/usr/local/Cellar/cmake/3.5.2/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9f5eb.dir/link.txt --verbose=1]
+  ignore line: [/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_9f5eb.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_9f5eb   ]
+  ignore line: [Apple LLVM version 7.0.2 (clang-700.1.81)]
+  ignore line: [Target: x86_64-apple-darwin15.3.0]
+  ignore line: [Thread model: posix]
+  link line: [ "/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -dynamic -arch x86_64 -macosx_version_min 10.11.0 -o cmTC_9f5eb -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_9f5eb.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lSystem /Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/lib/darwin/libclang_rt.osx.a]
+    arg [/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld] ==> ignore
+    arg [-demangle] ==> ignore
+    arg [-dynamic] ==> ignore
+    arg [-arch] ==> ignore
+    arg [x86_64] ==> ignore
+    arg [-macosx_version_min] ==> ignore
+    arg [10.11.0] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_9f5eb] ==> ignore
+    arg [-search_paths_first] ==> ignore
+    arg [-headerpad_max_install_names] ==> ignore
+    arg [-v] ==> ignore
+    arg [CMakeFiles/cmTC_9f5eb.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-lc++] ==> lib [c++]
+    arg [-lSystem] ==> lib [System]
+    arg [/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/lib/darwin/libclang_rt.osx.a] ==> lib [/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/lib/darwin/libclang_rt.osx.a]
+  Library search paths: [;/usr/lib;/usr/local/lib]
+  Framework search paths: [;/Library/Frameworks/;/System/Library/Frameworks/]
+  remove lib [System]
+  collapse lib [/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/lib/darwin/libclang_rt.osx.a] ==> [/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/7.0.2/lib/darwin/libclang_rt.osx.a]
+  collapse library dir [/usr/lib] ==> [/usr/lib]
+  collapse library dir [/usr/local/lib] ==> [/usr/local/lib]
+  collapse framework dir [/Library/Frameworks/] ==> [/Library/Frameworks]
+  collapse framework dir [/System/Library/Frameworks/] ==> [/System/Library/Frameworks]
+  implicit libs: [c++;/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/7.0.2/lib/darwin/libclang_rt.osx.a]
+  implicit dirs: [/usr/lib;/usr/local/lib]
+  implicit fwks: [/Library/Frameworks;/System/Library/Frameworks]
+
+
+
+
+Detecting CXX [-std=c++14] compiler features compiled with the following output:
+Change Dir: /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_88ed7/fast"
+/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_88ed7.dir/build.make CMakeFiles/cmTC_88ed7.dir/build
+Building CXX object CMakeFiles/cmTC_88ed7.dir/feature_tests.cxx.o
+/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -std=c++14 -o CMakeFiles/cmTC_88ed7.dir/feature_tests.cxx.o -c /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_88ed7
+/usr/local/Cellar/cmake/3.5.2/bin/cmake -E cmake_link_script CMakeFiles/cmTC_88ed7.dir/link.txt --verbose=1
+/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_88ed7.dir/feature_tests.cxx.o  -o cmTC_88ed7  
+
+
+    Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:1cxx_alias_templates
+    Feature record: CXX_FEATURE:1cxx_alignas
+    Feature record: CXX_FEATURE:1cxx_alignof
+    Feature record: CXX_FEATURE:1cxx_attributes
+    Feature record: CXX_FEATURE:1cxx_attribute_deprecated
+    Feature record: CXX_FEATURE:1cxx_auto_type
+    Feature record: CXX_FEATURE:1cxx_binary_literals
+    Feature record: CXX_FEATURE:1cxx_constexpr
+    Feature record: CXX_FEATURE:1cxx_contextual_conversions
+    Feature record: CXX_FEATURE:1cxx_decltype
+    Feature record: CXX_FEATURE:1cxx_decltype_auto
+    Feature record: CXX_FEATURE:1cxx_decltype_incomplete_return_types
+    Feature record: CXX_FEATURE:1cxx_default_function_template_args
+    Feature record: CXX_FEATURE:1cxx_defaulted_functions
+    Feature record: CXX_FEATURE:1cxx_defaulted_move_initializers
+    Feature record: CXX_FEATURE:1cxx_delegating_constructors
+    Feature record: CXX_FEATURE:1cxx_deleted_functions
+    Feature record: CXX_FEATURE:1cxx_digit_separators
+    Feature record: CXX_FEATURE:1cxx_enum_forward_declarations
+    Feature record: CXX_FEATURE:1cxx_explicit_conversions
+    Feature record: CXX_FEATURE:1cxx_extended_friend_declarations
+    Feature record: CXX_FEATURE:1cxx_extern_templates
+    Feature record: CXX_FEATURE:1cxx_final
+    Feature record: CXX_FEATURE:1cxx_func_identifier
+    Feature record: CXX_FEATURE:1cxx_generalized_initializers
+    Feature record: CXX_FEATURE:1cxx_generic_lambdas
+    Feature record: CXX_FEATURE:1cxx_inheriting_constructors
+    Feature record: CXX_FEATURE:1cxx_inline_namespaces
+    Feature record: CXX_FEATURE:1cxx_lambdas
+    Feature record: CXX_FEATURE:1cxx_lambda_init_captures
+    Feature record: CXX_FEATURE:1cxx_local_type_template_args
+    Feature record: CXX_FEATURE:1cxx_long_long_type
+    Feature record: CXX_FEATURE:1cxx_noexcept
+    Feature record: CXX_FEATURE:1cxx_nonstatic_member_init
+    Feature record: CXX_FEATURE:1cxx_nullptr
+    Feature record: CXX_FEATURE:1cxx_override
+    Feature record: CXX_FEATURE:1cxx_range_for
+    Feature record: CXX_FEATURE:1cxx_raw_string_literals
+    Feature record: CXX_FEATURE:1cxx_reference_qualified_functions
+    Feature record: CXX_FEATURE:1cxx_relaxed_constexpr
+    Feature record: CXX_FEATURE:1cxx_return_type_deduction
+    Feature record: CXX_FEATURE:1cxx_right_angle_brackets
+    Feature record: CXX_FEATURE:1cxx_rvalue_references
+    Feature record: CXX_FEATURE:1cxx_sizeof_member
+    Feature record: CXX_FEATURE:1cxx_static_assert
+    Feature record: CXX_FEATURE:1cxx_strong_enums
+    Feature record: CXX_FEATURE:1cxx_template_template_parameters
+    Feature record: CXX_FEATURE:0cxx_thread_local
+    Feature record: CXX_FEATURE:1cxx_trailing_return_types
+    Feature record: CXX_FEATURE:1cxx_unicode_literals
+    Feature record: CXX_FEATURE:1cxx_uniform_initialization
+    Feature record: CXX_FEATURE:1cxx_unrestricted_unions
+    Feature record: CXX_FEATURE:1cxx_user_literals
+    Feature record: CXX_FEATURE:1cxx_variable_templates
+    Feature record: CXX_FEATURE:1cxx_variadic_macros
+    Feature record: CXX_FEATURE:1cxx_variadic_templates
+
+
+Detecting CXX [-std=c++11] compiler features compiled with the following output:
+Change Dir: /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_d9d9a/fast"
+/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_d9d9a.dir/build.make CMakeFiles/cmTC_d9d9a.dir/build
+Building CXX object CMakeFiles/cmTC_d9d9a.dir/feature_tests.cxx.o
+/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -std=c++11 -o CMakeFiles/cmTC_d9d9a.dir/feature_tests.cxx.o -c /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_d9d9a
+/usr/local/Cellar/cmake/3.5.2/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d9d9a.dir/link.txt --verbose=1
+/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_d9d9a.dir/feature_tests.cxx.o  -o cmTC_d9d9a  
+
+
+    Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:1cxx_alias_templates
+    Feature record: CXX_FEATURE:1cxx_alignas
+    Feature record: CXX_FEATURE:1cxx_alignof
+    Feature record: CXX_FEATURE:1cxx_attributes
+    Feature record: CXX_FEATURE:0cxx_attribute_deprecated
+    Feature record: CXX_FEATURE:1cxx_auto_type
+    Feature record: CXX_FEATURE:0cxx_binary_literals
+    Feature record: CXX_FEATURE:1cxx_constexpr
+    Feature record: CXX_FEATURE:0cxx_contextual_conversions
+    Feature record: CXX_FEATURE:1cxx_decltype
+    Feature record: CXX_FEATURE:0cxx_decltype_auto
+    Feature record: CXX_FEATURE:1cxx_decltype_incomplete_return_types
+    Feature record: CXX_FEATURE:1cxx_default_function_template_args
+    Feature record: CXX_FEATURE:1cxx_defaulted_functions
+    Feature record: CXX_FEATURE:1cxx_defaulted_move_initializers
+    Feature record: CXX_FEATURE:1cxx_delegating_constructors
+    Feature record: CXX_FEATURE:1cxx_deleted_functions
+    Feature record: CXX_FEATURE:0cxx_digit_separators
+    Feature record: CXX_FEATURE:1cxx_enum_forward_declarations
+    Feature record: CXX_FEATURE:1cxx_explicit_conversions
+    Feature record: CXX_FEATURE:1cxx_extended_friend_declarations
+    Feature record: CXX_FEATURE:1cxx_extern_templates
+    Feature record: CXX_FEATURE:1cxx_final
+    Feature record: CXX_FEATURE:1cxx_func_identifier
+    Feature record: CXX_FEATURE:1cxx_generalized_initializers
+    Feature record: CXX_FEATURE:0cxx_generic_lambdas
+    Feature record: CXX_FEATURE:1cxx_inheriting_constructors
+    Feature record: CXX_FEATURE:1cxx_inline_namespaces
+    Feature record: CXX_FEATURE:1cxx_lambdas
+    Feature record: CXX_FEATURE:0cxx_lambda_init_captures
+    Feature record: CXX_FEATURE:1cxx_local_type_template_args
+    Feature record: CXX_FEATURE:1cxx_long_long_type
+    Feature record: CXX_FEATURE:1cxx_noexcept
+    Feature record: CXX_FEATURE:1cxx_nonstatic_member_init
+    Feature record: CXX_FEATURE:1cxx_nullptr
+    Feature record: CXX_FEATURE:1cxx_override
+    Feature record: CXX_FEATURE:1cxx_range_for
+    Feature record: CXX_FEATURE:1cxx_raw_string_literals
+    Feature record: CXX_FEATURE:1cxx_reference_qualified_functions
+    Feature record: CXX_FEATURE:0cxx_relaxed_constexpr
+    Feature record: CXX_FEATURE:0cxx_return_type_deduction
+    Feature record: CXX_FEATURE:1cxx_right_angle_brackets
+    Feature record: CXX_FEATURE:1cxx_rvalue_references
+    Feature record: CXX_FEATURE:1cxx_sizeof_member
+    Feature record: CXX_FEATURE:1cxx_static_assert
+    Feature record: CXX_FEATURE:1cxx_strong_enums
+    Feature record: CXX_FEATURE:1cxx_template_template_parameters
+    Feature record: CXX_FEATURE:0cxx_thread_local
+    Feature record: CXX_FEATURE:1cxx_trailing_return_types
+    Feature record: CXX_FEATURE:1cxx_unicode_literals
+    Feature record: CXX_FEATURE:1cxx_uniform_initialization
+    Feature record: CXX_FEATURE:1cxx_unrestricted_unions
+    Feature record: CXX_FEATURE:1cxx_user_literals
+    Feature record: CXX_FEATURE:0cxx_variable_templates
+    Feature record: CXX_FEATURE:1cxx_variadic_macros
+    Feature record: CXX_FEATURE:1cxx_variadic_templates
+
+
+Detecting CXX [-std=c++98] compiler features compiled with the following output:
+Change Dir: /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_1c8f6/fast"
+/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_1c8f6.dir/build.make CMakeFiles/cmTC_1c8f6.dir/build
+Building CXX object CMakeFiles/cmTC_1c8f6.dir/feature_tests.cxx.o
+/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -std=c++98 -o CMakeFiles/cmTC_1c8f6.dir/feature_tests.cxx.o -c /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_1c8f6
+/usr/local/Cellar/cmake/3.5.2/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1c8f6.dir/link.txt --verbose=1
+/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_1c8f6.dir/feature_tests.cxx.o  -o cmTC_1c8f6  
+
+
+    Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:0cxx_alias_templates
+    Feature record: CXX_FEATURE:0cxx_alignas
+    Feature record: CXX_FEATURE:0cxx_alignof
+    Feature record: CXX_FEATURE:0cxx_attributes
+    Feature record: CXX_FEATURE:0cxx_attribute_deprecated
+    Feature record: CXX_FEATURE:0cxx_auto_type
+    Feature record: CXX_FEATURE:0cxx_binary_literals
+    Feature record: CXX_FEATURE:0cxx_constexpr
+    Feature record: CXX_FEATURE:0cxx_contextual_conversions
+    Feature record: CXX_FEATURE:0cxx_decltype
+    Feature record: CXX_FEATURE:0cxx_decltype_auto
+    Feature record: CXX_FEATURE:0cxx_decltype_incomplete_return_types
+    Feature record: CXX_FEATURE:0cxx_default_function_template_args
+    Feature record: CXX_FEATURE:0cxx_defaulted_functions
+    Feature record: CXX_FEATURE:0cxx_defaulted_move_initializers
+    Feature record: CXX_FEATURE:0cxx_delegating_constructors
+    Feature record: CXX_FEATURE:0cxx_deleted_functions
+    Feature record: CXX_FEATURE:0cxx_digit_separators
+    Feature record: CXX_FEATURE:0cxx_enum_forward_declarations
+    Feature record: CXX_FEATURE:0cxx_explicit_conversions
+    Feature record: CXX_FEATURE:0cxx_extended_friend_declarations
+    Feature record: CXX_FEATURE:0cxx_extern_templates
+    Feature record: CXX_FEATURE:0cxx_final
+    Feature record: CXX_FEATURE:0cxx_func_identifier
+    Feature record: CXX_FEATURE:0cxx_generalized_initializers
+    Feature record: CXX_FEATURE:0cxx_generic_lambdas
+    Feature record: CXX_FEATURE:0cxx_inheriting_constructors
+    Feature record: CXX_FEATURE:0cxx_inline_namespaces
+    Feature record: CXX_FEATURE:0cxx_lambdas
+    Feature record: CXX_FEATURE:0cxx_lambda_init_captures
+    Feature record: CXX_FEATURE:0cxx_local_type_template_args
+    Feature record: CXX_FEATURE:0cxx_long_long_type
+    Feature record: CXX_FEATURE:0cxx_noexcept
+    Feature record: CXX_FEATURE:0cxx_nonstatic_member_init
+    Feature record: CXX_FEATURE:0cxx_nullptr
+    Feature record: CXX_FEATURE:0cxx_override
+    Feature record: CXX_FEATURE:0cxx_range_for
+    Feature record: CXX_FEATURE:0cxx_raw_string_literals
+    Feature record: CXX_FEATURE:0cxx_reference_qualified_functions
+    Feature record: CXX_FEATURE:0cxx_relaxed_constexpr
+    Feature record: CXX_FEATURE:0cxx_return_type_deduction
+    Feature record: CXX_FEATURE:0cxx_right_angle_brackets
+    Feature record: CXX_FEATURE:0cxx_rvalue_references
+    Feature record: CXX_FEATURE:0cxx_sizeof_member
+    Feature record: CXX_FEATURE:0cxx_static_assert
+    Feature record: CXX_FEATURE:0cxx_strong_enums
+    Feature record: CXX_FEATURE:1cxx_template_template_parameters
+    Feature record: CXX_FEATURE:0cxx_thread_local
+    Feature record: CXX_FEATURE:0cxx_trailing_return_types
+    Feature record: CXX_FEATURE:0cxx_unicode_literals
+    Feature record: CXX_FEATURE:0cxx_uniform_initialization
+    Feature record: CXX_FEATURE:0cxx_unrestricted_unions
+    Feature record: CXX_FEATURE:0cxx_user_literals
+    Feature record: CXX_FEATURE:0cxx_variable_templates
+    Feature record: CXX_FEATURE:0cxx_variadic_macros
+    Feature record: CXX_FEATURE:0cxx_variadic_templates
+Determining if the include file pthread.h exists passed with the following output:
+Change Dir: /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_79d1e/fast"
+/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_79d1e.dir/build.make CMakeFiles/cmTC_79d1e.dir/build
+Building C object CMakeFiles/cmTC_79d1e.dir/CheckIncludeFile.c.o
+/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -fPIC    -o CMakeFiles/cmTC_79d1e.dir/CheckIncludeFile.c.o   -c /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_79d1e
+/usr/local/Cellar/cmake/3.5.2/bin/cmake -E cmake_link_script CMakeFiles/cmTC_79d1e.dir/link.txt --verbose=1
+/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -fPIC  -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_79d1e.dir/CheckIncludeFile.c.o  -o cmTC_79d1e 
+
+
+Determining if the pthread_create exist passed with the following output:
+Change Dir: /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_48fdc/fast"
+/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_48fdc.dir/build.make CMakeFiles/cmTC_48fdc.dir/build
+Building C object CMakeFiles/cmTC_48fdc.dir/CheckSymbolExists.c.o
+/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -fPIC    -o CMakeFiles/cmTC_48fdc.dir/CheckSymbolExists.c.o   -c /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_48fdc
+/usr/local/Cellar/cmake/3.5.2/bin/cmake -E cmake_link_script CMakeFiles/cmTC_48fdc.dir/link.txt --verbose=1
+/Applications/Xcode-old/Xcode-7.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -fPIC  -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_48fdc.dir/CheckSymbolExists.c.o  -o cmTC_48fdc 
+
+File /Users/amogh/workspace/jazz/code/ucla/visionlab/project/epic_flow-cuda/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+

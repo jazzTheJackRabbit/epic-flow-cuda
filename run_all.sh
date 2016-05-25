@@ -3,6 +3,6 @@ matlab -nodesktop -nojvm -r "addpath('/Users/amogh/Documents/MATLAB/structured_e
 
 ../deep_matching/deepmatching_c++/deepmatching $1 $2 -png_settings -out $4
 
-build/epic_flow $1 $2 $3 $4 $5 -skip
+build/epic_flow $1 $2 $3 $4 $5 -gpu
 
 ../flow-code/color_flow $5 $6

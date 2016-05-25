@@ -142,26 +142,20 @@ void compute_one_level(image_t *wx, image_t *wy, color_image_t *im1, color_image
 				checkCudaMemoryErrors(cudaMemcpyAsync(d_dpsis_vert,smooth_vert->data,data_size,cudaMemcpyHostToDevice));
 				
 				parallel_sor(d_du, d_dv, d_a11, d_a12, d_a22, d_b1, d_b2, d_dpsis_horiz, d_dpsis_vert, du->width, du->height, du->stride, params->niter_solver, params->sor_omega);
-				
-//                test_rb_sor(du->data, dv->data, a11->data, a12->data, a22->data, b1->data, b2->data, smooth_horiz->data, smooth_vert->data, du->width, du->height, du->stride, params->niter_solver, params->sor_omega);
 			}
 			else{
 				sor_coupled_cuda(du, dv, a11, a12, a22, b1, b2, smooth_horiz, smooth_vert, params->niter_solver, params->sor_omega);
 //				sor_coupled_slow_but_readable(du, dv, a11, a12, a22, b1, b2, smooth_horiz, smooth_vert, params->niter_solver, params->sor_omega);
 			}
-            // update flow plus flow increment
-//			checkCudaMemoryErrors(cudaDeviceSynchronize());
+			
+			// copy flow from GPU to CPU
 			if (params->use_gpu) {
 				checkCudaMemoryErrors(cudaMemcpyAsync(du->data,d_du,data_size,cudaMemcpyDeviceToHost));
 				checkCudaMemoryErrors(cudaMemcpyAsync(dv->data,d_dv,data_size,cudaMemcpyDeviceToHost));
 			}
 			checkCudaMemoryErrors(cudaDeviceSynchronize());
-//			for(int i =0; i < du->height; i++){
-//				for(int j = 0; j < du->width; j++){
-//					printf("%f, ",du->data[i*du->height + j]);
-//				}
-//				printf("\n");
-//			}
+			
+			// update flow plus flow increment
             int i;
             v4sf *uup = (v4sf*) uu->data, *vvp = (v4sf*) vv->data, *wxp = (v4sf*) wx->data, *wyp = (v4sf*) wy->data, *dup = (v4sf*) du->data, *dvp = (v4sf*) dv->data;
             for( i=0 ; i<height*stride/4 ; i++){

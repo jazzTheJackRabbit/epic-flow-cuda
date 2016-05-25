@@ -13,12 +13,9 @@
 
 typedef __v4sf v4sf;
 
-//void checkCudaMemoryErrors(cudaError_t status){
-//	if(status != cudaSuccess){
-//		printf("%s",cudaGetErrorString(status));
-//	}
-//}
-
+//***********
+// GPU CODE
+//***********
 __global__
 void red_sor(float *du, float *dv, float *a11, float *a12, float *a22, float *b1, float *b2, float *dpsis_horiz, float *dpsis_vert, float omega, int width, int height, int stride){
 	int numRows = height;
@@ -147,104 +144,6 @@ void black_sor(float *du, float *dv, float *a11, float *a12, float *a22, float *
 	}
 }
 
-__global__
-void serial_sor(float *du, float *dv, float *a11, float *a12, float *a22, float *b1, float *b2, float *dpsis_horiz, float *dpsis_vert, float omega, int width, int height, int stride, int i, int j){
-	
-		float sigma_u,sigma_v,sum_dpsis,A11,A22,A12,B1,B2,det;
-	
-		sigma_u = 0.0f;
-		sigma_v = 0.0f;
-		sum_dpsis = 0.0f;
-		
-		if(j>0){
-			sigma_u -= dpsis_vert[(j-1)*stride+i]*du[(j-1)*stride+i];
-			sigma_v -= dpsis_vert[(j-1)*stride+i]*dv[(j-1)*stride+i];
-			sum_dpsis += dpsis_vert[(j-1)*stride+i];
-		}
-		if(i>0){
-			sigma_u -= dpsis_horiz[j*stride+i-1]*du[j*stride+i-1];
-			sigma_v -= dpsis_horiz[j*stride+i-1]*dv[j*stride+i-1];
-			sum_dpsis += dpsis_horiz[j*stride+i-1];
-		}
-		if(j<height-1){
-			sigma_u -= dpsis_vert[j*stride+i]*du[(j+1)*stride+i];
-			sigma_v -= dpsis_vert[j*stride+i]*dv[(j+1)*stride+i];
-			sum_dpsis += dpsis_vert[j*stride+i];
-		}
-		if(i<width-1){
-			sigma_u -= dpsis_horiz[j*stride+i]*du[j*stride+i+1];
-			sigma_v -= dpsis_horiz[j*stride+i]*dv[j*stride+i+1];
-			sum_dpsis += dpsis_horiz[j*stride+i];
-		}
-		
-		A11 = a11[j*stride+i] + sum_dpsis;
-		A12 = a12[j*stride+i];
-		A22 = a22[j*stride+i] + sum_dpsis;
-		
-		det = A11*A22-A12*A12;
-		
-		B1 = b1[j*stride+i]-sigma_u;
-		B2 = b2[j*stride+i]-sigma_v;
-		
-		du[j*stride+i] = (1.0f-omega) * du[j*stride+i] + omega*( A22*B1-A12*B2)/det;
-		dv[j*stride+i] = (1.0f-omega) * dv[j*stride+i] + omega*(-A12*B1+A11*B2)/det;
-		
-		//		printf("black du[%d]=%f\n",j*stride+i,du[j*stride+i]);
-		//		printf("black dv[%d]=%f\n",j*stride+i,dv[j*stride+i]);
-	
-}
-
-
-void sor(float *du, float *dv, float *a11, float *a12, float *a22, float *b1, float *b2, float *dpsis_horiz, float *dpsis_vert, float omega, int width, int height, int stride, int i, int j){
-    
-    float sigma_u,sigma_v,sum_dpsis,A11,A22,A12,B1,B2,det;
-    
-    sigma_u = 0.0f;
-    sigma_v = 0.0f;
-    sum_dpsis = 0.0f;
-    A11 = 0.0f;
-    A22 = 0.0f;
-    A12 = 0.0f;
-    B1 = 0.0f;
-    B2 = 0.0f;
-    det = 0.0f;
-    
-    if(j>0){
-        sigma_u -= dpsis_vert[(j-1)*stride+i]*du[(j-1)*stride+i];
-        sigma_v -= dpsis_vert[(j-1)*stride+i]*dv[(j-1)*stride+i];
-        sum_dpsis += dpsis_vert[(j-1)*stride+i];
-    }
-    if(i>0){
-        sigma_u -= dpsis_horiz[j*stride+i-1]*du[j*stride+i-1];
-        sigma_v -= dpsis_horiz[j*stride+i-1]*dv[j*stride+i-1];
-        sum_dpsis += dpsis_horiz[j*stride+i-1];
-    }
-    if(j<height-1){
-        sigma_u -= dpsis_vert[j*stride+i]*du[(j+1)*stride+i];
-        sigma_v -= dpsis_vert[j*stride+i]*dv[(j+1)*stride+i];
-        sum_dpsis += dpsis_vert[j*stride+i];
-    }
-    if(i<width-1){
-        sigma_u -= dpsis_horiz[j*stride+i]*du[j*stride+i+1];
-        sigma_v -= dpsis_horiz[j*stride+i]*dv[j*stride+i+1];
-        sum_dpsis += dpsis_horiz[j*stride+i];
-    }
-    
-    A11 = a11[j*stride+i] + sum_dpsis;
-    A12 = a12[j*stride+i];
-    A22 = a22[j*stride+i] + sum_dpsis;
-    
-    det = A11*A22-A12*A12;
-    
-    B1 = b1[j*stride+i]-sigma_u;
-    B2 = b2[j*stride+i]-sigma_v;
-    
-    du[j*stride+i] = (1.0f-omega) * du[j*stride+i] + omega*( A22*B1-A12*B2)/det;
-    dv[j*stride+i] = (1.0f-omega) * dv[j*stride+i] + omega*(-A12*B1+A11*B2)/det;
-    
-}
-
-
 void parallel_sor(float *d_du, float *d_dv, float *d_a11, float *d_a12, float *d_a22, float *d_b1, float *d_b2, float *d_dpsis_horiz, float *d_dpsis_vert, int width, int height, int stride, const int iterations, const float omega){
 	
 	const dim3 blockSize(32,32,1);
@@ -256,31 +155,8 @@ void parallel_sor(float *d_du, float *d_dv, float *d_a11, float *d_a12, float *d
 	}
 }
 
-void test_rb_sor(float *du, float *dv, float *a11, float *a12, float *a22, float *b1, float *b2, float *dpsis_horiz, float *dpsis_vert, int width, int height, int stride, const int iterations, const float omega){
-    
-	float sigma_u,sigma_v,sum_dpsis,A11,A22,A12,B1,B2,det;
-    
-    for(int iter = 0 ; iter<iterations ; iter++){
-        for(int j=0 ; j< height ; j++){
-            for(int i=0 ; i< width ; i++){
-                if((i+j) % 2 == 0){
-					 sor(du,dv,a11,a12,a22,b1,b2,dpsis_horiz,dpsis_vert,omega,width,height,stride,i,j);
-                }
-            }
-        }
-        
-        for(int j=0 ; j< height ; j++){
-            for(int i=0 ; i< width ; i++){
-                if((i+j) % 2 != 0){
-					sor(du,dv,a11,a12,a22,b1,b2,dpsis_horiz,dpsis_vert,omega,width,height,stride,i,j);
-                }
-            }
-        }
-    }
-}
-
 //***********
-//SERIAL CODE
+// CPU CODE
 //***********
 
 void sor_coupled_slow_but_readable(image_t *du, image_t *dv, image_t *a11, image_t *a12, image_t *a22, image_t *b1, image_t *b2, image_t *dpsis_horiz, image_t *dpsis_vert, const int iterations, const float omega){

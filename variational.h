@@ -22,6 +22,7 @@ typedef struct variational_params_s {
   int niter_solver;        // number of solver iterations 
   float sor_omega;         // omega parameter of sor method
   bool use_gpu;
+  bool skip_epic;
 } variational_params_t;
 
 /* set flow parameters to default */

@@ -1,0 +1,7 @@
+Model,Dataset,Accuracy
+Random Forest, Training,0.97
+Logistic Regression, Training,0.76
+Support Vector Machine, Training,1.0
+Random Forest, Testing,0.61
+Logistic Regression, Testing,0.59
+Ensemble, Testing, 0.64

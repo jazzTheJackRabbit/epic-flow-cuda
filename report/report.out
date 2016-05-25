@@ -1,0 +1,26 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Objectives}{section.1}% 2
+\BOOKMARK [1][-]{section.2}{Challenges}{}% 3
+\BOOKMARK [2][-]{subsection.2.1}{Upsets}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.2}{Chance of predicting a perfect bracket}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.3}{Unpredictable events}{section.2}% 6
+\BOOKMARK [2][-]{subsection.2.4}{Team Dynamics}{section.2}% 7
+\BOOKMARK [1][-]{section.3}{Data}{}% 8
+\BOOKMARK [2][-]{subsection.3.1}{Match Statistics}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.2}{Team Statistics}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.3}{Scale of the Data}{section.3}% 11
+\BOOKMARK [1][-]{section.4}{Implementation}{}% 12
+\BOOKMARK [2][-]{subsection.4.1}{Features}{section.4}% 13
+\BOOKMARK [3][-]{subsubsection.4.1.1}{Feature Representation}{subsection.4.1}% 14
+\BOOKMARK [3][-]{subsubsection.4.1.2}{Additional Features}{subsection.4.1}% 15
+\BOOKMARK [3][-]{subsubsection.4.1.3}{Statistical Features}{subsection.4.1}% 16
+\BOOKMARK [1][-]{section.5}{Architecture}{}% 17
+\BOOKMARK [1][-]{section.6}{Machine learning Models}{}% 18
+\BOOKMARK [2][-]{subsection.6.1}{Support Vector Machines}{section.6}% 19
+\BOOKMARK [2][-]{subsection.6.2}{Decision Trees and Random Forests}{section.6}% 20
+\BOOKMARK [2][-]{subsection.6.3}{Logistic Regression}{section.6}% 21
+\BOOKMARK [2][-]{subsection.6.4}{Ensemble Model}{section.6}% 22
+\BOOKMARK [1][-]{section.7}{Evaluation}{}% 23
+\BOOKMARK [2][-]{subsection.7.1}{Performance}{section.7}% 24
+\BOOKMARK [2][-]{subsection.7.2}{Log Loss}{section.7}% 25
+\BOOKMARK [1][-]{section.8}{Conclusion}{}% 26

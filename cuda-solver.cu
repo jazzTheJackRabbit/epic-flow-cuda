@@ -3,7 +3,8 @@
 #include <math.h>
 #include <string.h>
 #include <malloc.h>
-
+#include <iostream>
+#include <fstream>
 #include "image.h"
 #include "solver.h"
 
@@ -12,11 +13,11 @@
 
 typedef __v4sf v4sf;
 
-void checkCudaMemoryErrors(cudaError_t status){
-	if(status != cudaSuccess){
-		printf("%s",cudaGetErrorString(status));
-	}
-}
+//void checkCudaMemoryErrors(cudaError_t status){
+//	if(status != cudaSuccess){
+//		printf("%s",cudaGetErrorString(status));
+//	}
+//}
 
 __global__
 void red_sor(float *du, float *dv, float *a11, float *a12, float *a22, float *b1, float *b2, float *dpsis_horiz, float *dpsis_vert, float omega, int width, int height, int stride){
@@ -72,6 +73,7 @@ void red_sor(float *du, float *dv, float *a11, float *a12, float *a22, float *b1
 		
 		B1 = b1[j*stride+i]-sigma_u;
 		B2 = b2[j*stride+i]-sigma_v;
+		
 		
 		du[j*stride+i] = (1.0f-omega) * du[j*stride+i] + omega*( A22*B1-A12*B2)/det;
 		dv[j*stride+i] = (1.0f-omega) * dv[j*stride+i] + omega*(-A12*B1+A11*B2)/det;
@@ -141,68 +143,140 @@ void black_sor(float *du, float *dv, float *a11, float *a12, float *a22, float *
 		
 //		printf("black du[%d]=%f\n",j*stride+i,du[j*stride+i]);
 //		printf("black dv[%d]=%f\n",j*stride+i,dv[j*stride+i]);
-		__syncthreads();
+		
 	}
 }
 
+__global__
+void serial_sor(float *du, float *dv, float *a11, float *a12, float *a22, float *b1, float *b2, float *dpsis_horiz, float *dpsis_vert, float omega, int width, int height, int stride, int i, int j){
+	
+		float sigma_u,sigma_v,sum_dpsis,A11,A22,A12,B1,B2,det;
+	
+		sigma_u = 0.0f;
+		sigma_v = 0.0f;
+		sum_dpsis = 0.0f;
+		
+		if(j>0){
+			sigma_u -= dpsis_vert[(j-1)*stride+i]*du[(j-1)*stride+i];
+			sigma_v -= dpsis_vert[(j-1)*stride+i]*dv[(j-1)*stride+i];
+			sum_dpsis += dpsis_vert[(j-1)*stride+i];
+		}
+		if(i>0){
+			sigma_u -= dpsis_horiz[j*stride+i-1]*du[j*stride+i-1];
+			sigma_v -= dpsis_horiz[j*stride+i-1]*dv[j*stride+i-1];
+			sum_dpsis += dpsis_horiz[j*stride+i-1];
+		}
+		if(j<height-1){
+			sigma_u -= dpsis_vert[j*stride+i]*du[(j+1)*stride+i];
+			sigma_v -= dpsis_vert[j*stride+i]*dv[(j+1)*stride+i];
+			sum_dpsis += dpsis_vert[j*stride+i];
+		}
+		if(i<width-1){
+			sigma_u -= dpsis_horiz[j*stride+i]*du[j*stride+i+1];
+			sigma_v -= dpsis_horiz[j*stride+i]*dv[j*stride+i+1];
+			sum_dpsis += dpsis_horiz[j*stride+i];
+		}
+		
+		A11 = a11[j*stride+i] + sum_dpsis;
+		A12 = a12[j*stride+i];
+		A22 = a22[j*stride+i] + sum_dpsis;
+		
+		det = A11*A22-A12*A12;
+		
+		B1 = b1[j*stride+i]-sigma_u;
+		B2 = b2[j*stride+i]-sigma_v;
+		
+		du[j*stride+i] = (1.0f-omega) * du[j*stride+i] + omega*( A22*B1-A12*B2)/det;
+		dv[j*stride+i] = (1.0f-omega) * dv[j*stride+i] + omega*(-A12*B1+A11*B2)/det;
+		
+		//		printf("black du[%d]=%f\n",j*stride+i,du[j*stride+i]);
+		//		printf("black dv[%d]=%f\n",j*stride+i,dv[j*stride+i]);
+	
+}
 
-void parallel_sor(image_t *du, image_t *dv, image_t *a11, image_t *a12, image_t *a22, image_t *b1, image_t *b2, image_t *dpsis_horiz, image_t *dpsis_vert, const int iterations, const float omega){
+
+void sor(float *du, float *dv, float *a11, float *a12, float *a22, float *b1, float *b2, float *dpsis_horiz, float *dpsis_vert, float omega, int width, int height, int stride, int i, int j){
+    
+    float sigma_u,sigma_v,sum_dpsis,A11,A22,A12,B1,B2,det;
+    
+    sigma_u = 0.0f;
+    sigma_v = 0.0f;
+    sum_dpsis = 0.0f;
+    A11 = 0.0f;
+    A22 = 0.0f;
+    A12 = 0.0f;
+    B1 = 0.0f;
+    B2 = 0.0f;
+    det = 0.0f;
+    
+    if(j>0){
+        sigma_u -= dpsis_vert[(j-1)*stride+i]*du[(j-1)*stride+i];
+        sigma_v -= dpsis_vert[(j-1)*stride+i]*dv[(j-1)*stride+i];
+        sum_dpsis += dpsis_vert[(j-1)*stride+i];
+    }
+    if(i>0){
+        sigma_u -= dpsis_horiz[j*stride+i-1]*du[j*stride+i-1];
+        sigma_v -= dpsis_horiz[j*stride+i-1]*dv[j*stride+i-1];
+        sum_dpsis += dpsis_horiz[j*stride+i-1];
+    }
+    if(j<height-1){
+        sigma_u -= dpsis_vert[j*stride+i]*du[(j+1)*stride+i];
+        sigma_v -= dpsis_vert[j*stride+i]*dv[(j+1)*stride+i];
+        sum_dpsis += dpsis_vert[j*stride+i];
+    }
+    if(i<width-1){
+        sigma_u -= dpsis_horiz[j*stride+i]*du[j*stride+i+1];
+        sigma_v -= dpsis_horiz[j*stride+i]*dv[j*stride+i+1];
+        sum_dpsis += dpsis_horiz[j*stride+i];
+    }
+    
+    A11 = a11[j*stride+i] + sum_dpsis;
+    A12 = a12[j*stride+i];
+    A22 = a22[j*stride+i] + sum_dpsis;
+    
+    det = A11*A22-A12*A12;
+    
+    B1 = b1[j*stride+i]-sigma_u;
+    B2 = b2[j*stride+i]-sigma_v;
+    
+    du[j*stride+i] = (1.0f-omega) * du[j*stride+i] + omega*( A22*B1-A12*B2)/det;
+    dv[j*stride+i] = (1.0f-omega) * dv[j*stride+i] + omega*(-A12*B1+A11*B2)/det;
+    
+}
+
+
+void parallel_sor(float *d_du, float *d_dv, float *d_a11, float *d_a12, float *d_a22, float *d_b1, float *d_b2, float *d_dpsis_horiz, float *d_dpsis_vert, int width, int height, int stride, const int iterations, const float omega){
 	
-	//The following pointers are pointers to only the DATA elements
-	float *d_du; float *d_dv;
-	float *d_a11; float *d_a12; float *d_a22;
-	float *d_b1; float *d_b2;
-	float *d_dpsis_horiz; float *d_dpsis_vert;
-	
-	int data_size = 16*(du->stride*du->height*sizeof(float));
-	
-	checkCudaMemoryErrors(cudaMalloc(&d_du,data_size));
-	checkCudaMemoryErrors(cudaMalloc(&d_dv,data_size));
-	checkCudaMemoryErrors(cudaMalloc(&d_a11,data_size));
-	checkCudaMemoryErrors(cudaMalloc(&d_a22,data_size));
-	checkCudaMemoryErrors(cudaMalloc(&d_a12,data_size));
-	checkCudaMemoryErrors(cudaMalloc(&d_b1,data_size));
-	checkCudaMemoryErrors(cudaMalloc(&d_b2,data_size));
-	checkCudaMemoryErrors(cudaMalloc(&d_dpsis_horiz,data_size));
-	checkCudaMemoryErrors(cudaMalloc(&d_dpsis_vert,data_size));
-	
-	checkCudaMemoryErrors(cudaMemcpy(d_du,du->data,data_size,cudaMemcpyHostToDevice));
-	checkCudaMemoryErrors(cudaMemcpy(d_dv,dv->data,data_size,cudaMemcpyHostToDevice));
-	checkCudaMemoryErrors(cudaMemcpy(d_a11,a11->data,data_size,cudaMemcpyHostToDevice));
-	checkCudaMemoryErrors(cudaMemcpy(d_a12,a12->data,data_size,cudaMemcpyHostToDevice));
-	checkCudaMemoryErrors(cudaMemcpy(d_a22,a22->data,data_size,cudaMemcpyHostToDevice));
-	checkCudaMemoryErrors(cudaMemcpy(d_b1,b1->data,data_size,cudaMemcpyHostToDevice));
-	checkCudaMemoryErrors(cudaMemcpy(d_b2,b2->data,data_size,cudaMemcpyHostToDevice));
-	checkCudaMemoryErrors(cudaMemcpy(d_dpsis_horiz,dpsis_horiz->data,data_size,cudaMemcpyHostToDevice));
-	checkCudaMemoryErrors(cudaMemcpy(d_dpsis_vert,dpsis_vert->data,data_size,cudaMemcpyHostToDevice));
-	
-	//Using two seperate kernels to avoid thread divergence on conditional (if)
 	const dim3 blockSize(32,32,1);
-	const dim3 gridSize((du->width/blockSize.x),(du->height/blockSize.y),1);
+	const dim3 gridSize((width/blockSize.x),(height/blockSize.y),1);
 	
 	for(int iter = 0 ; iter<iterations ; iter++){
-		red_sor<<<gridSize,blockSize>>>(d_du,d_dv,d_a11,d_a22,d_a22,d_b1,d_b2,d_dpsis_horiz,d_dpsis_vert,omega,du->width,du->height,du->stride);
-		cudaDeviceSynchronize();
+		red_sor<<<gridSize,blockSize>>>(d_du,d_dv,d_a11,d_a12,d_a22,d_b1,d_b2,d_dpsis_horiz,d_dpsis_vert,omega,width,height,stride);
+		black_sor<<<gridSize,blockSize>>>(d_du,d_dv,d_a11,d_a12,d_a22,d_b1,d_b2,d_dpsis_horiz,d_dpsis_vert,omega,width,height,stride);
 	}
-	
-	for(int iter = 0 ; iter<iterations ; iter++){
-		black_sor<<<gridSize,blockSize>>>(d_du,d_dv,d_a11,d_a22,d_a22,d_b1,d_b2,d_dpsis_horiz,d_dpsis_vert,omega,du->width,du->height,du->stride);
-		cudaDeviceSynchronize();
-	}
-	
-	
-	cudaMemcpy(du->data,d_du,data_size,cudaMemcpyDeviceToHost);
-	cudaMemcpy(dv->data,d_dv,data_size,cudaMemcpyDeviceToHost);
-	
-    checkCudaMemoryErrors(cudaFree(d_du));
-    checkCudaMemoryErrors(cudaFree(d_dv));
-    checkCudaMemoryErrors(cudaFree(d_a11));
-    checkCudaMemoryErrors(cudaFree(d_a22));
-    checkCudaMemoryErrors(cudaFree(d_a12));
-    checkCudaMemoryErrors(cudaFree(d_b1));
-    checkCudaMemoryErrors(cudaFree(d_b2));
-    checkCudaMemoryErrors(cudaFree(d_dpsis_horiz));
-    checkCudaMemoryErrors(cudaFree(d_dpsis_vert));
+}
+
+void test_rb_sor(float *du, float *dv, float *a11, float *a12, float *a22, float *b1, float *b2, float *dpsis_horiz, float *dpsis_vert, int width, int height, int stride, const int iterations, const float omega){
+    
+	float sigma_u,sigma_v,sum_dpsis,A11,A22,A12,B1,B2,det;
+    
+    for(int iter = 0 ; iter<iterations ; iter++){
+        for(int j=0 ; j< height ; j++){
+            for(int i=0 ; i< width ; i++){
+                if((i+j) % 2 == 0){
+					 sor(du,dv,a11,a12,a22,b1,b2,dpsis_horiz,dpsis_vert,omega,width,height,stride,i,j);
+                }
+            }
+        }
+        
+        for(int j=0 ; j< height ; j++){
+            for(int i=0 ; i< width ; i++){
+                if((i+j) % 2 != 0){
+					sor(du,dv,a11,a12,a22,b1,b2,dpsis_horiz,dpsis_vert,omega,width,height,stride,i,j);
+                }
+            }
+        }
+    }
 }
 
 //***********

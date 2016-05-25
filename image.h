@@ -45,6 +45,9 @@ typedef struct convolution_s
 /* allocate a new image of size width x height */
 image_t *image_new(const int width, const int height);
 
+/* allocate a new image of size width x height */
+image_t *image_new_cuda(const int width, const int height);
+
 /* allocate a new image and copy the content from src */
 image_t *image_cpy(const image_t *src);
 

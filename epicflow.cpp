@@ -66,6 +66,8 @@ int main(int argc, char **argv){
         const char* a = argv[current_arg++];
         if( isarg("-h") || isarg("-help") ) 
             usage();
+		else if( isarg("-skip") )
+			flow_params.skip_epic = true;
 		else if( isarg("-gpu") )
 			flow_params.use_gpu = true;
         else if( isarg("-nw") ) 

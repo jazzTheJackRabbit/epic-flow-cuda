@@ -1,0 +1,22 @@
+Field,Description
+season,indicates the year in which thetournament was played
+dayzero,tells you the date corresponding to daynum=0 during that season. 
+region W/X/Y/Z,the four regions in the final tournament are always named W X Y and Z.
+wscore,this identifies the number of points scored by the winning team.
+lteam,this identifies the id number of the team that lost the game.
+lscore,this identifies the number of points scored by the losing team.
+numot,this indicates the number of overtime periods in the game - an integer 0 or higher.
+wloc,this identifies the location of the winning team. If the winning team was the home team - this value will be H.
+wfgm,field goals made
+wfga,field goals attempted
+wfgm3,three pointers made
+wfga3,three pointers attempted
+wftm,free throws made
+wfta,free throws attempted
+wor,offensive rebounds
+wdr,defensive rebounds
+wast,assists
+wto,turnovers
+wstl,steals
+wblk,blocks
+wpf,personal fouls

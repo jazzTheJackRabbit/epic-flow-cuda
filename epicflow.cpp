@@ -129,7 +129,12 @@ int main(int argc, char **argv){
     color_image_t *imlab = rgb_to_lab(im1);
     epic(wx, wy, imlab, &matches, &edges, &epic_params, 1);
     // energy minimization
-    variational(wx, wy, im1, im2, &flow_params);
+	
+	clock_t start = clock() ;
+	variational(wx, wy, im1, im2, &flow_params);
+	clock_t end = clock() ;
+	double elapsed_time = (end-start)/(double)CLOCKS_PER_SEC ;
+	
     // write output file and free memory
     writeFlowFile(outputfile, wx, wy);
     
@@ -140,6 +145,24 @@ int main(int argc, char **argv){
     free(edges.pixels);
     image_delete(wx);
     image_delete(wy);
-
+	
+//	printf("\nSuccessfully completed epic flow before writing to file.....\n");
+	printf("%s,%s,%f\n",argv[1],argv[2],elapsed_time);
+	
+//	char filename[] = "result/time-gpu.csv";
+//	printf("%s\n",filename);
+//	FILE *stream = fopen(filename, "a");
+//	if (stream == 0){
+//		printf("File read unsuccessful!!\n");
+//		stream = fopen(filename, "w");
+//		if (stream == 0) {
+//			printf("Error while opening %s\n",filename);
+//			exit(1);
+//		}
+//	}
+//	
+//	fprintf(stream,"%s,%s,%f\n",argv[1],argv[2],elapsed_time);
+//	fclose(stream);
+	
     return 0;
 }

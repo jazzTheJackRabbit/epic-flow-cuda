@@ -2,7 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{multicol}
 \usepackage{graphicx}
-\usepackage[legalpaper, total={6.5in, 10in}]{geometry}
+\usepackage[letterpaper, margin=0.7in]{geometry}
 \usepackage{blindtext}
 \usepackage{caption}
 \usepackage{sectsty}
@@ -11,8 +11,6 @@
 \usepackage{setspace}
 \usepackage{pgfplotstable,tabularx,booktabs}
 \usepackage{csvsimple}
-
-\addbibresource{refsKami.bib}
 
 \newcommand{\drawTable}[1]{
 	\noindent
@@ -40,7 +38,10 @@
 	\newline\newline\newline
 }
 
-\title{Parallel Optimization of EpicFlow with Red/Black Successive Over Relaxation Using GPUs with CUDA}
+\usepackage{mathptmx}% http://ctan.org/pkg/mathptmx
+\setlength{\columnsep}{0.3in}
+
+\title{Parallel Acceleration of EpicFlow with Red/Black Successive Over Relaxation Using GPUs with CUDA}
 \author{
   Amogh Param\\
   704434779\\
@@ -50,13 +51,24 @@
 
 \begin{document}
     \maketitle
-    
-     \section*{Abstract}  
-	March Madness is the NCAA Men’s Division I Basketball Championship tournament that happens every March. The tournament is organized by the National Collegiate Athletic Association (NCAA). It has 64 tournament matches. The aim of this project is to come up with a good machine learning based model has the best classification accuracy in predicting the march madness bracket.\newline
-	
-    \begin{multicols}{2}   
+     
+    \begin{multicols}{2}
+    \section*{Abstract}  
+	 \textit{We propose a strategy to improve the computational speed of state-of-the art optical flow estimation methods, targeted at large displacements with significant occlusions, by exploiting the substantial computational potential of Graphics Processing Units (GPUs) under the CUDA environment. The optical flow estimation method involves an energy minimization phase which we solve using an efficient and parallel numerical approximation scheme, Successive Over Relaxation with Red-Black ordering (Red-Black SOR). In addition, we show that choosing the right memory allocation and access patterns are critical in maximizing the computational and memory throughput for the estimation. The primary contribution of this project extends  EpicFlow (Edge Preserving Interpolation of Correspondences), the state-of-the-art in optical flow estimation, by replacing the serial optimization procedure with a parallel optimization algorithm deployed on the GPU in the CUDA environment. The proposed energy minimization variation, along with efficient access patterns, performs on par with the state of the art on the MPI-Sintel, Kitti and Middlebury datasets.}
     \section{Introduction}
-    Since 1939, the best colleges and universities across the United States have participated in a yearly tournament called the NCAA Men’s Basketball Championship. This basketball tournament has become one of the most popular and famous sporting tournaments in the United States. Millions of people around the country participate in contests in which the participants make their best guesses on who will win each game throughout the tournament. These types of contests have become so popular that more than 11 million brackets were filled out on ESPN.com in 2014. One billion dollars was even being rewarded to anyone who achieved a ”perfect bracket” (guessed every game correctly). Every game is unpredictable, and the teams that are supposedly the ”better team” sometimes end up losing. This is called an upset in basketball lingo, and happens regularly throughout the tournament. Because of these upsets, it can be difficult to correctly guess the winner of each game. The tournament can be so unpredictable that the time period over which the tournament runs has been termed March Madness. Since there are 64 games played in the NCAA tournament, it is nearly impossible to predict a perfect bracket. High Point Enterprise, a morning paper from North Carolina, stated that ”you have a much greater chance of winning the lottery, shooting a hole-in-one in golf or being struck by lightning”. They estimated that the chances of predicting a perfect bracket are 1 in 9.2 quintillion. It became clear that developing a model that provided perfect win/loss classification was unrealistic, so instead we focused on improving the prediction accuracy of individual games. The problem at hand is not classification of individual teams, but rather predicting the outcome of a match between any two teams. \footnote{\href{https://github.com/jazzTheJackRabbit/machineMadness}{Github Source}}
+   Optical flow is a classic computer vision problem where the primary goal is to track moving objects, surfaces and edges in a sequence of image frames by way of computing the displacement of pixels between every pair of frames in the sequence. To achieve this goal, we assume that the gray values of corresponding pixels are the same in both image frames of the pair, despite a displacement of the pixels. Optical flow is important to providing visual systems the ability to discern possibilities for action within an environment. In addition, optical flow stimulus is important for the perception of movement by an observer in the environment; perception of the shape, distance and movement of objects in the environment; and for locomotive control. As a result, it is used as a fundamental framework for applications such as image and surface reconstruction; object tracking and detection; and robot navigation. \newline
+
+Animals in the wild can sense the motion of other animals and as a result, make decisions whether to attack or flee based on visual stimulus derived from the motion of predators or prey. It is paramount that they make such decisions almost instantaneously to save their own lives (in case of prey) or to ensure a successful hunt (in case of predator). As a result, this provides motivation for building optical flow estimation techniques that are fast and almost in real time, since optical flow provides vision systems a fundamental way to discern motion. \newline
+
+[Types of Optical Flow approaches]\newline
+
+Energy based methods have the ability to deal with small displacements by using coarse-to-fine approaches where, optical flow estimation techniques are applied to smaller resolutions of the image and propagating the flow to upscaled versions of higher resolutions. Although this works quite well, errors at coarser levels are propagated to finer levels. 
+Although there have been an abundance of such approaches it remains challenging to deal with occlusions, motion discontinuities and large displacements in estimating optical flow from real-world videos. EpicFlow handles these problems by initiating the optical flow estimation by interpolating a sparse set of matches to produce a dense correspondence field. It handles motion discontinuities by using an edge-aware geodesic distance instead of Euclidean distance in the interpolation. This estimate is then used to initialize an energy minimization to obtain the final optical flow estimate. Our project primarily extends this optical flow estimation procedure by accelerating the successive over relaxation process of solving the energy minimization, since it is inherently sequential in its original form. Drawing inspiration from applications in computational fluid dynamics and heat transfer, we use a multi colored ordering technique for the successive over relaxation where alternating elements are colored red or black and can be computed parallely for elements of the same color, thereby decreasing the computational time for the estimation. In addition, we explore the use of different memory access patterns and different memory types as optimizing parallel algorithms on the GPU within the CUDA environment can be challenging. \newline
+
+The rest of the paper is organised as follows: Section 2 describes fast methods for obtaining similarity measures. The detailed optical flow estimation method is described in Section 3. Section 4 shows the experimental results obtained using our fast image motion estimation method applied to a variety of images. Section 5 discusses the reliability and computation speed issues of our algorithm. Section 6 gives concluding remarks	
+
+
+	\end{multicols}
     
     \subsection{Objectives}
     Our goal was to identify key factors in predicting NCAA tournament wins and to find a
@@ -79,7 +91,6 @@ The Kaggle competition had the following stages:
    The goal is to find a set of predictions $\hat{y}$ that minimizes L(y|$\hat{y}$) for the unknown outcome vector y. This scoring method heavily penalizes being simultaneously confident and wrong. If we say Team A will beat Team B with probability 1 and Team B wins, then our log-loss is infinite (although Kaggle bounded the log-loss function to avoid infinite scores). At the same time, it is important to balance between being too conservative and too confident. If we are too conservative (e.g. $\hat{y} \approx 0.5)$, then we will never accrue points, but if we are too confident, we make ourselves vulnerable to huge losses.\cite{1}
    \newline
 
-	\end{multicols}  	
 	\captionof{table}{Dataset provided by Kaggle}
 	\drawTable{table_1_data.csv}
 			    

@@ -75,8 +75,6 @@ void red_sor(float *du, float *dv, float *a11, float *a12, float *a22, float *b1
 		du[j*stride+i] = (1.0f-omega) * du[j*stride+i] + omega*( A22*B1-A12*B2)/det;
 		dv[j*stride+i] = (1.0f-omega) * dv[j*stride+i] + omega*(-A12*B1+A11*B2)/det;
 		
-//		printf("red du[%d]=%f\n",j*stride+i,du[j*stride+i]);
-//		printf("red dv[%d]=%f\n",j*stride+i,dv[j*stride+i]);
 	}
 }
 
@@ -138,16 +136,15 @@ void black_sor(float *du, float *dv, float *a11, float *a12, float *a22, float *
 		du[j*stride+i] = (1.0f-omega) * du[j*stride+i] + omega*( A22*B1-A12*B2)/det;
 		dv[j*stride+i] = (1.0f-omega) * dv[j*stride+i] + omega*(-A12*B1+A11*B2)/det;
 		
-//		printf("black du[%d]=%f\n",j*stride+i,du[j*stride+i]);
-//		printf("black dv[%d]=%f\n",j*stride+i,dv[j*stride+i]);
-		
 	}
 }
 
 void parallel_sor(float *d_du, float *d_dv, float *d_a11, float *d_a12, float *d_a22, float *d_b1, float *d_b2, float *d_dpsis_horiz, float *d_dpsis_vert, int width, int height, int stride, const int iterations, const float omega){
 	
-	const dim3 blockSize(16,8,1);
-	const dim3 gridSize((width/blockSize.x),(height/blockSize.y),1);
+	const dim3 blockSize(32,32,1);
+	int gridSizeX = (width % blockSize.x == 0) ? width/blockSize.x : (width/blockSize.x) + 1;
+	int gridSizeY = (height % blockSize.y == 0) ? height/blockSize.x : (height/blockSize.x) + 1;
+	const dim3 gridSize(gridSizeX,gridSizeY,1);
 	
 	for(int iter = 0 ; iter<iterations ; iter++){
 		red_sor<<<gridSize,blockSize>>>(d_du,d_dv,d_a11,d_a12,d_a22,d_b1,d_b2,d_dpsis_horiz,d_dpsis_vert,omega,width,height,stride);

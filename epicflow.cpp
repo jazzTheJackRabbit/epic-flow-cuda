@@ -146,23 +146,24 @@ int main(int argc, char **argv){
     image_delete(wx);
     image_delete(wy);
 	
-//	printf("\nSuccessfully completed epic flow before writing to file.....\n");
-	printf("%s,%s,%f\n",argv[1],argv[2],elapsed_time);
+	printf("\nSuccessfully completed epic flow before writing to file.....\n");
+	printf("\n%s,%s,%f\n",argv[1],argv[2],elapsed_time);
 	
-//	char filename[] = "result/time-gpu.csv";
-//	printf("%s\n",filename);
-//	FILE *stream = fopen(filename, "a");
-//	if (stream == 0){
-//		printf("File read unsuccessful!!\n");
-//		stream = fopen(filename, "w");
-//		if (stream == 0) {
-//			printf("Error while opening %s\n",filename);
-//			exit(1);
-//		}
-//	}
-//	
-//	fprintf(stream,"%s,%s,%f\n",argv[1],argv[2],elapsed_time);
-//	fclose(stream);
+	char filename[] = "result/time.csv";
+	printf("%s\n",filename);
+	FILE *stream = fopen(filename, "a");
+	if (stream == 0){
+		printf("File read unsuccessful!!\n");
+		stream = fopen(filename, "w");
+		if (stream == 0) {
+			printf("Error while opening %s\n",filename);
+			exit(1);
+		}
+	}
 	
+	fprintf(stream,"%s,%s,%f\n",argv[1],argv[2],elapsed_time);
+	fclose(stream);
+	
+	cudaDeviceReset();
     return 0;
 }

@@ -29,7 +29,7 @@ void red_sor(float *du, float *dv, float *a11, float *a12, float *a22, float *b1
 	int element_linear_index = (block_linear_index * total_number_of_threads_per_block) + (thread_linear_index);
 	
 	if(element_linear_index < 0 || element_linear_index >= numRows * numCols){
-		printf("************ WRONG ACCESSS B((%d,%d,%d)):T(%d,%d,%d)~(%d)***********\n",blockIdx.x,blockIdx.y,blockIdx.z,threadIdx.x,threadIdx.y,threadIdx.z,element_linear_index);
+//		printf("************ WRONG ACCESSS B((%d,%d,%d)):T(%d,%d,%d)~(%d)***********\n",blockIdx.x,blockIdx.y,blockIdx.z,threadIdx.x,threadIdx.y,threadIdx.z,element_linear_index);
 		return;
 	}
 	
@@ -91,7 +91,7 @@ void black_sor(float *du, float *dv, float *a11, float *a12, float *a22, float *
 	int element_linear_index = (block_linear_index * total_number_of_threads_per_block) + (thread_linear_index);
 	
 	if(element_linear_index < 0 || element_linear_index >= numRows * numCols){
-		printf("************ WRONG ACCESSS B((%d,%d,%d)):T(%d,%d,%d)~(%d)***********\n",blockIdx.x,blockIdx.y,blockIdx.z,threadIdx.x,threadIdx.y,threadIdx.z,element_linear_index);
+//		printf("************ WRONG ACCESSS B((%d,%d,%d)):T(%d,%d,%d)~(%d)***********\n",blockIdx.x,blockIdx.y,blockIdx.z,threadIdx.x,threadIdx.y,threadIdx.z,element_linear_index);
 		return;
 	}
 	

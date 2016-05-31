@@ -146,7 +146,7 @@ void black_sor(float *du, float *dv, float *a11, float *a12, float *a22, float *
 
 void parallel_sor(float *d_du, float *d_dv, float *d_a11, float *d_a12, float *d_a22, float *d_b1, float *d_b2, float *d_dpsis_horiz, float *d_dpsis_vert, int width, int height, int stride, const int iterations, const float omega){
 	
-	const dim3 blockSize(32,32,1);
+	const dim3 blockSize(16,8,1);
 	const dim3 gridSize((width/blockSize.x),(height/blockSize.y),1);
 	
 	for(int iter = 0 ; iter<iterations ; iter++){

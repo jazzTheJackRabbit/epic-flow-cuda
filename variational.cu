@@ -144,8 +144,8 @@ void compute_one_level(image_t *wx, image_t *wy, color_image_t *im1, color_image
 				parallel_sor(d_du, d_dv, d_a11, d_a12, d_a22, d_b1, d_b2, d_dpsis_horiz, d_dpsis_vert, du->width, du->height, du->stride, params->niter_solver, params->sor_omega);
 			}
 			else{
-				sor_coupled_cuda(du, dv, a11, a12, a22, b1, b2, smooth_horiz, smooth_vert, params->niter_solver, params->sor_omega);
-//				sor_coupled_slow_but_readable(du, dv, a11, a12, a22, b1, b2, smooth_horiz, smooth_vert, params->niter_solver, params->sor_omega);
+//				sor_coupled_cuda(du, dv, a11, a12, a22, b1, b2, smooth_horiz, smooth_vert, params->niter_solver, params->sor_omega);
+				sor_coupled_slow_but_readable(du, dv, a11, a12, a22, b1, b2, smooth_horiz, smooth_vert, params->niter_solver, params->sor_omega);
 			}
 			
 			// copy flow from GPU to CPU

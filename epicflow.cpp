@@ -130,6 +130,13 @@ int main(int argc, char **argv){
     epic(wx, wy, imlab, &matches, &edges, &epic_params, 1);
     // energy minimization
 	
+	if(flow_params.use_gpu){
+		printf("\n******\nGPU EpicFlow\n******\n");
+	}
+	else{
+		printf("\n******\nCPU EpicFlow\n******\n");
+	}
+	
 	clock_t start = clock() ;
 	variational(wx, wy, im1, im2, &flow_params);
 	clock_t end = clock() ;

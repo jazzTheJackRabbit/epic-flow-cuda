@@ -35,31 +35,41 @@ void red_sor(float *du, float *dv, float *a11, float *a12, float *a22, float *b1
 	
 	int i = element_linear_index % numCols;
 	int j = (element_linear_index - i) / numCols;
-
+	
+	float dpsis_horiz_left;
+	float dpsis_horiz_center;
+	
+	float dpsis_vert_top;
+	float dpsis_vert_center;
+	
 	if((i+j) % 2 == 0){
 		sigma_u = 0.0f;
 		sigma_v = 0.0f;
 		sum_dpsis = 0.0f;
 		
 		if(j>0){
-			sigma_u -= dpsis_vert[(j-1)*stride+i]*du[(j-1)*stride+i];
-			sigma_v -= dpsis_vert[(j-1)*stride+i]*dv[(j-1)*stride+i];
-			sum_dpsis += dpsis_vert[(j-1)*stride+i];
+			dpsis_vert_top = dpsis_vert[(j-1)*stride+i];
+			sigma_u -= dpsis_vert_top * du[(j-1)*stride+i];
+			sigma_v -= dpsis_vert_top * dv[(j-1)*stride+i];
+			sum_dpsis += dpsis_vert_top;
 		}
 		if(i>0){
-			sigma_u -= dpsis_horiz[j*stride+i-1]*du[j*stride+i-1];
-			sigma_v -= dpsis_horiz[j*stride+i-1]*dv[j*stride+i-1];
-			sum_dpsis += dpsis_horiz[j*stride+i-1];
+			dpsis_horiz_left = dpsis_horiz[j*stride+i-1];
+			sigma_u -= dpsis_horiz_left * du[j*stride+i-1];
+			sigma_v -= dpsis_horiz_left * dv[j*stride+i-1];
+			sum_dpsis += dpsis_horiz_left;
 		}
 		if(j<height-1){
-			sigma_u -= dpsis_vert[j*stride+i]*du[(j+1)*stride+i];
-			sigma_v -= dpsis_vert[j*stride+i]*dv[(j+1)*stride+i];
-			sum_dpsis += dpsis_vert[j*stride+i];
+			dpsis_vert_center = dpsis_vert[j*stride+i];
+			sigma_u -= dpsis_vert_center * du[(j+1)*stride+i];
+			sigma_v -= dpsis_vert_center * dv[(j+1)*stride+i];
+			sum_dpsis += dpsis_vert_center;
 		}
 		if(i<width-1){
-			sigma_u -= dpsis_horiz[j*stride+i]*du[j*stride+i+1];
-			sigma_v -= dpsis_horiz[j*stride+i]*dv[j*stride+i+1];
-			sum_dpsis += dpsis_horiz[j*stride+i];
+			dpsis_horiz_center = dpsis_horiz[j*stride+i];
+			sigma_u -= dpsis_horiz_center * du[j*stride+i+1];
+			sigma_v -= dpsis_horiz_center * dv[j*stride+i+1];
+			sum_dpsis += dpsis_horiz_center;
 		}
 		
 		A11 = a11[j*stride+i] + sum_dpsis;
@@ -68,8 +78,8 @@ void red_sor(float *du, float *dv, float *a11, float *a12, float *a22, float *b1
 		
 		det = A11*A22-A12*A12;
 		
-		B1 = b1[j*stride+i]-sigma_u;
-		B2 = b2[j*stride+i]-sigma_v;
+		B1 = b1[j*stride+i] - sigma_u;
+		B2 = b2[j*stride+i] - sigma_v;
 		
 		
 		du[j*stride+i] = (1.0f-omega) * du[j*stride+i] + omega*( A22*B1-A12*B2)/det;
@@ -98,30 +108,40 @@ void black_sor(float *du, float *dv, float *a11, float *a12, float *a22, float *
 	int i = element_linear_index % numCols;
 	int j = (element_linear_index - i) / numCols;
 	
+	float dpsis_horiz_left;
+	float dpsis_horiz_center;
+	
+	float dpsis_vert_top;
+	float dpsis_vert_center;
+	
 	if((i+j) % 2 != 0){
 		sigma_u = 0.0f;
 		sigma_v = 0.0f;
 		sum_dpsis = 0.0f;
 		
 		if(j>0){
-			sigma_u -= dpsis_vert[(j-1)*stride+i]*du[(j-1)*stride+i];
-			sigma_v -= dpsis_vert[(j-1)*stride+i]*dv[(j-1)*stride+i];
-			sum_dpsis += dpsis_vert[(j-1)*stride+i];
+			dpsis_vert_top = dpsis_vert[(j-1)*stride+i];
+			sigma_u -= dpsis_vert_top * du[(j-1)*stride+i];
+			sigma_v -= dpsis_vert_top * dv[(j-1)*stride+i];
+			sum_dpsis += dpsis_vert_top;
 		}
 		if(i>0){
-			sigma_u -= dpsis_horiz[j*stride+i-1]*du[j*stride+i-1];
-			sigma_v -= dpsis_horiz[j*stride+i-1]*dv[j*stride+i-1];
-			sum_dpsis += dpsis_horiz[j*stride+i-1];
+			dpsis_horiz_left = dpsis_horiz[j*stride+i-1];
+			sigma_u -= dpsis_horiz_left * du[j*stride+i-1];
+			sigma_v -= dpsis_horiz_left * dv[j*stride+i-1];
+			sum_dpsis += dpsis_horiz_left;
 		}
 		if(j<height-1){
-			sigma_u -= dpsis_vert[j*stride+i]*du[(j+1)*stride+i];
-			sigma_v -= dpsis_vert[j*stride+i]*dv[(j+1)*stride+i];
-			sum_dpsis += dpsis_vert[j*stride+i];
+			dpsis_vert_center = dpsis_vert[j*stride+i];
+			sigma_u -= dpsis_vert_center * du[(j+1)*stride+i];
+			sigma_v -= dpsis_vert_center * dv[(j+1)*stride+i];
+			sum_dpsis += dpsis_vert_center;
 		}
 		if(i<width-1){
-			sigma_u -= dpsis_horiz[j*stride+i]*du[j*stride+i+1];
-			sigma_v -= dpsis_horiz[j*stride+i]*dv[j*stride+i+1];
-			sum_dpsis += dpsis_horiz[j*stride+i];
+			dpsis_horiz_center = dpsis_horiz[j*stride+i];
+			sigma_u -= dpsis_horiz_center * du[j*stride+i+1];
+			sigma_v -= dpsis_horiz_center * dv[j*stride+i+1];
+			sum_dpsis += dpsis_horiz_center;
 		}
 		
 		A11 = a11[j*stride+i] + sum_dpsis;
@@ -130,8 +150,9 @@ void black_sor(float *du, float *dv, float *a11, float *a12, float *a22, float *
 		
 		det = A11*A22-A12*A12;
 		
-		B1 = b1[j*stride+i]-sigma_u;
-		B2 = b2[j*stride+i]-sigma_v;
+		B1 = b1[j*stride+i] - sigma_u;
+		B2 = b2[j*stride+i] - sigma_v;
+		
 		
 		du[j*stride+i] = (1.0f-omega) * du[j*stride+i] + omega*( A22*B1-A12*B2)/det;
 		dv[j*stride+i] = (1.0f-omega) * dv[j*stride+i] + omega*(-A12*B1+A11*B2)/det;
@@ -141,7 +162,9 @@ void black_sor(float *du, float *dv, float *a11, float *a12, float *a22, float *
 
 void parallel_sor(float *d_du, float *d_dv, float *d_a11, float *d_a12, float *d_a22, float *d_b1, float *d_b2, float *d_dpsis_horiz, float *d_dpsis_vert, int width, int height, int stride, const int iterations, const float omega){
 	
-	const dim3 blockSize(32,32,1);
+	int threadCountX = 32;
+	int threadCountY = 32;
+	const dim3 blockSize(threadCountX,threadCountY,1);
 	int gridSizeX = (width % blockSize.x == 0) ? width/blockSize.x : (width/blockSize.x) + 1;
 	int gridSizeY = (height % blockSize.y == 0) ? height/blockSize.x : (height/blockSize.x) + 1;
 	const dim3 gridSize(gridSizeX,gridSizeY,1);

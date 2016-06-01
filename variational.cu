@@ -131,8 +131,10 @@ void compute_one_level(image_t *wx, image_t *wy, color_image_t *im1, color_image
 				
 			}
 			else if (params->use_gpu) {
-				checkCudaMemoryErrors(cudaMemcpyAsync(d_du,du->data,data_size,cudaMemcpyHostToDevice));
-				checkCudaMemoryErrors(cudaMemcpyAsync(d_dv,dv->data,data_size,cudaMemcpyHostToDevice));
+				if(i_inner_iteration == 0){
+					checkCudaMemoryErrors(cudaMemcpyAsync(d_du,du->data,data_size,cudaMemcpyHostToDevice));
+					checkCudaMemoryErrors(cudaMemcpyAsync(d_dv,dv->data,data_size,cudaMemcpyHostToDevice));
+				}
 				checkCudaMemoryErrors(cudaMemcpyAsync(d_a11,a11->data,data_size,cudaMemcpyHostToDevice));
 				checkCudaMemoryErrors(cudaMemcpyAsync(d_a12,a12->data,data_size,cudaMemcpyHostToDevice));
 				checkCudaMemoryErrors(cudaMemcpyAsync(d_a22,a22->data,data_size,cudaMemcpyHostToDevice));

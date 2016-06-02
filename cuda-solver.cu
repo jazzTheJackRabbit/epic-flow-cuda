@@ -16,165 +16,228 @@ typedef __v4sf v4sf;
 //***********
 // GPU CODE
 //***********
-__global__
-void red_sor(float *du, float *dv, float *a11, float *a12, float *a22, float *b1, float *b2, float *dpsis_horiz, float *dpsis_vert, float omega, int width, int height, int stride){
-	int numRows = height;
-	int numCols = width;
-	float sigma_u,sigma_v,sum_dpsis,A11,A22,A12,B1,B2,det;
-	
-	int block_linear_index = blockIdx.y * gridDim.x + blockIdx.x;
-	int thread_linear_index = threadIdx.y * blockDim.x + threadIdx.x;
-	int total_number_of_threads_per_block = blockDim.x * blockDim.y;
-	
-	int element_linear_index = (block_linear_index * total_number_of_threads_per_block) + (thread_linear_index);
-	
-	if(element_linear_index < 0 || element_linear_index >= numRows * numCols){
-//		printf("************ WRONG ACCESSS B((%d,%d,%d)):T(%d,%d,%d)~(%d)***********\n",blockIdx.x,blockIdx.y,blockIdx.z,threadIdx.x,threadIdx.y,threadIdx.z,element_linear_index);
-		return;
-	}
-	
-	int i = element_linear_index % numCols;
-	int j = (element_linear_index - i) / numCols;
-	
-	float dpsis_horiz_left;
-	float dpsis_horiz_center;
-	
-	float dpsis_vert_top;
-	float dpsis_vert_center;
-	
-	if((i+j) % 2 == 0){
-		sigma_u = 0.0f;
-		sigma_v = 0.0f;
-		sum_dpsis = 0.0f;
-		
-		if(j>0){
-			dpsis_vert_top = dpsis_vert[(j-1)*stride+i];
-			sigma_u -= dpsis_vert_top * du[(j-1)*stride+i];
-			sigma_v -= dpsis_vert_top * dv[(j-1)*stride+i];
-			sum_dpsis += dpsis_vert_top;
-		}
-		if(i>0){
-			dpsis_horiz_left = dpsis_horiz[j*stride+i-1];
-			sigma_u -= dpsis_horiz_left * du[j*stride+i-1];
-			sigma_v -= dpsis_horiz_left * dv[j*stride+i-1];
-			sum_dpsis += dpsis_horiz_left;
-		}
-		if(j<height-1){
-			dpsis_vert_center = dpsis_vert[j*stride+i];
-			sigma_u -= dpsis_vert_center * du[(j+1)*stride+i];
-			sigma_v -= dpsis_vert_center * dv[(j+1)*stride+i];
-			sum_dpsis += dpsis_vert_center;
-		}
-		if(i<width-1){
-			dpsis_horiz_center = dpsis_horiz[j*stride+i];
-			sigma_u -= dpsis_horiz_center * du[j*stride+i+1];
-			sigma_v -= dpsis_horiz_center * dv[j*stride+i+1];
-			sum_dpsis += dpsis_horiz_center;
-		}
-		
-		A11 = a11[j*stride+i] + sum_dpsis;
-		A12 = a12[j*stride+i];
-		A22 = a22[j*stride+i] + sum_dpsis;
-		
-		det = A11*A22-A12*A12;
-		
-		B1 = b1[j*stride+i] - sigma_u;
-		B2 = b2[j*stride+i] - sigma_v;
-		
-		
-		du[j*stride+i] = (1.0f-omega) * du[j*stride+i] + omega*( A22*B1-A12*B2)/det;
-		dv[j*stride+i] = (1.0f-omega) * dv[j*stride+i] + omega*(-A12*B1+A11*B2)/det;
-		
-	}
-}
 
-__global__
-void black_sor(float *du, float *dv, float *a11, float *a12, float *a22, float *b1, float *b2, float *dpsis_horiz, float *dpsis_vert, float omega, int width, int height, int stride){
-	int numRows = height;
-	int numCols = width;
-	float sigma_u,sigma_v,sum_dpsis,A11,A22,A12,B1,B2,det;
-	
-	int block_linear_index = blockIdx.y * gridDim.x + blockIdx.x;
-	int thread_linear_index = threadIdx.y * blockDim.x + threadIdx.x;
-	int total_number_of_threads_per_block = blockDim.x * blockDim.y;
-	
-	int element_linear_index = (block_linear_index * total_number_of_threads_per_block) + (thread_linear_index);
-	
-	if(element_linear_index < 0 || element_linear_index >= numRows * numCols){
-//		printf("************ WRONG ACCESSS B((%d,%d,%d)):T(%d,%d,%d)~(%d)***********\n",blockIdx.x,blockIdx.y,blockIdx.z,threadIdx.x,threadIdx.y,threadIdx.z,element_linear_index);
-		return;
-	}
-	
-	int i = element_linear_index % numCols;
-	int j = (element_linear_index - i) / numCols;
-	
-	float dpsis_horiz_left;
-	float dpsis_horiz_center;
-	
-	float dpsis_vert_top;
-	float dpsis_vert_center;
-	
-	if((i+j) % 2 != 0){
-		sigma_u = 0.0f;
-		sigma_v = 0.0f;
-		sum_dpsis = 0.0f;
-		
-		if(j>0){
-			dpsis_vert_top = dpsis_vert[(j-1)*stride+i];
-			sigma_u -= dpsis_vert_top * du[(j-1)*stride+i];
-			sigma_v -= dpsis_vert_top * dv[(j-1)*stride+i];
-			sum_dpsis += dpsis_vert_top;
-		}
-		if(i>0){
-			dpsis_horiz_left = dpsis_horiz[j*stride+i-1];
-			sigma_u -= dpsis_horiz_left * du[j*stride+i-1];
-			sigma_v -= dpsis_horiz_left * dv[j*stride+i-1];
-			sum_dpsis += dpsis_horiz_left;
-		}
-		if(j<height-1){
-			dpsis_vert_center = dpsis_vert[j*stride+i];
-			sigma_u -= dpsis_vert_center * du[(j+1)*stride+i];
-			sigma_v -= dpsis_vert_center * dv[(j+1)*stride+i];
-			sum_dpsis += dpsis_vert_center;
-		}
-		if(i<width-1){
-			dpsis_horiz_center = dpsis_horiz[j*stride+i];
-			sigma_u -= dpsis_horiz_center * du[j*stride+i+1];
-			sigma_v -= dpsis_horiz_center * dv[j*stride+i+1];
-			sum_dpsis += dpsis_horiz_center;
-		}
-		
-		A11 = a11[j*stride+i] + sum_dpsis;
-		A12 = a12[j*stride+i];
-		A22 = a22[j*stride+i] + sum_dpsis;
-		
-		det = A11*A22-A12*A12;
-		
-		B1 = b1[j*stride+i] - sigma_u;
-		B2 = b2[j*stride+i] - sigma_v;
-		
-		
-		du[j*stride+i] = (1.0f-omega) * du[j*stride+i] + omega*( A22*B1-A12*B2)/det;
-		dv[j*stride+i] = (1.0f-omega) * dv[j*stride+i] + omega*(-A12*B1+A11*B2)/det;
-		
-	}
-}
-
-void parallel_sor(float *d_du, float *d_dv, float *d_a11, float *d_a12, float *d_a22, float *d_b1, float *d_b2, float *d_dpsis_horiz, float *d_dpsis_vert, int width, int height, int stride, const int iterations, const float omega){
-	
-	int threadCountX = 32;
-	int threadCountY = 32;
-	const dim3 blockSize(threadCountX,threadCountY,1);
-	int gridSizeX = (width % blockSize.x == 0) ? width/blockSize.x : (width/blockSize.x) + 1;
-	int gridSizeY = (height % blockSize.y == 0) ? height/blockSize.x : (height/blockSize.x) + 1;
-	const dim3 gridSize(gridSizeX,gridSizeY,1);
-	
-	for(int iter = 0 ; iter<iterations ; iter++){
-		red_sor<<<gridSize,blockSize>>>(d_du,d_dv,d_a11,d_a12,d_a22,d_b1,d_b2,d_dpsis_horiz,d_dpsis_vert,omega,width,height,stride);
-		black_sor<<<gridSize,blockSize>>>(d_du,d_dv,d_a11,d_a12,d_a22,d_b1,d_b2,d_dpsis_horiz,d_dpsis_vert,omega,width,height,stride);
-	}
-}
-
+//texture<float,2,cudaReadModeElementType> tex_du;
+//texture<float,2,cudaReadModeElementType> tex_dv;
+//texture<float,2,cudaReadModeElementType> tex_a11;
+//texture<float,2,cudaReadModeElementType> tex_a12;
+//texture<float,2,cudaReadModeElementType> tex_a22;
+//texture<float,2,cudaReadModeElementType> tex_b1;
+//texture<float,2,cudaReadModeElementType> tex_b2;
+//texture<float,2,cudaReadModeElementType> tex_dpsis_vert;
+//texture<float,2,cudaReadModeElementType> tex_dpsis_horiz;
+//
+//__global__
+//void red_sor(float *du, float *dv, float *a11, float *a12, float *a22, float *b1, float *b2, float *dpsis_horiz, float *dpsis_vert, float omega, int width, int height, int stride){
+//	int numRows = height;
+//	int numCols = width;
+//	float sigma_u,sigma_v,sum_dpsis,A11,A22,A12,B1,B2,det;
+//	
+//	int block_linear_index = blockIdx.y * gridDim.x + blockIdx.x;
+//	int thread_linear_index = threadIdx.y * blockDim.x + threadIdx.x;
+//	int total_number_of_threads_per_block = blockDim.x * blockDim.y;
+//	
+//	int element_linear_index = (block_linear_index * total_number_of_threads_per_block) + (thread_linear_index);
+//	
+//	if(element_linear_index < 0 || element_linear_index >= numRows * numCols){
+////		printf("************ WRONG ACCESSS B((%d,%d,%d)):T(%d,%d,%d)~(%d)***********\n",blockIdx.x,blockIdx.y,blockIdx.z,threadIdx.x,threadIdx.y,threadIdx.z,element_linear_index);
+//		return;
+//	}
+//	
+//	int i = element_linear_index % numCols;
+//	int j = (element_linear_index - i) / numCols;
+//	
+//	float dpsis_horiz_left;
+//	float dpsis_horiz_center;
+//	
+//	float dpsis_vert_top;
+//	float dpsis_vert_center;
+//	
+//	if((i+j) % 2 == 0){
+//		sigma_u = 0.0f;
+//		sigma_v = 0.0f;
+//		sum_dpsis = 0.0f;
+//		
+//		if(j>0){
+//			dpsis_vert_top = dpsis_vert[(j-1)*stride+i];
+//			sigma_u -= dpsis_vert_top * du[(j-1)*stride+i];
+//			sigma_v -= dpsis_vert_top * dv[(j-1)*stride+i];
+//			sum_dpsis += dpsis_vert_top;
+//		}
+//		if(i>0){
+//			dpsis_horiz_left = dpsis_horiz[j*stride+i-1];
+//			sigma_u -= dpsis_horiz_left * du[j*stride+i-1];
+//			sigma_v -= dpsis_horiz_left * dv[j*stride+i-1];
+//			sum_dpsis += dpsis_horiz_left;
+//		}
+//		if(j<height-1){
+//			dpsis_vert_center = dpsis_vert[j*stride+i];
+//			sigma_u -= dpsis_vert_center * du[(j+1)*stride+i];
+//			sigma_v -= dpsis_vert_center * dv[(j+1)*stride+i];
+//			sum_dpsis += dpsis_vert_center;
+//		}
+//		if(i<width-1){
+//			dpsis_horiz_center = dpsis_horiz[j*stride+i];
+//			sigma_u -= dpsis_horiz_center * du[j*stride+i+1];
+//			sigma_v -= dpsis_horiz_center * dv[j*stride+i+1];
+//			sum_dpsis += dpsis_horiz_center;
+//		}
+//		
+//		A11 = a11[j*stride+i] + sum_dpsis;
+//		A12 = a12[j*stride+i];
+//		A22 = a22[j*stride+i] + sum_dpsis;
+//		
+//		det = A11*A22-A12*A12;
+//		
+//		B1 = b1[j*stride+i] - sigma_u;
+//		B2 = b2[j*stride+i] - sigma_v;
+//		
+//		
+//		du[j*stride+i] = (1.0f-omega) * du[j*stride+i] + omega*( A22*B1-A12*B2)/det;
+//		dv[j*stride+i] = (1.0f-omega) * dv[j*stride+i] + omega*(-A12*B1+A11*B2)/det;
+//		
+//	}
+//}
+//
+//__global__
+//void black_sor(float *du, float *dv, float *a11, float *a12, float *a22, float *b1, float *b2, float *dpsis_horiz, float *dpsis_vert, float omega, int width, int height, int stride){
+//	int numRows = height;
+//	int numCols = width;
+//	float sigma_u,sigma_v,sum_dpsis,A11,A22,A12,B1,B2,det;
+//	
+//	int block_linear_index = blockIdx.y * gridDim.x + blockIdx.x;
+//	int thread_linear_index = threadIdx.y * blockDim.x + threadIdx.x;
+//	int total_number_of_threads_per_block = blockDim.x * blockDim.y;
+//	
+//	int element_linear_index = (block_linear_index * total_number_of_threads_per_block) + (thread_linear_index);
+//	
+//	if(element_linear_index < 0 || element_linear_index >= numRows * numCols){
+////		printf("************ WRONG ACCESSS B((%d,%d,%d)):T(%d,%d,%d)~(%d)***********\n",blockIdx.x,blockIdx.y,blockIdx.z,threadIdx.x,threadIdx.y,threadIdx.z,element_linear_index);
+//		return;
+//	}
+//	
+//	int i = element_linear_index % numCols;
+//	int j = (element_linear_index - i) / numCols;
+//	
+//	float dpsis_horiz_left;
+//	float dpsis_horiz_center;
+//	
+//	float dpsis_vert_top;
+//	float dpsis_vert_center;
+//	
+//	if((i+j) % 2 != 0){
+//		sigma_u = 0.0f;
+//		sigma_v = 0.0f;
+//		sum_dpsis = 0.0f;
+//		
+//		if(j>0){
+//			dpsis_vert_top = dpsis_vert[(j-1)*stride+i];
+//			sigma_u -= dpsis_vert_top * du[(j-1)*stride+i];
+//			sigma_v -= dpsis_vert_top * dv[(j-1)*stride+i];
+//			sum_dpsis += dpsis_vert_top;
+//		}
+//		if(i>0){
+//			dpsis_horiz_left = dpsis_horiz[j*stride+i-1];
+//			sigma_u -= dpsis_horiz_left * du[j*stride+i-1];
+//			sigma_v -= dpsis_horiz_left * dv[j*stride+i-1];
+//			sum_dpsis += dpsis_horiz_left;
+//		}
+//		if(j<height-1){
+//			dpsis_vert_center = dpsis_vert[j*stride+i];
+//			sigma_u -= dpsis_vert_center * du[(j+1)*stride+i];
+//			sigma_v -= dpsis_vert_center * dv[(j+1)*stride+i];
+//			sum_dpsis += dpsis_vert_center;
+//		}
+//		if(i<width-1){
+//			dpsis_horiz_center = dpsis_horiz[j*stride+i];
+//			sigma_u -= dpsis_horiz_center * du[j*stride+i+1];
+//			sigma_v -= dpsis_horiz_center * dv[j*stride+i+1];
+//			sum_dpsis += dpsis_horiz_center;
+//		}
+//		
+//		A11 = a11[j*stride+i] + sum_dpsis;
+//		A12 = a12[j*stride+i];
+//		A22 = a22[j*stride+i] + sum_dpsis;
+//		
+//		det = A11*A22-A12*A12;
+//		
+//		B1 = b1[j*stride+i] - sigma_u;
+//		B2 = b2[j*stride+i] - sigma_v;
+//		
+//		
+//		du[j*stride+i] = (1.0f-omega) * du[j*stride+i] + omega*( A22*B1-A12*B2)/det;
+//		dv[j*stride+i] = (1.0f-omega) * dv[j*stride+i] + omega*(-A12*B1+A11*B2)/det;
+//		
+//	}
+//}
+//
+//void parallel_sor(float *d_du, float *d_dv, float *d_a11, float *d_a12, float *d_a22, float *d_b1, float *d_b2, float *d_dpsis_horiz, float *d_dpsis_vert, int width, int height, int stride, const int iterations, const float omega){
+//	
+//	int threadCountX = 32;
+//	int threadCountY = 32;
+//	const dim3 blockSize(threadCountX,threadCountY,1);
+//	int gridSizeX = (width % blockSize.x == 0) ? width/blockSize.x : (width/blockSize.x) + 1;
+//	int gridSizeY = (height % blockSize.y == 0) ? height/blockSize.x : (height/blockSize.x) + 1;
+//	const dim3 gridSize(gridSizeX,gridSizeY,1);
+//	
+////	tex_du.filterMode = cudaFilterModePoint;
+////	tex_dv.filterMode = cudaFilterModePoint;
+////	tex_a11.filterMode = cudaFilterModePoint;
+////	tex_a12.filterMode = cudaFilterModePoint;
+////	tex_a22.filterMode = cudaFilterModePoint;
+////	tex_b1.filterMode = cudaFilterModePoint;
+////	tex_b2.filterMode = cudaFilterModePoint;
+////	tex_dpsis_vert.filterMode = cudaFilterModePoint;
+////	tex_dpsis_horiz.filterMode = cudaFilterModePoint;
+////	
+////	tex_du.addressMode[0] = cudaAddressModeClamp;
+////	tex_dv.addressMode[0] = cudaAddressModeClamp;
+////	tex_a11.addressMode[0] = cudaAddressModeClamp;
+////	tex_a12.addressMode[0] = cudaAddressModeClamp;
+////	tex_a22.addressMode[0] = cudaAddressModeClamp;
+////	tex_b1.addressMode[0] = cudaAddressModeClamp;
+////	tex_b2.addressMode[0] = cudaAddressModeClamp;
+////	tex_dpsis_vert.addressMode[0] = cudaAddressModeClamp;
+////	tex_dpsis_horiz.addressMode[0] = cudaAddressModeClamp;
+////	
+////	tex_du.addressMode[1] = cudaAddressModeClamp;
+////	tex_dv.addressMode[1] = cudaAddressModeClamp;
+////	tex_a11.addressMode[1] = cudaAddressModeClamp;
+////	tex_a12.addressMode[1] = cudaAddressModeClamp;
+////	tex_a22.addressMode[1] = cudaAddressModeClamp;
+////	tex_b1.addressMode[1] = cudaAddressModeClamp;
+////	tex_b2.addressMode[1] = cudaAddressModeClamp;
+////	tex_dpsis_vert.addressMode[1] = cudaAddressModeClamp;
+////	tex_dpsis_horiz.addressMode[1] = cudaAddressModeClamp;
+////	
+////	cudaChannelFormatDesc channel_du = cudaCreateChannelDesc<float>();
+////	
+////	cudaBindTextureToArray(&tex_du,*d_du,&channelDesc);
+////	cudaBindTextureToArray(tex_dv,d_dv);
+////	cudaBindTextureToArray(tex_a11,d_a11);
+////	cudaBindTextureToArray(tex_a12,d_a12);
+////	cudaBindTextureToArray(tex_a22,d_a22);
+////	cudaBindTextureToArray(tex_b1,d_b1);
+////	cudaBindTextureToArray(tex_b2,d_b2);
+////	cudaBindTextureToArray(tex_dpsis_vert,d_dpsis_vert);
+////	cudaBindTextureToArray(tex_dpsis_horiz,d_dpsis_horiz);
+//	
+//	for(int iter = 0 ; iter<iterations ; iter++){
+//		red_sor<<<gridSize,blockSize>>>(d_du,d_dv,d_a11,d_a12,d_a22,d_b1,d_b2,d_dpsis_horiz,d_dpsis_vert,omega,width,height,stride);
+//		black_sor<<<gridSize,blockSize>>>(d_du,d_dv,d_a11,d_a12,d_a22,d_b1,d_b2,d_dpsis_horiz,d_dpsis_vert,omega,width,height,stride);
+//	}
+//	
+////	cudaUnbindTexture(tex_du);
+////	cudaUnbindTexture(tex_dv);
+////	cudaUnbindTexture(tex_a11);
+////	cudaUnbindTexture(tex_a12);
+////	cudaUnbindTexture(tex_a22);
+////	cudaUnbindTexture(tex_b1);
+////	cudaUnbindTexture(tex_b2);
+////	cudaUnbindTexture(tex_dpsis_vert);
+////	cudaUnbindTexture(tex_dpsis_horiz);
+//}
+//
 //***********
 // CPU CODE
 //***********

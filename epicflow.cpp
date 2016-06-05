@@ -156,7 +156,7 @@ int main(int argc, char **argv){
 	printf("\nSuccessfully completed epic flow before writing to file.....\n");
 	printf("\n%s,%s,%f\n",argv[1],argv[2],elapsed_time);
 	
-	char filename[] = "result/time.csv";
+	char filename[] = "../result/time.csv";
 	printf("%s\n",filename);
 	FILE *stream = fopen(filename, "a");
 	if (stream == 0){

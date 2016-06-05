@@ -482,7 +482,7 @@ image_t *image_new_cuda(const int width, const int height){
 	image->width = width;
 	image->height = height;
 	image->stride = ( (width+3) / 4 ) * 4;
-	cudaMallocHost(&image->data, (16*(image->stride*height*sizeof(float))));
+	cudaMallocHost(&image->data, ((image->stride*height*sizeof(float))));
 	if(image->data == NULL){
 		fprintf(stderr, "Error: image_new_cuda() - not enough memory !\n");
 		exit(1);
@@ -539,7 +539,7 @@ void compute_one_level(image_t *wx, image_t *wy, color_image_t *im1, color_image
 	float *d_b1_black; float *d_b2_black;
 	float *d_dpsis_horiz_black; float *d_dpsis_vert_black;
 	
-	int data_size = 16*(du->stride*du->height*sizeof(float));
+	int data_size = (du->stride*du->height*sizeof(float));
 	
 	if(params->use_gpu){
 		
@@ -614,15 +614,15 @@ void compute_one_level(image_t *wx, image_t *wy, color_image_t *im1, color_image
 				checkCudaMemoryErrors(cudaMemcpy(d_dpsis_horiz,smooth_horiz->data,data_size,cudaMemcpyHostToDevice));
 				checkCudaMemoryErrors(cudaMemcpy(d_dpsis_vert,smooth_vert->data,data_size,cudaMemcpyHostToDevice));
 				
-				cudaBindTexture(0,tex_du,d_du,16*du->stride*du->height*sizeof(float));
-				cudaBindTexture(0,tex_dv,d_dv,16*du->stride*du->height*sizeof(float));
-				cudaBindTexture(0,tex_a11,d_a11,16*du->stride*du->height*sizeof(float));
-				cudaBindTexture(0,tex_a12,d_a12,16*du->stride*du->height*sizeof(float));
-				cudaBindTexture(0,tex_a22,d_a22,16*du->stride*du->height*sizeof(float));
-				cudaBindTexture(0,tex_b1,d_b1,16*du->stride*du->height*sizeof(float));
-				cudaBindTexture(0,tex_b2,d_b2,16*du->stride*du->height*sizeof(float));
-				cudaBindTexture(0,tex_dpsis_horiz,d_dpsis_horiz,16*du->stride*du->height*sizeof(float));
-				cudaBindTexture(0,tex_dpsis_vert,d_dpsis_vert,16*du->stride*du->height*sizeof(float));
+				cudaBindTexture(0,tex_du,d_du,du->stride*du->height*sizeof(float));
+				cudaBindTexture(0,tex_dv,d_dv,du->stride*du->height*sizeof(float));
+				cudaBindTexture(0,tex_a11,d_a11,du->stride*du->height*sizeof(float));
+				cudaBindTexture(0,tex_a12,d_a12,du->stride*du->height*sizeof(float));
+				cudaBindTexture(0,tex_a22,d_a22,du->stride*du->height*sizeof(float));
+				cudaBindTexture(0,tex_b1,d_b1,du->stride*du->height*sizeof(float));
+				cudaBindTexture(0,tex_b2,d_b2,du->stride*du->height*sizeof(float));
+				cudaBindTexture(0,tex_dpsis_horiz,d_dpsis_horiz,du->stride*du->height*sizeof(float));
+				cudaBindTexture(0,tex_dpsis_vert,d_dpsis_vert,du->stride*du->height*sizeof(float));
 				
 				int threadCountX = 32;
 				int threadCountY = 32;

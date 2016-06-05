@@ -18,16 +18,6 @@ typedef __v4sf v4sf;
 
 typedef __v4sf v4sf;
 
-texture<float,1,cudaReadModeElementType> tex_du;
-texture<float,1,cudaReadModeElementType> tex_dv;
-texture<float,1,cudaReadModeElementType> tex_a11;
-texture<float,1,cudaReadModeElementType> tex_a12;
-texture<float,1,cudaReadModeElementType> tex_a22;
-texture<float,1,cudaReadModeElementType> tex_b1;
-texture<float,1,cudaReadModeElementType> tex_b2;
-texture<float,1,cudaReadModeElementType> tex_dpsis_vert;
-texture<float,1,cudaReadModeElementType> tex_dpsis_horiz;
-
 void parallel_sor(float *d_du, float *d_dv, float *d_a11, float *d_a12, float *d_a22, float *d_b1, float *d_b2, float *d_dpsis_horiz, float *d_dpsis_vert, int width, int height, int stride, const int iterations, const float omega);
 
 void sor_coupled_slow_but_readable(image_t *du, image_t *dv, image_t *a11, image_t *a12, image_t *a22, image_t *b1, image_t *b2, image_t *dpsis_horiz, image_t *dpsis_vert, const int iterations, const float omega);
@@ -328,150 +318,6 @@ void reorder_combine(float *d_du, float *d_dv, float *d_a11, float *d_a12, float
 	}
 }
 
-__global__
-void red_sor(float *du, float *dv, float omega, int width, int height, int stride){
-	int numRows = height;
-	int numCols = width;
-	float sigma_u,sigma_v,sum_dpsis,A11,A22,A12,B1,B2,det;
-	
-	int block_linear_index = blockIdx.y * gridDim.x + blockIdx.x;
-	int thread_linear_index = threadIdx.y * blockDim.x + threadIdx.x;
-	int total_number_of_threads_per_block = blockDim.x * blockDim.y;
-	
-	int element_linear_index = (block_linear_index * total_number_of_threads_per_block) + (thread_linear_index);
-	
-//	element_linear_index = ((2*element_linear_index)) + ((2 * element_linear_index/numCols) % 2);
-	
-	if(element_linear_index < 0 || element_linear_index >= numRows * numCols){
-		return;
-	}
-	
-	int i = element_linear_index % numCols;
-	int j = (element_linear_index - i) / numCols;
-	
-	float dpsis_horiz_left;
-	float dpsis_horiz_center;
-	
-	float dpsis_vert_top;
-	float dpsis_vert_center;
-	
-	if((i+j) % 2 == 0){
-		sigma_u = 0.0f;
-		sigma_v = 0.0f;
-		sum_dpsis = 0.0f;
-		
-		if(j>0){
-			dpsis_vert_top = tex1Dfetch(tex_dpsis_vert,(j-1)*stride+i);
-			sigma_u -= dpsis_vert_top * tex1Dfetch(tex_du,(j-1)*stride+i);
-			sigma_v -= dpsis_vert_top * tex1Dfetch(tex_dv,(j-1)*stride+i);
-			sum_dpsis += dpsis_vert_top;
-		}
-		if(i>0){
-			dpsis_horiz_left = tex1Dfetch(tex_dpsis_horiz,j*stride+(i-1));
-			sigma_u -= dpsis_horiz_left * tex1Dfetch(tex_du,j*stride+(i-1));
-			sigma_v -= dpsis_horiz_left * tex1Dfetch(tex_dv,j*stride+(i-1));
-			sum_dpsis += dpsis_horiz_left;
-		}
-		if(j<height-1){
-			dpsis_vert_center = tex1Dfetch(tex_dpsis_vert,j*stride+i);
-			sigma_u -= dpsis_vert_center * tex1Dfetch(tex_du,(j+1)*stride+i);
-			sigma_v -= dpsis_vert_center * tex1Dfetch(tex_dv,(j+1)*stride+i);
-			sum_dpsis += dpsis_vert_center;
-		}
-		if(i<width-1){
-			dpsis_horiz_center = tex1Dfetch(tex_dpsis_horiz,j*stride+i);
-			sigma_u -= dpsis_horiz_center * tex1Dfetch(tex_du,j*stride+(i+1));
-			sigma_v -= dpsis_horiz_center * tex1Dfetch(tex_dv,j*stride+(i+1));
-			sum_dpsis += dpsis_horiz_center;
-		}
-		
-		A11 = tex1Dfetch(tex_a11,j*stride+i) + sum_dpsis;
-		A12 = tex1Dfetch(tex_a12,j*stride+i);
-		A22 = tex1Dfetch(tex_a22,j*stride+i) + sum_dpsis;
-		
-		det = A11*A22-A12*A12;
-		
-		B1 = tex1Dfetch(tex_b1,j*stride+i) - sigma_u;
-		B2 = tex1Dfetch(tex_b2,j*stride+i) - sigma_v;
-		
-		du[j*stride+i] = (1.0f-omega) * tex1Dfetch(tex_du,j*stride+i) + omega*( A22*B1-A12*B2)/det;
-		dv[j*stride+i] = (1.0f-omega) * tex1Dfetch(tex_dv,j*stride+i) + omega*(-A12*B1+A11*B2)/det;
-		
-	}
-}
-
-__global__
-void black_sor(float *du, float *dv, float omega, int width, int height, int stride){
-	int numRows = height;
-	int numCols = width;
-	float sigma_u,sigma_v,sum_dpsis,A11,A22,A12,B1,B2,det;
-	
-	int block_linear_index = blockIdx.y * gridDim.x + blockIdx.x;
-	int thread_linear_index = threadIdx.y * blockDim.x + threadIdx.x;
-	int total_number_of_threads_per_block = blockDim.x * blockDim.y;
-	
-	int element_linear_index = (block_linear_index * total_number_of_threads_per_block) + (thread_linear_index);
-	
-//	element_linear_index = ((2*element_linear_index)+1) - ((2 * element_linear_index/numCols) % 2);
-	
-	if(element_linear_index < 0 || element_linear_index >= numRows * numCols){
-		//		printf("************ WRONG ACCESSS B((%d,%d,%d)):T(%d,%d,%d)~(%d)***********\n",blockIdx.x,blockIdx.y,blockIdx.z,threadIdx.x,threadIdx.y,threadIdx.z,element_linear_index);
-		return;
-	}
-	
-	int i = element_linear_index % numCols;
-	int j = (element_linear_index - i) / numCols;
-	
-	float dpsis_horiz_left;
-	float dpsis_horiz_center;
-	
-	float dpsis_vert_top;
-	float dpsis_vert_center;
-	
-	if((i+j) % 2 != 0){
-		sigma_u = 0.0f;
-		sigma_v = 0.0f;
-		sum_dpsis = 0.0f;
-		
-		if(j>0){
-			dpsis_vert_top = tex1Dfetch(tex_dpsis_vert,(j-1)*stride+i);
-			sigma_u -= dpsis_vert_top * tex1Dfetch(tex_du,(j-1)*stride+i);
-			sigma_v -= dpsis_vert_top * tex1Dfetch(tex_dv,(j-1)*stride+i);
-			sum_dpsis += dpsis_vert_top;
-		}
-		if(i>0){
-			dpsis_horiz_left = tex1Dfetch(tex_dpsis_horiz,j*stride+(i-1));
-			sigma_u -= dpsis_horiz_left * tex1Dfetch(tex_du,j*stride+(i-1));
-			sigma_v -= dpsis_horiz_left * tex1Dfetch(tex_dv,j*stride+(i-1));
-			sum_dpsis += dpsis_horiz_left;
-		}
-		if(j<height-1){
-			dpsis_vert_center = tex1Dfetch(tex_dpsis_vert,j*stride+i);
-			sigma_u -= dpsis_vert_center * tex1Dfetch(tex_du,(j+1)*stride+i);
-			sigma_v -= dpsis_vert_center * tex1Dfetch(tex_dv,(j+1)*stride+i);
-			sum_dpsis += dpsis_vert_center;
-		}
-		if(i<width-1){
-			dpsis_horiz_center = tex1Dfetch(tex_dpsis_horiz,j*stride+i);
-			sigma_u -= dpsis_horiz_center * tex1Dfetch(tex_du,j*stride+(i+1));
-			sigma_v -= dpsis_horiz_center * tex1Dfetch(tex_dv,j*stride+(i+1));
-			sum_dpsis += dpsis_horiz_center;
-		}
-		
-		A11 = tex1Dfetch(tex_a11,j*stride+i) + sum_dpsis;
-		A12 = tex1Dfetch(tex_a12,j*stride+i);
-		A22 = tex1Dfetch(tex_a22,j*stride+i) + sum_dpsis;
-		
-		det = A11*A22-A12*A12;
-		
-		B1 = tex1Dfetch(tex_b1,j*stride+i) - sigma_u;
-		B2 = tex1Dfetch(tex_b2,j*stride+i) - sigma_v;
-		
-		du[j*stride+i] = (1.0f-omega) * tex1Dfetch(tex_du,j*stride+i) + omega*( A22*B1-A12*B2)/det;
-		dv[j*stride+i] = (1.0f-omega) * tex1Dfetch(tex_dv,j*stride+i) + omega*(-A12*B1+A11*B2)/det;
-	}
-}
-
 image_t *image_new_cuda(const int width, const int height){
 	image_t *image = (image_t*) malloc(sizeof(image_t));
 	if(image == NULL){
@@ -554,7 +400,6 @@ void compute_one_level(image_t *wx, image_t *wy, color_image_t *im1, color_image
 		
 		checkCudaMemoryErrors(cudaMalloc(&d_du_red,data_size/2));
 		checkCudaMemoryErrors(cudaMalloc(&d_dv_red,data_size/2));
-		
 		checkCudaMemoryErrors(cudaMalloc(&d_a11_red,data_size/2));
 		checkCudaMemoryErrors(cudaMalloc(&d_a22_red,data_size/2));
 		checkCudaMemoryErrors(cudaMalloc(&d_a12_red,data_size/2));
@@ -613,16 +458,6 @@ void compute_one_level(image_t *wx, image_t *wy, color_image_t *im1, color_image
 				checkCudaMemoryErrors(cudaMemcpy(d_dpsis_horiz,smooth_horiz->data,data_size,cudaMemcpyHostToDevice));
 				checkCudaMemoryErrors(cudaMemcpy(d_dpsis_vert,smooth_vert->data,data_size,cudaMemcpyHostToDevice));
 				
-				cudaBindTexture(0,tex_du,d_du,du->stride*du->height*sizeof(float));
-				cudaBindTexture(0,tex_dv,d_dv,du->stride*du->height*sizeof(float));
-				cudaBindTexture(0,tex_a11,d_a11,du->stride*du->height*sizeof(float));
-				cudaBindTexture(0,tex_a12,d_a12,du->stride*du->height*sizeof(float));
-				cudaBindTexture(0,tex_a22,d_a22,du->stride*du->height*sizeof(float));
-				cudaBindTexture(0,tex_b1,d_b1,du->stride*du->height*sizeof(float));
-				cudaBindTexture(0,tex_b2,d_b2,du->stride*du->height*sizeof(float));
-				cudaBindTexture(0,tex_dpsis_horiz,d_dpsis_horiz,du->stride*du->height*sizeof(float));
-				cudaBindTexture(0,tex_dpsis_vert,d_dpsis_vert,du->stride*du->height*sizeof(float));
-				
 				int threadCountX = 32;
 				int threadCountY = 32;
 				const dim3 blockSize(threadCountX,threadCountY,1);
@@ -633,9 +468,6 @@ void compute_one_level(image_t *wx, image_t *wy, color_image_t *im1, color_image
 				reorder_split<<<gridSize,blockSize>>>(d_du, d_dv, d_a11, d_a12, d_a22, d_b1, d_b2, d_dpsis_horiz, d_dpsis_vert, d_du_red, d_dv_red, d_dpsis_horiz_red, d_dpsis_vert_red, d_a11_red, d_a12_red, d_a22_red, d_b1_red, d_b2_red, d_du_black, d_dv_black, d_dpsis_horiz_black, d_dpsis_vert_black, d_a11_black, d_a12_black, d_a22_black, d_b1_black, d_b2_black, width, height, stride);
 				
 				for(int iter = 0 ; iter<params->niter_solver ; iter++){
-					
-//					red_sor<<<gridSize,blockSize>>>(d_du,d_dv,params->sor_omega,width,height,stride);
-//					black_sor<<<gridSize,blockSize>>>(d_du,d_dv,params->sor_omega,width,height,stride);
 					
 					red_sor_reordered<<<gridSize,blockSize>>>(d_du_red, d_dv_red, d_dpsis_horiz_red, d_dpsis_vert_red, d_a11_red, d_a12_red, d_a22_red, d_b1_red, d_b2_red, d_du_black, d_dv_black, d_dpsis_horiz_black, d_dpsis_vert_black, d_a11_black, d_a12_black, d_a22_black, d_b1_black, d_b2_black, params->sor_omega, width, height, stride);
 			
@@ -660,17 +492,6 @@ void compute_one_level(image_t *wx, image_t *wy, color_image_t *im1, color_image
 			
 			checkCudaMemoryErrors(cudaDeviceSynchronize());
 			
-			if (params->use_gpu) {
-				cudaUnbindTexture(tex_du);
-				cudaUnbindTexture(tex_dv);
-				cudaUnbindTexture(tex_a11);
-				cudaUnbindTexture(tex_a12);
-				cudaUnbindTexture(tex_a22);
-				cudaUnbindTexture(tex_b1);
-				cudaUnbindTexture(tex_b2);
-				cudaUnbindTexture(tex_dpsis_horiz);
-				cudaUnbindTexture(tex_dpsis_vert);
-			}
 			// update flow plus flow increment
             int i;
             v4sf *uup = (v4sf*) uu->data, *vvp = (v4sf*) vv->data, *wxp = (v4sf*) wx->data, *wyp = (v4sf*) wy->data, *dup = (v4sf*) du->data, *dvp = (v4sf*) dv->data;

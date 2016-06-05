@@ -343,7 +343,6 @@ void red_sor(float *du, float *dv, float omega, int width, int height, int strid
 //	element_linear_index = ((2*element_linear_index)) + ((2 * element_linear_index/numCols) % 2);
 	
 	if(element_linear_index < 0 || element_linear_index >= numRows * numCols){
-		//		printf("************ WRONG ACCESSS B((%d,%d,%d)):T(%d,%d,%d)~(%d)***********\n",blockIdx.x,blockIdx.y,blockIdx.z,threadIdx.x,threadIdx.y,threadIdx.z,element_linear_index);
 		return;
 	}
 	
@@ -650,12 +649,15 @@ void compute_one_level(image_t *wx, image_t *wy, color_image_t *im1, color_image
 				sor_coupled_slow_but_readable(du, dv, a11, a12, a22, b1, b2, smooth_horiz, smooth_vert, params->niter_solver, params->sor_omega);
 			}
 			
-			// copy flow from GPU to CPU
+			
 			checkCudaMemoryErrors(cudaDeviceSynchronize());
+			
+			// copy flow from GPU to CPU
 			if (params->use_gpu) {
 				checkCudaMemoryErrors(cudaMemcpy(du->data,d_du,data_size,cudaMemcpyDeviceToHost));
 				checkCudaMemoryErrors(cudaMemcpy(dv->data,d_dv,data_size,cudaMemcpyDeviceToHost));
 			}
+			
 			checkCudaMemoryErrors(cudaDeviceSynchronize());
 			
 			if (params->use_gpu) {

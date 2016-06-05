@@ -54,12 +54,16 @@ void red_sor_reordered(float *du_red, float *dv_red, float *dpsis_horiz_red, flo
 	
 	int element_linear_index = (block_linear_index * total_number_of_threads_per_block) + (thread_linear_index);
 	
+	element_linear_index = (2 * element_linear_index) + ((2 * element_linear_index/numCols) % 2);
+	
 	if(element_linear_index < 0 || element_linear_index >= numRows * numCols){
 		return;
 	}
+
 	
 	int i = element_linear_index % numCols;
 	int j = (element_linear_index - i) / numCols;
+	
 	
 	float dpsis_horiz_left;
 	float dpsis_horiz_center;
@@ -159,20 +163,22 @@ void black_sor_reordered(float *du_red, float *dv_red, float *dpsis_horiz_red, f
 	
 	int element_linear_index = (block_linear_index * total_number_of_threads_per_block) + (thread_linear_index);
 	
+	element_linear_index = ((2*element_linear_index)+1) - ((2 * element_linear_index/numCols) % 2);
+	
 	if(element_linear_index < 0 || element_linear_index >= numRows * numCols){
 		return;
 	}
 	
 	int i = element_linear_index % numCols;
 	int j = (element_linear_index - i) / numCols;
-	
+
 	float dpsis_horiz_left;
 	float dpsis_horiz_center;
 	
 	float dpsis_vert_top;
 	float dpsis_vert_center;
 	
-	if((i+j) % 2 == 0){
+	if((i+j) % 2 != 0){
 		sigma_u = 0.0f;
 		sigma_v = 0.0f;
 		sum_dpsis = 0.0f;
@@ -535,16 +541,6 @@ void compute_one_level(image_t *wx, image_t *wy, color_image_t *im1, color_image
 	float *d_b1_red; float *d_b2_red;
 	float *d_dpsis_horiz_red; float *d_dpsis_vert_red;
 	
-	float *h_du_red; float *h_dv_red;
-	float *h_a11_red; float *h_a12_red; float *h_a22_red;
-	float *h_b1_red; float *h_b2_red;
-	float *h_dpsis_horiz_red; float *h_dpsis_vert_red;
-	
-	float *h_du_black; float *h_dv_black;
-	float *h_a11_black; float *h_a12_black; float *h_a22_black;
-	float *h_b1_black; float *h_b2_black;
-	float *h_dpsis_horiz_black; float *h_dpsis_vert_black;
-	
 	float *d_du_black; float *d_dv_black;
 	float *d_a11_black; float *d_a12_black; float *d_a22_black;
 	float *d_b1_black; float *d_b2_black;
@@ -566,26 +562,6 @@ void compute_one_level(image_t *wx, image_t *wy, color_image_t *im1, color_image
 		
 		checkCudaMemoryErrors(cudaMalloc(&d_du_red,data_size/2));
 		checkCudaMemoryErrors(cudaMalloc(&d_dv_red,data_size/2));
-		
-		checkCudaMemoryErrors(cudaMallocHost(&h_du_red,data_size/2));
-		checkCudaMemoryErrors(cudaMallocHost(&h_dv_red,data_size/2));
-		checkCudaMemoryErrors(cudaMallocHost(&h_a11_red,data_size/2));
-		checkCudaMemoryErrors(cudaMallocHost(&h_a12_red,data_size/2));
-		checkCudaMemoryErrors(cudaMallocHost(&h_a22_red,data_size/2));
-		checkCudaMemoryErrors(cudaMallocHost(&h_b1_red,data_size/2));
-		checkCudaMemoryErrors(cudaMallocHost(&h_b2_red,data_size/2));
-		checkCudaMemoryErrors(cudaMallocHost(&h_dpsis_vert_red,data_size/2));
-		checkCudaMemoryErrors(cudaMallocHost(&h_dpsis_horiz_red,data_size/2));
-		
-		checkCudaMemoryErrors(cudaMallocHost(&h_du_black,data_size/2));
-		checkCudaMemoryErrors(cudaMallocHost(&h_dv_black,data_size/2));
-		checkCudaMemoryErrors(cudaMallocHost(&h_a11_black,data_size/2));
-		checkCudaMemoryErrors(cudaMallocHost(&h_a12_black,data_size/2));
-		checkCudaMemoryErrors(cudaMallocHost(&h_a22_black,data_size/2));
-		checkCudaMemoryErrors(cudaMallocHost(&h_b1_black,data_size/2));
-		checkCudaMemoryErrors(cudaMallocHost(&h_b2_black,data_size/2));
-		checkCudaMemoryErrors(cudaMallocHost(&h_dpsis_vert_black,data_size/2));
-		checkCudaMemoryErrors(cudaMallocHost(&h_dpsis_horiz_black,data_size/2));
 		
 		checkCudaMemoryErrors(cudaMalloc(&d_a11_red,data_size/2));
 		checkCudaMemoryErrors(cudaMalloc(&d_a22_red,data_size/2));
@@ -655,7 +631,6 @@ void compute_one_level(image_t *wx, image_t *wy, color_image_t *im1, color_image
 				cudaBindTexture(0,tex_dpsis_horiz,d_dpsis_horiz,16*du->stride*du->height*sizeof(float));
 				cudaBindTexture(0,tex_dpsis_vert,d_dpsis_vert,16*du->stride*du->height*sizeof(float));
 				
-//				parallel_sor(d_du, d_dv, d_a11, d_a12, d_a22, d_b1, d_b2, d_dpsis_horiz, d_dpsis_vert, du->width, du->height, du->stride, params->niter_solver, params->sor_omega);
 				int threadCountX = 32;
 				int threadCountY = 32;
 				const dim3 blockSize(threadCountX,threadCountY,1);
@@ -665,56 +640,7 @@ void compute_one_level(image_t *wx, image_t *wy, color_image_t *im1, color_image
 				
 				reorder_split<<<gridSize,blockSize>>>(d_du, d_dv, d_a11, d_a12, d_a22, d_b1, d_b2, d_dpsis_horiz, d_dpsis_vert, d_du_red, d_dv_red, d_dpsis_horiz_red, d_dpsis_vert_red, d_a11_red, d_a12_red, d_a22_red, d_b1_red, d_b2_red, d_du_black, d_dv_black, d_dpsis_horiz_black, d_dpsis_vert_black, d_a11_black, d_a12_black, d_a22_black, d_b1_black, d_b2_black, width, height, stride);
 				
-//				cudaMemcpy(h_du_red, d_du_red, data_size/2, cudaMemcpyDeviceToHost);
-//				cudaMemcpy(h_dv_red, d_dv_red, data_size/2, cudaMemcpyDeviceToHost);
-//				cudaMemcpy(h_a11_red, d_a11_red, data_size/2, cudaMemcpyDeviceToHost);
-//				cudaMemcpy(h_a12_red, d_a12_red, data_size/2, cudaMemcpyDeviceToHost);
-//				cudaMemcpy(h_a22_red, d_a22_red, data_size/2, cudaMemcpyDeviceToHost);
-//				cudaMemcpy(h_b1_red, d_b1_red, data_size/2, cudaMemcpyDeviceToHost);
-//				cudaMemcpy(h_b2_red, d_b2_red, data_size/2, cudaMemcpyDeviceToHost);
-//				cudaMemcpy(h_dpsis_vert_red, d_dpsis_vert_red, data_size/2, cudaMemcpyDeviceToHost);
-//				cudaMemcpy(h_dpsis_horiz_red, d_dpsis_horiz_red, data_size/2, cudaMemcpyDeviceToHost);
-//				
-//				cudaMemcpy(h_du_black, d_du_black, data_size/2, cudaMemcpyDeviceToHost);
-//				cudaMemcpy(h_dv_black, d_dv_black, data_size/2, cudaMemcpyDeviceToHost);
-//				cudaMemcpy(h_a11_black, d_a11_black, data_size/2, cudaMemcpyDeviceToHost);
-//				cudaMemcpy(h_a12_black, d_a12_black, data_size/2, cudaMemcpyDeviceToHost);
-//				cudaMemcpy(h_a22_black, d_a22_black, data_size/2, cudaMemcpyDeviceToHost);
-//				cudaMemcpy(h_b1_black, d_b1_black, data_size/2, cudaMemcpyDeviceToHost);
-//				cudaMemcpy(h_b2_black, d_b2_black, data_size/2, cudaMemcpyDeviceToHost);
-//				cudaMemcpy(h_dpsis_vert_black, d_dpsis_vert_black, data_size/2, cudaMemcpyDeviceToHost);
-//				cudaMemcpy(h_dpsis_horiz_black, d_dpsis_horiz_black, data_size/2, cudaMemcpyDeviceToHost);
-				
-				
-//				for (int j = 0; j < du->height; j++) {
-//					for (int i = 0; i < du->width; i++) {
-//						
-//						if((i+j) % 2 == 0){
-//							printf("dpsis_vert_red[(%d*stride/2) + %d = %f]\n",j,i/2,h_dpsis_vert_red[(j*stride/2) + (i/2)]);
-//							printf("dpsis_horiz_red[(%d*stride/2) + %d = %f]\n",j,i/2,h_dpsis_horiz_red[(j*stride/2) + (i/2)]);
-//							printf("a11_red[(%d*stride/2) + %d = %f]\n",j,i/2,h_a11_red[(j*stride/2) + (i/2)]);
-//							printf("a12_red[(%d*stride/2) + %d = %f]\n",j,i/2,h_a12_red[(j*stride/2) + (i/2)]);
-//							printf("a22_red[(%d*stride/2) + %d = %f]\n",j,i/2,h_a22_red[(j*stride/2) + (i/2)]);
-//							printf("b1_red[(%d*stride/2) + %d = %f]\n",j,i/2,h_b1_red[(j*stride/2) + (i/2)]);
-//							printf("b2_red[(%d*stride/2) + %d = %f]\n\n",j,i/2,h_b2_red[(j*stride/2) + (i/2)]);
-//
-//						}
-//						else{
-//							printf("dpsis_vert_black[(%d*stride/2) + %d = %f]\n",j,i/2,h_dpsis_vert_black[(j*stride/2) + (i/2)]);
-//							printf("dpsis_horiz_black[(%d*stride/2) + %d = %f]\n",j,i/2,h_dpsis_horiz_black[(j*stride/2) + (i/2)]);
-//							printf("a11_black[(%d*stride/2) + %d = %f]\n",j,i/2,h_a11_black[(j*stride/2) + (i/2)]);
-//							printf("a12_black[(%d*stride/2) + %d = %f]\n",j,i/2,h_a12_black[(j*stride/2) + (i/2)]);
-//							printf("a22_black[(%d*stride/2) + %d = %f]\n",j,i/2,h_a22_black[(j*stride/2) + (i/2)]);
-//							printf("b1_black[(%d*stride/2) + %d = %f]\n",j,i/2,h_b1_black[(j*stride/2) + (i/2)]);
-//							printf("b2_black[(%d*stride/2) + %d = %f]\n\n",j,i/2,h_b2_black[(j*stride/2) + (i/2)]);
-//						}
-//					}
-//				}
-//				
 				for(int iter = 0 ; iter<params->niter_solver ; iter++){
-//					red_sor<<<gridSize,blockSize>>>(d_du,d_dv,params->sor_omega,width,height,stride);
-//					black_sor<<<gridSize,blockSize>>>(d_du,d_dv,params->sor_omega,width,height,stride);
-					
 					
 					red_sor_reordered<<<gridSize,blockSize>>>(d_du_red, d_dv_red, d_dpsis_horiz_red, d_dpsis_vert_red, d_a11_red, d_a12_red, d_a22_red, d_b1_red, d_b2_red, d_du_black, d_dv_black, d_dpsis_horiz_black, d_dpsis_vert_black, d_a11_black, d_a12_black, d_a22_black, d_b1_black, d_b2_black, params->sor_omega, width, height, stride);
 			
@@ -759,7 +685,6 @@ void compute_one_level(image_t *wx, image_t *wy, color_image_t *im1, color_image
         // add flow increment to current flow
         memcpy(wx->data,uu->data,uu->stride*uu->height*sizeof(float));
         memcpy(wy->data,vv->data,vv->stride*vv->height*sizeof(float));
-		
     }   
     // free memory
     image_delete_cuda(du); image_delete_cuda(dv);

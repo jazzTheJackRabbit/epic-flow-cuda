@@ -458,11 +458,11 @@ void compute_one_level(image_t *wx, image_t *wy, color_image_t *im1, color_image
 				checkCudaMemoryErrors(cudaMemcpy(d_dpsis_horiz,smooth_horiz->data,data_size,cudaMemcpyHostToDevice));
 				checkCudaMemoryErrors(cudaMemcpy(d_dpsis_vert,smooth_vert->data,data_size,cudaMemcpyHostToDevice));
 				
-				int threadCountX = 32;
-				int threadCountY = 32;
+				int threadCountX = params->threadX;
+				int threadCountY = params->threadY;
 				const dim3 blockSize(threadCountX,threadCountY,1);
 				int gridSizeX = (width % blockSize.x == 0) ? width/blockSize.x : (width/blockSize.x) + 1;
-				int gridSizeY = (height % blockSize.y == 0) ? height/blockSize.x : (height/blockSize.x) + 1;
+				int gridSizeY = (height % blockSize.y == 0) ? height/blockSize.y : (height/blockSize.y) + 1;
 				const dim3 gridSize(gridSizeX,gridSizeY,1);
 				
 				reorder_split<<<gridSize,blockSize>>>(d_du, d_dv, d_a11, d_a12, d_a22, d_b1, d_b2, d_dpsis_horiz, d_dpsis_vert, d_du_red, d_dv_red, d_dpsis_horiz_red, d_dpsis_vert_red, d_a11_red, d_a12_red, d_a22_red, d_b1_red, d_b2_red, d_du_black, d_dv_black, d_dpsis_horiz_black, d_dpsis_vert_black, d_a11_black, d_a12_black, d_a22_black, d_b1_black, d_b2_black, width, height, stride);

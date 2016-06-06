@@ -23,6 +23,8 @@ typedef struct variational_params_s {
   float sor_omega;         // omega parameter of sor method
   bool use_gpu;
   bool skip_epic;
+	int threadX;
+	int threadY;
 } variational_params_t;
 
 /* set flow parameters to default */

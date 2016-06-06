@@ -87,8 +87,12 @@ int main(int argc, char **argv){
         else if( isarg("-d") || isarg("-delta") ) 
             flow_params.delta= atof(argv[current_arg++]);  
         else if( isarg("-s") || isarg("-sigma") ) 
-            flow_params.sigma= atof(argv[current_arg++]); 
-        else if( isarg("-sintel") ){ 
+            flow_params.sigma= atof(argv[current_arg++]);
+		else if( isarg("-tx") || isarg("-threadX") )
+			flow_params.threadX= atof(argv[current_arg++]);
+		else if( isarg("-ty") || isarg("-threadY") )
+			flow_params.threadY= atof(argv[current_arg++]);
+        else if( isarg("-sintel") ){
             epic_params.pref_nn= 25; 
             epic_params.nn= 160; 
             epic_params.coef_kernel = 1.1f; 

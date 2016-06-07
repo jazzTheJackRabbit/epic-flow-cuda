@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  6 JUN 2016 23:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  7 JUN 2016 02:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1242,10 +1242,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 38--39
 
  []
 
-[1
-
-{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-<results/images/1_gpu_grid.png, id=110, 890.32625pt x 611.28375pt>
+<results/images/1_gpu_grid.png, id=94, 890.32625pt x 611.28375pt>
 File: results/images/1_gpu_grid.png Graphic file (type png)
 
 <use results/images/1_gpu_grid.png>
@@ -1257,66 +1254,74 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 42.
 See the caption package documentation for explanation.
 
+[1
 
+{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 Underfull \hbox (badness 10000) in paragraph at lines 45--46
 
  []
 
-[2 <./results/images/1_gpu_grid.png>]
 
-LaTeX Warning: Citation `x' on page 3 undefined on input line 60.
+Underfull \hbox (badness 10000) in paragraph at lines 53--54
+
+ []
+
+[2 <./results/images/1_gpu_grid.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 71--72
+
+ []
 
 <results/images/5-rb_order.png, id=125, 935.495pt x 656.4525pt>
 File: results/images/5-rb_order.png Graphic file (type png)
 
 <use results/images/5-rb_order.png>
-Package pdftex.def Info: results/images/5-rb_order.png used on input line 70.
-(pdftex.def)             Requested size: 341.43306pt x 239.58815pt.
+Package pdftex.def Info: results/images/5-rb_order.png used on input line 74.
+(pdftex.def)             Requested size: 497.92322pt x 349.40063pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 71.
+(caption)                particular \caption on input line 75.
 See the caption package documentation for explanation.
 
-[3]
-Underfull \hbox (badness 10000) in paragraph at lines 75--76
 
+Overfull \hbox (6.48808pt too wide) in paragraph at lines 74--75
+ [] 
  []
 
-<results/images/2_pinned_paged.png, id=138, 965.6075pt x 508.90125pt>
+[3] <results/images/2_pinned_paged.png, id=135, 965.6075pt x 508.90125pt>
 File: results/images/2_pinned_paged.png Graphic file (type png)
 
 <use results/images/2_pinned_paged.png>
 Package pdftex.def Info: results/images/2_pinned_paged.png used on input line 9
-1.
+3.
 (pdftex.def)             Requested size: 341.43306pt x 179.94292pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 92.
+(caption)                particular \caption on input line 94.
 See the caption package documentation for explanation.
 
 [4 <./results/images/5-rb_order.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 99--100
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 101--102
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 103--104
+
+ []
+
 [5 <./results/images/2_pinned_paged.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 116--117
+Underfull \hbox (badness 10000) in paragraph at lines 118--119
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 121--122
+Underfull \hbox (badness 10000) in paragraph at lines 123--124
 
  []
 
-<results/images/3_cpu_gpu_gt.png, id=153, 1758.57pt x 389.455pt>
+<results/images/3_cpu_gpu_gt.png, id=150, 1758.57pt x 389.455pt>
 File: results/images/3_cpu_gpu_gt.png Graphic file (type png)
 
 <use results/images/3_cpu_gpu_gt.png>
@@ -1384,20 +1389,16 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 207.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 207.
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: D3C55131BD083A2992117258A2388E5D;1491.
-
-
-LaTeX Warning: There were undefined references.
-
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 207.
  ) 
 Here is how much of TeX's memory you used:
  27646 strings out of 493117
- 645614 string characters out of 6135433
- 813588 words of memory out of 5000000
- 30551 multiletter control sequences out of 15000+600000
- 41976 words of font info for 86 fonts, out of 8000000 for 9000
+ 645620 string characters out of 6135433
+ 813587 words of memory out of 5000000
+ 30550 multiletter control sequences out of 15000+600000
+ 43210 words of font info for 87 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 69i,8n,78p,1771b,611s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 69i,8n,78p,1769b,611s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exi
 st, replaced by a fixed one
 
@@ -1406,14 +1407,13 @@ live/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texl
 ive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texliv
 e/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
 /2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/
-2014/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2014/texmf-
-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts
-/type1/urw/times/utmr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw
-/times/utmri8a.pfb>
-Output written on report.pdf (10 pages, 709838 bytes).
+2014/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2014/texmf
+-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2014/texmf-dist/font
+s/type1/urw/times/utmri8a.pfb>
+Output written on report.pdf (10 pages, 706030 bytes).
 PDF statistics:
- 236 PDF objects out of 1000 (max. 8388607)
- 204 compressed objects within 3 object streams
+ 233 PDF objects out of 1000 (max. 8388607)
+ 202 compressed objects within 3 object streams
  57 named destinations out of 1000 (max. 500000)
  198 words of extra memory for PDF output out of 10000 (max. 10000000)
 

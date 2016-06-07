@@ -1,66 +1,54 @@
 \begin{thebibliography}{10}
 
-\bibitem{7}
-Gpgpu. general-purpose computation using graphics hardware.
-\newblock 2009.
-
-\bibitem{12}
-S.~Baker, D.~Scharstein, J.~P. Lewis, S.~Roth, M.~J. Black, and R.~Szeliski.
-\newblock A database and evaluation methodology for optical flow.
-\newblock In {\em IJCV}, 2011.
-
-\bibitem{4}
-Piotr Doll\'ar and C.~Lawrence Zitnick.
-\newblock Structured forests for fast edge detection.
-\newblock In {\em ICCV}, 2013.
-
-\bibitem{8}
-J.J. Gibson.
-\newblock The perception of the visual world.
-\newblock Houghton Mifflin,, 1950.
+\bibitem{1}
+J.~Revaud, P.~Weinzaepfel, Z.~Harchaoui, and C.~Schmid, ``{EpicFlow:
+  Edge-Preserving Interpolation of Correspondences for Optical Flow},'' in {\em
+  {Computer Vision and Pattern Recognition}}, 2015.
 
 \bibitem{6}
-D~J.~Owens, Govindaraju Luebke, M.~Harris, J.~Kruger, A.~Lefohn, and
-  T.~Purcell.
-\newblock A survey of general-purpose computation on graphics hardware.
-\newblock In {\em Journal Computer Graphics Forum}, 2007.
+D.~J.~Owens, G.~Luebke, M.~Harris, J.~Kruger, A.~Lefohn, and T.~Purcell, ``A
+  survey of general-purpose computation on graphics hardware.,'' in {\em
+  Journal Computer Graphics Forum}, 2007.
 
-\bibitem{2}
-Elias Konstantinidis and Yiannis Cotronis.
-\newblock Accelerating the red/black sor method using gpus with cuda.
+\bibitem{7}
+``Gpgpu. general-purpose computation using graphics hardware,'' 2009.
 
-\bibitem{11}
-{NVIDIA Corporation}.
-\newblock {\em NVIDIA CUDA Compute Unified Device Architecture Programming
-  Guide}.
-\newblock NVIDIA Corporation, 2007.
-
-\bibitem{1}
-Jerome Revaud, Philippe Weinzaepfel, Zaid Harchaoui, and Cordelia Schmid.
-\newblock {EpicFlow: Edge-Preserving Interpolation of Correspondences for
-  Optical Flow}.
-\newblock In {\em {Computer Vision and Pattern Recognition}}, 2015.
+\bibitem{8}
+J.~Gibson, ``The perception of the visual world.,'' Houghton Mifflin,, 1950.
 
 \bibitem{9}
-C.~S Royden and K.~D Moore.
-\newblock Use of speed cues in the detection of moving objects by moving
-  observers.
-\newblock In {\em Vision Research}, volume~59, 2012.
+C.~S. Royden and K.~D. Moore, ``Use of speed cues in the detection of moving
+  objects by moving observers.,'' in {\em Vision Research}, vol.~59, 2012.
+
+\bibitem{2}
+E.~Konstantinidis and Y.~Cotronis., ``Accelerating the red/black sor method
+  using gpus with cuda..''.
 
 \bibitem{3}
-Philippe Weinzaepfel, Jerome Revaud, Zaid Harchaoui, and Cordelia Schmid.
-\newblock {DeepFlow: Large displacement optical flow with deep matching}.
-\newblock In {\em {IEEE Intenational Conference on Computer Vision (ICCV)}},
-  Sydney, Australia, December 2013.
+P.~Weinzaepfel, J.~Revaud, Z.~Harchaoui, and C.~Schmid, ``{DeepFlow: Large
+  displacement optical flow with deep matching},'' in {\em {IEEE Intenational
+  Conference on Computer Vision (ICCV)}}, (Sydney, Australia), Dec. 2013.
 
-\bibitem{10}
-D.M. Young.
-\newblock Iterative solution of large linear systems.
-\newblock In {\em Academic Press}, 1971.
+\bibitem{4}
+P.~Doll\'ar and C.~L. Zitnick, ``Structured forests for fast edge detection,''
+  in {\em ICCV}, 2013.
 
 \bibitem{5}
-H.~Zimmer, A.~Bruhn, and J.~Weickert.
-\newblock Optic flow in harmony.
-\newblock In {\em IJCV}, 2011.
+H.~Zimmer, A.~Bruhn, and J.~Weickert, ``Optic flow in harmony.,'' in {\em
+  IJCV}, 2011.
+
+\bibitem{10}
+D.~Young, ``Iterative solution of large linear systems.,'' in {\em Academic
+  Press}, 1971.
+
+\bibitem{11}
+{NVIDIA Corporation}, {\em NVIDIA CUDA Compute Unified Device Architecture
+  Programming Guide}.
+\newblock NVIDIA Corporation, 2007.
+
+\bibitem{12}
+S.~Baker, D.~Scharstein, J.~P. Lewis, S.~Roth, M.~J. Black, and R.~Szeliski,
+  ``A database and evaluation methodology for optical flow.,'' in {\em IJCV},
+  2011.
 
 \end{thebibliography}

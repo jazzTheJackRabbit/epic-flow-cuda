@@ -1,0 +1,5 @@
+Implementation,Average Endpoint Error
+CPU,0.3806
+GPU - Global Memory,0.3806
+GPU - Texture Memory,0.3806
+GPU - Memory Reorganization,0.3806

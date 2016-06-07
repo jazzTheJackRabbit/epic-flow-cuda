@@ -1,0 +1,5 @@
+Type of Indexing,Name,Time
+Conditional Indexing,black\_sor\_reordered,146.34ms
+Conditional Indexing,red\_sor\_reordered,142.61ms
+Alternate Indexing,black\_sor\_reordered,128.20ms
+Alternate Indexing,red\_sor\_reordered,129.05ms

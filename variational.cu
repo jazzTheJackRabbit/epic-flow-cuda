@@ -60,75 +60,77 @@ void red_sor_reordered(float *du_red, float *dv_red, float *dpsis_horiz_red, flo
 	float dpsis_vert_top;
 	float dpsis_vert_center;
 	
-	sigma_u = 0.0f;
-	sigma_v = 0.0f;
-	sum_dpsis = 0.0f;
-	
-	//If not the first row
-	if(j>0){
-		//Top neighbor
-		dpsis_vert_top = dpsis_vert_black[((j-1)*stride/2) + i/2];
-		sigma_u -= dpsis_vert_top * du_black[((j-1)*stride/2) + i/2];
-		sigma_v -= dpsis_vert_top * dv_black[((j-1)*stride/2) + i/2];
-		sum_dpsis += dpsis_vert_top;
-	}
-	
-	//If not first column
-	if(i>0){
-		if(j % 2 == 0 ){
-			//RED NODES: If even row, left neighbor is left neighbor
-			dpsis_horiz_left = dpsis_horiz_black[(j*stride/2) + (i/2)-1];
-			sigma_u -= dpsis_horiz_left * du_black[((j)*stride/2) + (i/2)-1];
-			sigma_v -= dpsis_horiz_left * dv_black[((j)*stride/2) + (i/2)-1];
-			sum_dpsis += dpsis_horiz_left;
+//	if ((i+j) % 2 == 0) {
+		sigma_u = 0.0f;
+		sigma_v = 0.0f;
+		sum_dpsis = 0.0f;
+		
+		//If not the first row
+		if(j>0){
+			//Top neighbor
+			dpsis_vert_top = dpsis_vert_black[((j-1)*stride/2) + i/2];
+			sigma_u -= dpsis_vert_top * du_black[((j-1)*stride/2) + i/2];
+			sigma_v -= dpsis_vert_top * dv_black[((j-1)*stride/2) + i/2];
+			sum_dpsis += dpsis_vert_top;
 		}
-		else{
-			//RED NODES: If odd row, left neighbor is center neighbor
-			dpsis_horiz_left = dpsis_horiz_black[(j*stride/2)+(i/2)];
-			sigma_u -= dpsis_horiz_left * du_black[((j)*stride/2) + (i/2)];
-			sigma_v -= dpsis_horiz_left * dv_black[((j)*stride/2) + (i/2)];
-			sum_dpsis += dpsis_horiz_left;
+		
+		//If not first column
+		if(i>0){
+			if(j % 2 == 0 ){
+				//RED NODES: If even row, left neighbor is left neighbor
+				dpsis_horiz_left = dpsis_horiz_black[(j*stride/2) + (i/2)-1];
+				sigma_u -= dpsis_horiz_left * du_black[((j)*stride/2) + (i/2)-1];
+				sigma_v -= dpsis_horiz_left * dv_black[((j)*stride/2) + (i/2)-1];
+				sum_dpsis += dpsis_horiz_left;
+			}
+			else{
+				//RED NODES: If odd row, left neighbor is center neighbor
+				dpsis_horiz_left = dpsis_horiz_black[(j*stride/2)+(i/2)];
+				sigma_u -= dpsis_horiz_left * du_black[((j)*stride/2) + (i/2)];
+				sigma_v -= dpsis_horiz_left * dv_black[((j)*stride/2) + (i/2)];
+				sum_dpsis += dpsis_horiz_left;
+			}
 		}
-	}
-	
-	//If not last row
-	if(j<height - 1){
-		//Bottom neighbor
-		dpsis_vert_center = dpsis_vert_red[((j)*stride/2) + (i/2)];
-		sigma_u -= dpsis_vert_center * du_black[((j+1)*stride/2) + i/2];
-		sigma_v -= dpsis_vert_center * dv_black[((j+1)*stride/2) + i/2];
-		sum_dpsis += dpsis_vert_center;
-	}
-	
-	//If not last column
-	if(i<width-1){
-		if(j % 2 == 0){
-			//RED NODES: If even row, right neighbor is center neighbor
-			dpsis_horiz_center = dpsis_horiz_red[(j*stride/2) + (i/2)];
-			sigma_u -= dpsis_horiz_center * du_black[((j)*stride/2) + (i/2)];
-			sigma_v -= dpsis_horiz_center * dv_black[((j)*stride/2) + (i/2)];
-			sum_dpsis += dpsis_horiz_center;
+		
+		//If not last row
+		if(j<height - 1){
+			//Bottom neighbor
+			dpsis_vert_center = dpsis_vert_red[((j)*stride/2) + (i/2)];
+			sigma_u -= dpsis_vert_center * du_black[((j+1)*stride/2) + i/2];
+			sigma_v -= dpsis_vert_center * dv_black[((j+1)*stride/2) + i/2];
+			sum_dpsis += dpsis_vert_center;
 		}
-		else{
-			//RED NODES: If even row, right neighbor is right neighbor
-			dpsis_horiz_center = dpsis_horiz_red[(j*stride/2) + (i/2)];
-			sigma_u -= dpsis_horiz_center * du_black[((j)*stride/2) + (i/2) + 1];
-			sigma_v -= dpsis_horiz_center * dv_black[((j)*stride/2) + (i/2) + 1];
-			sum_dpsis += dpsis_horiz_center;
+		
+		//If not last column
+		if(i<width-1){
+			if(j % 2 == 0){
+				//RED NODES: If even row, right neighbor is center neighbor
+				dpsis_horiz_center = dpsis_horiz_red[(j*stride/2) + (i/2)];
+				sigma_u -= dpsis_horiz_center * du_black[((j)*stride/2) + (i/2)];
+				sigma_v -= dpsis_horiz_center * dv_black[((j)*stride/2) + (i/2)];
+				sum_dpsis += dpsis_horiz_center;
+			}
+			else{
+				//RED NODES: If even row, right neighbor is right neighbor
+				dpsis_horiz_center = dpsis_horiz_red[(j*stride/2) + (i/2)];
+				sigma_u -= dpsis_horiz_center * du_black[((j)*stride/2) + (i/2) + 1];
+				sigma_v -= dpsis_horiz_center * dv_black[((j)*stride/2) + (i/2) + 1];
+				sum_dpsis += dpsis_horiz_center;
+			}
 		}
-	}
-	
-	A11 = d_a11_red[(j*stride/2) + (i/2)] + sum_dpsis;
-	A12 = d_a12_red[(j*stride/2) + (i/2)];
-	A22 = d_a22_red[(j*stride/2) + (i/2)] + sum_dpsis;
-	
-	det = A11*A22-A12*A12;
-	
-	B1 = d_b1_red[(j*stride/2) + (i/2)] - sigma_u;
-	B2 = d_b2_red[(j*stride/2) + (i/2)] - sigma_v;
-	
-	du_red[(j*stride/2) + (i/2)] = (1.0f-omega) * du_red[(j*stride/2) + (i/2)] + omega*( A22*B1-A12*B2)/det;
-	dv_red[(j*stride/2) + (i/2)] = (1.0f-omega) * dv_red[(j*stride/2) + (i/2)] + omega*(-A12*B1+A11*B2)/det;
+		
+		A11 = d_a11_red[(j*stride/2) + (i/2)] + sum_dpsis;
+		A12 = d_a12_red[(j*stride/2) + (i/2)];
+		A22 = d_a22_red[(j*stride/2) + (i/2)] + sum_dpsis;
+		
+		det = A11*A22-A12*A12;
+		
+		B1 = d_b1_red[(j*stride/2) + (i/2)] - sigma_u;
+		B2 = d_b2_red[(j*stride/2) + (i/2)] - sigma_v;
+		
+		du_red[(j*stride/2) + (i/2)] = (1.0f-omega) * du_red[(j*stride/2) + (i/2)] + omega*( A22*B1-A12*B2)/det;
+		dv_red[(j*stride/2) + (i/2)] = (1.0f-omega) * dv_red[(j*stride/2) + (i/2)] + omega*(-A12*B1+A11*B2)/det;
+//	}
 }
 
 __global__
@@ -159,75 +161,78 @@ void black_sor_reordered(float *du_red, float *dv_red, float *dpsis_horiz_red, f
 	float dpsis_vert_top;
 	float dpsis_vert_center;
 	
-	sigma_u = 0.0f;
-	sigma_v = 0.0f;
-	sum_dpsis = 0.0f;
-	
-	//If not the first row
-	if(j>0){
-		//Top neighbor
-		dpsis_vert_top = dpsis_vert_red[((j-1)*stride/2) + i/2];
-		sigma_u -= dpsis_vert_top * du_red[((j-1)*stride/2) + i/2];
-		sigma_v -= dpsis_vert_top * dv_red[((j-1)*stride/2) + i/2];
-		sum_dpsis += dpsis_vert_top;
-	}
-	
-	//If not first column
-	if(i>0){
-		if(j % 2 == 0 ){
-			//BLACK NODES: If even row, left neighbor is center neighbor
-			dpsis_horiz_left = dpsis_horiz_red[(j*stride/2) + (i/2)];
-			sigma_u -= dpsis_horiz_left * du_red[((j)*stride/2) + (i/2)];
-			sigma_v -= dpsis_horiz_left * dv_red[((j)*stride/2) + (i/2)];
-			sum_dpsis += dpsis_horiz_left;
+//	if ((i+j) % 2 != 0) {
+		sigma_u = 0.0f;
+		sigma_v = 0.0f;
+		sum_dpsis = 0.0f;
+		
+		//If not the first row
+		if(j>0){
+			//Top neighbor
+			dpsis_vert_top = dpsis_vert_red[((j-1)*stride/2) + i/2];
+			sigma_u -= dpsis_vert_top * du_red[((j-1)*stride/2) + i/2];
+			sigma_v -= dpsis_vert_top * dv_red[((j-1)*stride/2) + i/2];
+			sum_dpsis += dpsis_vert_top;
 		}
-		else{
-			//BLACK NODES: If odd row, left neighbor is left neighbor
-			dpsis_horiz_left = dpsis_horiz_red[(j*stride/2)+(i/2) - 1];
-			sigma_u -= dpsis_horiz_left * du_red[((j)*stride/2) + (i/2) - 1];
-			sigma_v -= dpsis_horiz_left * dv_red[((j)*stride/2) + (i/2) - 1];
-			sum_dpsis += dpsis_horiz_left;
+		
+		//If not first column
+		if(i>0){
+			if(j % 2 == 0 ){
+				//BLACK NODES: If even row, left neighbor is center neighbor
+				dpsis_horiz_left = dpsis_horiz_red[(j*stride/2) + (i/2)];
+				sigma_u -= dpsis_horiz_left * du_red[((j)*stride/2) + (i/2)];
+				sigma_v -= dpsis_horiz_left * dv_red[((j)*stride/2) + (i/2)];
+				sum_dpsis += dpsis_horiz_left;
+			}
+			else{
+				//BLACK NODES: If odd row, left neighbor is left neighbor
+				dpsis_horiz_left = dpsis_horiz_red[(j*stride/2)+(i/2) - 1];
+				sigma_u -= dpsis_horiz_left * du_red[((j)*stride/2) + (i/2) - 1];
+				sigma_v -= dpsis_horiz_left * dv_red[((j)*stride/2) + (i/2) - 1];
+				sum_dpsis += dpsis_horiz_left;
+			}
 		}
-	}
-	
-	//If not last row
-	if(j<height - 1){
-		//Bottom neighbor
-		dpsis_vert_center = dpsis_vert_black[((j)*stride/2) + (i/2)];
-		sigma_u -= dpsis_vert_center * du_red[((j+1)*stride/2) + i/2];
-		sigma_v -= dpsis_vert_center * dv_red[((j+1)*stride/2) + i/2];
-		sum_dpsis += dpsis_vert_center;
-	}
-	
-	//If not last column
-	if(i<width-1){
-		if(j % 2 == 0){
-			//BLACK NODES: If even row, right neighbor is right neighbor
-			dpsis_horiz_center = dpsis_horiz_black[(j*stride/2) + (i/2)];
-			sigma_u -= dpsis_horiz_center * du_red[((j)*stride/2) + (i/2) + 1];
-			sigma_v -= dpsis_horiz_center * dv_red[((j)*stride/2) + (i/2) + 1];
-			sum_dpsis += dpsis_horiz_center;
+		
+		//If not last row
+		if(j<height - 1){
+			//Bottom neighbor
+			dpsis_vert_center = dpsis_vert_black[((j)*stride/2) + (i/2)];
+			sigma_u -= dpsis_vert_center * du_red[((j+1)*stride/2) + i/2];
+			sigma_v -= dpsis_vert_center * dv_red[((j+1)*stride/2) + i/2];
+			sum_dpsis += dpsis_vert_center;
 		}
-		else{
-			//BLACK NODES: If even row, right neighbor is center neighbor
-			dpsis_horiz_center = dpsis_horiz_black[(j*stride/2) + (i/2)];
-			sigma_u -= dpsis_horiz_center * du_red[((j)*stride/2) + (i/2)];
-			sigma_v -= dpsis_horiz_center * dv_red[((j)*stride/2) + (i/2)];
-			sum_dpsis += dpsis_horiz_center;
+		
+		//If not last column
+		if(i<width-1){
+			if(j % 2 == 0){
+				//BLACK NODES: If even row, right neighbor is right neighbor
+				dpsis_horiz_center = dpsis_horiz_black[(j*stride/2) + (i/2)];
+				sigma_u -= dpsis_horiz_center * du_red[((j)*stride/2) + (i/2) + 1];
+				sigma_v -= dpsis_horiz_center * dv_red[((j)*stride/2) + (i/2) + 1];
+				sum_dpsis += dpsis_horiz_center;
+			}
+			else{
+				//BLACK NODES: If even row, right neighbor is center neighbor
+				dpsis_horiz_center = dpsis_horiz_black[(j*stride/2) + (i/2)];
+				sigma_u -= dpsis_horiz_center * du_red[((j)*stride/2) + (i/2)];
+				sigma_v -= dpsis_horiz_center * dv_red[((j)*stride/2) + (i/2)];
+				sum_dpsis += dpsis_horiz_center;
+			}
 		}
-	}
-	
-	A11 = d_a11_black[(j*stride/2) + (i/2)] + sum_dpsis;
-	A12 = d_a12_black[(j*stride/2) + (i/2)];
-	A22 = d_a22_black[(j*stride/2) + (i/2)] + sum_dpsis;
-	
-	det = A11*A22-A12*A12;
-	
-	B1 = d_b1_black[(j*stride/2) + (i/2)] - sigma_u;
-	B2 = d_b2_black[(j*stride/2) + (i/2)] - sigma_v;
-	
-	du_black[(j*stride/2) + (i/2)] = (1.0f-omega) * du_black[(j*stride/2) + (i/2)] + omega*( A22*B1-A12*B2)/det;
-	dv_black[(j*stride/2) + (i/2)] = (1.0f-omega) * dv_black[(j*stride/2) + (i/2)] + omega*(-A12*B1+A11*B2)/det;
+		
+		A11 = d_a11_black[(j*stride/2) + (i/2)] + sum_dpsis;
+		A12 = d_a12_black[(j*stride/2) + (i/2)];
+		A22 = d_a22_black[(j*stride/2) + (i/2)] + sum_dpsis;
+		
+		det = A11*A22-A12*A12;
+		
+		B1 = d_b1_black[(j*stride/2) + (i/2)] - sigma_u;
+		B2 = d_b2_black[(j*stride/2) + (i/2)] - sigma_v;
+		
+		du_black[(j*stride/2) + (i/2)] = (1.0f-omega) * du_black[(j*stride/2) + (i/2)] + omega*( A22*B1-A12*B2)/det;
+		dv_black[(j*stride/2) + (i/2)] = (1.0f-omega) * dv_black[(j*stride/2) + (i/2)] + omega*(-A12*B1+A11*B2)/det;
+
+//	}
 }
 
 
@@ -328,6 +333,7 @@ image_t *image_new_cuda(const int width, const int height){
 	image->height = height;
 	image->stride = ( (width+3) / 4 ) * 4;
 	cudaMallocHost(&image->data, ((image->stride*height*sizeof(float))));
+//	image->data = (float *)malloc(image->stride*height*sizeof(float));
 	if(image->data == NULL){
 		fprintf(stderr, "Error: image_new_cuda() - not enough memory !\n");
 		exit(1);

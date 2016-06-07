@@ -1,0 +1,5 @@
+Implementation,Execution Time (s) - Energy Minimization,Computation Time (ms) - SOR
+CPU,2.0129,867.80
+GPU - Global Memory,1.3565,480.33
+GPU - Texture Memory,1.2995,475.15
+GPU - Memory Reorganization,0.98854,340.68

@@ -1,0 +1,5 @@
+Time,Time,Calls,Avg,Min,Max,Operation
+47.79,542.36ms,45,12.052ms,12.007ms,12.110ms,CUDA memcpy HtoD
+20.92,237.43ms,150,1.5829ms,1.5103ms,2.1174ms,red\_sor kernel
+20.91,237.26ms,150,1.5817ms,1.5084ms,2.1159ms,black\_sor kernel
+10.37,117.72ms,10,11.772ms,11.752ms,11.801ms,CUDA memcpy DtoH

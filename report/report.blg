@@ -1,0 +1,53 @@
+This is BibTeX, Version 0.99d (TeX Live 2014)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: report.aux
+The style file: plain.bst
+Database file #1: report.bib
+Warning--I didn't find a database entry for "x"
+Warning--to sort, need author or key in 7
+Warning--empty author in 7
+Warning--empty booktitle in 7
+Warning--empty booktitle in 8
+Warning--empty note in 2
+You've used 12 entries,
+            2118 wiz_defined-function locations,
+            547 strings with 5429 characters,
+and the built_in function-call counts, 3426 in all, are:
+= -- 285
+> -- 191
+< -- 1
++ -- 79
+- -- 64
+* -- 205
+:= -- 584
+add.period$ -- 34
+call.type$ -- 12
+change.case$ -- 67
+chr.to.int$ -- 0
+cite$ -- 17
+duplicate$ -- 156
+empty$ -- 309
+format.name$ -- 64
+if$ -- 712
+int.to.chr$ -- 0
+int.to.str$ -- 12
+missing$ -- 12
+newline$ -- 61
+num.names$ -- 22
+pop$ -- 113
+preamble$ -- 1
+purify$ -- 56
+quote$ -- 0
+skip$ -- 81
+stack$ -- 0
+substring$ -- 63
+swap$ -- 19
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 46
+warning$ -- 5
+while$ -- 22
+width$ -- 14
+write$ -- 118
+(There were 6 warnings)

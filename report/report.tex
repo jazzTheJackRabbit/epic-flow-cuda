@@ -16,6 +16,31 @@
 \usepackage{mathptmx}% http://ctan.org/pkg/mathptmx
 \setlength{\columnsep}{0.3in}
 
+\usepackage{csvsimple} % For csv importing.
+
+\makeatletter
+\csvset{
+  autotabularcenter/.style={
+    file=#1,
+    after head=\csv@pretable\begin{tabular}{|*{\csv@columncount}{c|}}\csv@tablehead,
+    table head=\hline\csvlinetotablerow\\\hline,
+    late after line=\\,
+    table foot=\\\hline,
+    late after last line=\csv@tablefoot\end{tabular}\csv@posttable,
+    command=\csvlinetotablerow},
+  autobooktabularcenter/.style={
+    file=#1,
+    after head=\csv@pretable\begin{tabular}{*{\csv@columncount}{c}}\csv@tablehead,
+    table head=\toprule\csvlinetotablerow\\\midrule,
+    late after line=\\,
+    table foot=\\\bottomrule,
+    late after last line=\csv@tablefoot\end{tabular}\csv@posttable,
+    command=\csvlinetotablerow},
+}
+\makeatother
+\newcommand{\csvautotabularcenter}[2][]{\csvloop{autotabularcenter={#2},#1}}
+\newcommand{\csvautobooktabularcenter}[2][]{\csvloop{autobooktabularcenter={#2},#1}}
+
 \title{Parallel Acceleration of EpicFlow with Red/Black Successive Over Relaxation Using GPUs with CUDA}
 \author{
   Amogh Param\\
@@ -144,7 +169,8 @@
 	\textbf{Figure 4} shows the optical flow visualized from the output of the GPU implementation, the CPU implementation and the ground truth flow for a sample sequence (Rubber Whale) in the Middlebury dataset \cite{12}. \textbf{Table 1} shows the average endpoint error for the optical flow estimation using the CPU implementations and the GPU implementations. For both implementations, we use the locally affine interpolation from \cite{1} for a sparse set of matches from \cite{3}. 
 
 	\begin{center}
-	\csvautotabular{results/tables/1_aee.csv}	
+	\centering
+	\csvautotabularcenter{results/tables/1_aee.csv}	
 	\captionof{table}{Average End Point Errors of Optical Flow Estimation}
 	\end{center}
 
@@ -154,7 +180,7 @@
 	The first optimization for global memory access was to allocate data directly on the pinned memory, instead of pageable host memory. \textbf{Table 2} shows that allocating and accessing pinned memory is faster than that of pageable host memory, although it provides only a small speedup.
 
 	\begin{center}
-	\csvautotabular{results/tables/2_pinned_paged.csv}	
+	\csvautotabularcenter{results/tables/2_pinned_paged.csv}	
 	\captionof{table}{Execution Time for Pinned v/s Paged Memory Allocation}
 	\end{center}
 
@@ -167,21 +193,21 @@
 	\textbf{Figure 4} shows the execution time for every pair of image in different sequences in the Middlebury dataset. \textbf{Table 3} shows the total execution time for the entire energy minimization process and computation time for the SOR method (RB-SOR for GPU), averaged for the images in the Middlebury dataset. As expected, all the GPU implementations perform faster than the CPU implementation. Specifically, the reordering of elements of the same color into two separate matrices performs (on average) 2x faster than the CPU benchmark for total execution time and 2.55x faster in terms of computation time. This indicates that memory coalescing is critical in improving the speed of execution and computation. Global memory with no other optimization is the slowest among the GPU implementations. Although it is 1.48x and 1.8x faster in terms of execution time and computation time, respectively, direct global memory access seems to be the bottleneck. Texture memory access pattern provides caching of local neighborhood access and provides a 1.54x and 1.82x improvement in execution and computation time respectively, over the CPU implementation. However, it surprisingly doesn’t provide a huge improvement over direct global memory access. This is most likely because we use a one-dimensional texture. We believe that replacing one dimensional textures with two dimensional textures would improve caching of neighborhood elements and as a result improve the speed of computation.
 
 	\begin{center}
-	\csvautotabular{results/tables/3_compute_time.csv}	
+	\csvautotabularcenter{results/tables/3_compute_time.csv}	
 	\captionof{table}{Execution Time for CPU and GPU implementations}
 	\end{center}
 
 	The speed gain achieved in the computation time is  higher than that of execution time primarily because the execution time takes into consideration the entire process of estimating the flow from the interpolation of dense matches and the computation time only considers the time taken by the SOR method/ Red-black SOR method. Clearly, the raw computational power of the GPU performs better than the serial CPU implementation of SOR (as evident from the computation time), but since the GPU implementation involves allocating memory on the GPU, transferring data between CPU memory and GPU memory, computing flow updates and writing them back to the CPU memory, creates a bottleneck in terms of read-write memory bandwidth. \textbf{Table 4} shows an example of profiling results obtained by running the parallel implementation of SOR on the GPU. 58.16\% of the execution time is taken up by the memory copy operation to transfer data between the CPU memory and GPU memory. As a result, the maximum optimization for this application is limited by the maximum memory bandwidth.
 
 	\begin{center}
-	\csvautotabular{results/tables/4_profile.csv}
+	\csvautotabularcenter{results/tables/4_profile.csv}
 	\captionof{table}{GPU Implementation Profiling}
 	\end{center}
 
 	Furthermore, the alternate indexing scheme used to address memory locations is important while considering the speed of the computation. As we see from Table 4, using a conditional branch within the kernels to choose between the red and black elements is slower than using the alternate indexing scheme that allows access to only red or only black elements within a specific kernel. Table Y shows a comparison of the time profiles of the two indexing schemes. The alternate indexing provides an average of 1.14x speedup in execution time as compared to the conditional indexing.
 
 	\begin{center}
-	\csvautotabular{results/tables/5_alternate_index.csv}
+	\csvautotabularcenter{results/tables/5_alternate_index.csv}
 	\captionof{table}{Kernel Execution time for indexing schemes}
 	\end{center}
 
@@ -189,11 +215,11 @@
 	\textbf{Table 6} shows the execution times for different configurations of the best performing (memory reorganized) GPU implementation. It performs best with a 16x8 threads in a block configuration, with an execution time of 965.2 ms. The 8x4 configuration is the slowest as there are only a total of 32 threads in a block and many blocks are created during the computation. Since blocks are not guaranteed to be assigned to the same streaming multiprocessor, and thus, cannot be guaranteed to be executed at the exact same time as the others, some of the thread blocks are blocked until some of the others finish. As a result, this slows down the speed of execution. 
 
 	\begin{center}
-	\csvautotabular{results/tables/6_thread_blocks_1.csv}
+	\csvautotabularcenter{results/tables/6_thread_blocks_1.csv}
 	\end{center}
 
 	\begin{center}
-	\csvautotabular{results/tables/7_thread_blocks_2.csv}
+	\csvautotabularcenter{results/tables/7_thread_blocks_2.csv}
 	\captionof{table}{Thread block configuration}
 	\end{center}
 

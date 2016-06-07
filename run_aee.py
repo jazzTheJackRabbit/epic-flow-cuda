@@ -35,7 +35,7 @@ else:
 
 									subprocess.call(["./run_all.sh", ref_image, next_image, str(base_frame_name + "-edge-file"), str(base_frame_name + "-match-file"), str(base_frame_name + ".flo"),str(base_frame_name + "-flow.png"),"-tx "+str(threadX),"-ty "+str(threadY),"-gpu"])
 								elif(sys.argv[1] == "-cpu"):
-									subprocess.call(["./run_all.sh", ref_image, next_image, str(base_frame_name + "-edge-file"), str(base_frame_name + "-match-file"), str(base_frame_name + "-flow.flo"),str(base_frame_name + "-flow.png"),"","",""])
+									subprocess.call(["./run_all.sh", ref_image, next_image, str(base_frame_name + "-edge-file"), str(base_frame_name + "-match-file"), str(base_frame_name + ".flo"),str(base_frame_name + "-flow.png"),"","",""])
 
 					# subprocess.call(["./run_movie_maker.sh",str(folder_path+"/frame%02d.png"),str(folder_path+"/processed/original-movie.mp4")])
 					# subprocess.call(["./run_movie_maker.sh",str(folder_path+"/processed/frame%02d.png"),str(folder_path+"/processed/flow-movie.mp4")])

@@ -12,7 +12,7 @@
 \BOOKMARK [3][-]{subsubsection.4.1.2}{Texture Memory}{subsection.4.1}% 12
 \BOOKMARK [2][-]{subsection.4.2}{Coalesced memory access}{section.4}% 13
 \BOOKMARK [3][-]{subsubsection.4.2.1}{Memory Reorganization}{subsection.4.2}% 14
-\BOOKMARK [2][-]{subsection.4.3}{Alternate Indexing}{section.4}% 15
+\BOOKMARK [2][-]{subsection.4.3}{Thread Divergence and Alternate Indexing}{section.4}% 15
 \BOOKMARK [1][-]{section.5}{Performance Results and Benchmarks}{}% 16
 \BOOKMARK [2][-]{subsection.5.1}{Optical Flow Estimation}{section.5}% 17
 \BOOKMARK [2][-]{subsection.5.2}{Computation and Execution Time}{section.5}% 18

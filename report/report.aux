@@ -18,7 +18,6 @@
 \providecommand\HyField@AuxAddToCoFields[2]{}
 \citation{1}
 \citation{6}
-\citation{7}
 \citation{8}
 \citation{9}
 \select@language{english}
@@ -28,14 +27,15 @@
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}}
 \citation{1}
 \citation{2}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces GPU Architecture and Structure of Communication\relax }}{2}{figure.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces GPU Architecture and Structure of Communication. 1) Global, Constant and Texture Memory are shared by all the threads. 2) Every thread block shares a common 'shared memory' among its threads. 3) Every thread has access to its own local memory that is not visible to the other threads.\relax }}{2}{figure.1}}
 \@writefile{toc}{\contentsline {section}{\numberline {2}Graphical Processing Unit}{2}{section.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}CUDA Programming Model and Architecture}{2}{subsection.2.1}}
 \citation{1}
 \citation{3}
 \citation{4}
 \citation{5}
 \citation{10}
+\citation{13}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}CUDA Programming Model and Architecture}{3}{subsection.2.1}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Optical Flow Estimation}{3}{section.3}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Edge Preserving Interpolation of Correspondences}{3}{subsection.3.1}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Variational Energy Minimization}{3}{subsection.3.2}}
@@ -44,17 +44,15 @@
 \citation{11}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces (1) Red black ordering of initial image matrix. (2) Matrix of red nodes. (3) Matrix of black nodes. (4-5) Black neighborhood around red nodes (6-7) Red neighborhood around black nodes.\relax }}{4}{figure.2}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Implementations and Experiments}{4}{section.4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Pinned v/s Paged Memory Allocation\relax }}{5}{figure.3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Pinned v/s Paged Memory Allocation. 1) Pageable Data transfer has the overhead of copying data from pageable memory to pinned memory and then to the GPU. 2) Pinned Data Transfer directly allocates memory on the pinned memory and then transfers to the GPU\relax }}{5}{figure.3}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Global Memory}{5}{subsection.4.1}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.1}Comparison of Pinned and Paged Memory}{5}{subsubsection.4.1.1}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.2}Texture Memory}{5}{subsubsection.4.1.2}}
 \citation{2}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Coalesced memory access}{6}{subsection.4.2}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.1}Memory Reorganization}{6}{subsubsection.4.2.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Alternate Indexing}{6}{subsection.4.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Thread Divergence and Alternate Indexing}{6}{subsection.4.3}}
 \citation{12}
-\citation{1}
-\citation{3}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Optical flow estimates from GPU and CPU implementations, and original ground truth optical flow.\relax }}{7}{figure.4}}
 \@writefile{toc}{\contentsline {section}{\numberline {5}Performance Results and Benchmarks}{7}{section.5}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Optical Flow Estimation}{7}{subsection.5.1}}
@@ -62,23 +60,24 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Computation and Execution Time}{7}{subsection.5.2}}
 \@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Execution Time for Pinned v/s Paged Memory Allocation\relax }}{7}{table.2}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Execution Time for GPU and CPU implementations.\relax }}{8}{figure.5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Execution Time for GPU and CPU implementations.\relax }}{8}{figure.6}}
 \@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Execution Time for CPU and GPU implementations\relax }}{8}{table.3}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces GPU Implementation Profiling. The largest chunk of time is taken for the memcpy between HtoD (Host to Device)\relax }}{9}{table.4}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Kernel Execution time for indexing schemes\relax }}{9}{table.5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Thread Configuration}{9}{subsection.5.3}}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Tuning of thread block size configuration\relax }}{9}{table.6}}
 \bibstyle{ieeetr}
 \bibdata{report}
 \bibcite{1}{1}
-\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces GPU Implementation Profiling\relax }}{9}{table.4}}
-\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Kernel Execution time for indexing schemes\relax }}{9}{table.5}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Thread Configuration}{9}{subsection.5.3}}
-\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Thread block configuration\relax }}{9}{table.6}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusions}{9}{section.6}}
 \bibcite{6}{2}
-\bibcite{7}{3}
-\bibcite{8}{4}
-\bibcite{9}{5}
-\bibcite{2}{6}
-\bibcite{3}{7}
-\bibcite{4}{8}
-\bibcite{5}{9}
-\bibcite{10}{10}
+\bibcite{8}{3}
+\bibcite{9}{4}
+\bibcite{2}{5}
+\bibcite{3}{6}
+\bibcite{4}{7}
+\bibcite{5}{8}
+\bibcite{10}{9}
+\bibcite{13}{10}
 \bibcite{11}{11}
 \bibcite{12}{12}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusions}{10}{section.6}}

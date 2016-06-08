@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  7 JUN 2016 02:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  8 JUN 2016 00:42
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1217,188 +1217,202 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 54.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 55.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 56.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 56.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 56.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 56.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 56.
 
 Underfull \hbox (badness 10000) in paragraph at lines 59--60
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 61--62
-
- []
-
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 63.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 63.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 63.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 63.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 63.
-
-Underfull \hbox (badness 10000) in paragraph at lines 63--64
-
- []
-
-<results/images/1_gpu_grid.png, id=94, 890.32625pt x 611.28375pt>
+<results/images/1_gpu_grid.png, id=93, 890.32625pt x 611.28375pt>
 File: results/images/1_gpu_grid.png Graphic file (type png)
 
 <use results/images/1_gpu_grid.png>
-Package pdftex.def Info: results/images/1_gpu_grid.png used on input line 66.
+Package pdftex.def Info: results/images/1_gpu_grid.png used on input line 64.
 (pdftex.def)             Requested size: 455.24408pt x 312.56207pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 67.
+(caption)                particular \caption on input line 65.
 See the caption package documentation for explanation.
 
 [1
 
 {/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 70--71
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 78--79
+Underfull \hbox (badness 10000) in paragraph at lines 68--69
 
  []
 
 [2 <./results/images/1_gpu_grid.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 96--97
+Underfull \hbox (badness 10000) in paragraph at lines 88--89
 
  []
 
-<results/images/5-rb_order.png, id=125, 935.495pt x 656.4525pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 97--98
+
+ []
+
+<results/images/5-rb_order.png, id=124, 935.495pt x 656.4525pt>
 File: results/images/5-rb_order.png Graphic file (type png)
 
 <use results/images/5-rb_order.png>
-Package pdftex.def Info: results/images/5-rb_order.png used on input line 99.
+Package pdftex.def Info: results/images/5-rb_order.png used on input line 100.
 (pdftex.def)             Requested size: 497.92322pt x 349.40063pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 100.
+(caption)                particular \caption on input line 101.
 See the caption package documentation for explanation.
 
 
-Overfull \hbox (6.48808pt too wide) in paragraph at lines 99--100
+Overfull \hbox (6.48808pt too wide) in paragraph at lines 100--101
  [] 
  []
 
-[3] <results/images/2_pinned_paged.png, id=135, 965.6075pt x 508.90125pt>
+[3] <results/images/2_pinned_paged.png, id=140, 965.6075pt x 508.90125pt>
 File: results/images/2_pinned_paged.png Graphic file (type png)
 
 <use results/images/2_pinned_paged.png>
 Package pdftex.def Info: results/images/2_pinned_paged.png used on input line 1
-18.
+10.
 (pdftex.def)             Requested size: 341.43306pt x 179.94292pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 119.
+(caption)                particular \caption on input line 111.
 See the caption package documentation for explanation.
 
 [4 <./results/images/5-rb_order.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 126--127
+Underfull \hbox (badness 10000) in paragraph at lines 118--119
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 128--129
+Underfull \hbox (badness 10000) in paragraph at lines 120--121
 
  []
 
 [5 <./results/images/2_pinned_paged.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 143--144
+Underfull \hbox (badness 10000) in paragraph at lines 134--135
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 148--149
+Underfull \hbox (badness 10000) in paragraph at lines 139--140
 
  []
 
-<results/images/3_cpu_gpu_gt.png, id=150, 1758.57pt x 389.455pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 141--142
+
+ []
+
+<results/images/3_cpu_gpu_gt.png, id=155, 1758.57pt x 389.455pt>
 File: results/images/3_cpu_gpu_gt.png Graphic file (type png)
 
 <use results/images/3_cpu_gpu_gt.png>
-Package pdftex.def Info: results/images/3_cpu_gpu_gt.png used on input line 161
+Package pdftex.def Info: results/images/3_cpu_gpu_gt.png used on input line 152
 .
 (pdftex.def)             Requested size: 483.69684pt x 107.11531pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 162.
+(caption)                particular \caption on input line 153.
 See the caption package documentation for explanation.
 
 [6]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 174.
+(caption)                particular \caption on input line 167.
 See the caption package documentation for explanation.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 184.
+(caption)                particular \caption on input line 177.
 See the caption package documentation for explanation.
 
 
-<results/images/4_gpu_cpu_time_comparison.png, id=162, 1192.455pt x 599.23875pt
->
-File: results/images/4_gpu_cpu_time_comparison.png Graphic file (type png)
- <use results/images/4_gpu_cpu_time_comparison.png>
-Package pdftex.def Info: results/images/4_gpu_cpu_time_comparison.png used on i
-nput line 188.
-(pdftex.def)             Requested size: 483.69684pt x 243.06525pt.
+<results/images/4_1_gpu_cpu_time_comparison.png, id=162, 1192.455pt x 599.23875
+pt>
+File: results/images/4_1_gpu_cpu_time_comparison.png Graphic file (type png)
+ <use results/images/4_1_gpu_cpu_time_comparison.png>
+Package pdftex.def Info: results/images/4_1_gpu_cpu_time_comparison.png used on
+ input line 181.
+(pdftex.def)             Requested size: 369.88582pt x 185.87181pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 189.
+(caption)                particular \caption on input line 182.
 See the caption package documentation for explanation.
 
 [7 <./results/images/3_cpu_gpu_gt.png>]
+<results/images/4_2_gpu_cpu_time_comparison.png, id=173, 1192.455pt x 559.08875
+pt>
+File: results/images/4_2_gpu_cpu_time_comparison.png Graphic file (type png)
+ <use results/images/4_2_gpu_cpu_time_comparison.png>
+Package pdftex.def Info: results/images/4_2_gpu_cpu_time_comparison.png used on
+ input line 186.
+(pdftex.def)             Requested size: 369.88582pt x 173.41809pt.
+
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 197.
+(caption)                particular \caption on input line 187.
 See the caption package documentation for explanation.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 204.
+(caption)                particular \caption on input line 195.
 See the caption package documentation for explanation.
 
-[8 <./results/images/4_gpu_cpu_time_comparison.png>]
+[8 <./results/images/4_1_gpu_cpu_time_comparison.png> <./results/images/4_2_gpu
+_cpu_time_comparison.png>]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 211.
+(caption)                particular \caption on input line 202.
 See the caption package documentation for explanation.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 223.
+(caption)                particular \caption on input line 209.
 See the caption package documentation for explanation.
 
-(./report.bbl [9]) [10]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 221.
+See the caption package documentation for explanation.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 225--226
+
+ []
+
+[9] (./report.bbl) [10]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 233.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 233.
  (./report.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 233.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 233.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: D3C55131BD083A2992117258A2388E5D;1491.
+(rerunfilecheck)             Checksum: ADA4E365CED0F8CBBAE81209CE9229C9;1513.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 233.
  ) 
 Here is how much of TeX's memory you used:
- 27654 strings out of 493117
- 645852 string characters out of 6135433
- 813408 words of memory out of 5000000
- 30558 multiletter control sequences out of 15000+600000
- 43210 words of font info for 87 fonts, out of 8000000 for 9000
+ 27669 strings out of 493117
+ 646155 string characters out of 6135433
+ 815408 words of memory out of 5000000
+ 30562 multiletter control sequences out of 15000+600000
+ 46680 words of font info for 96 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 69i,8n,78p,1769b,611s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 69i,8n,78p,1755b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exi
 st, replaced by a fixed one
 
@@ -1407,13 +1421,15 @@ live/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texl
 ive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texliv
 e/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
 /2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/
-2014/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2014/texmf
--dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2014/texmf-dist/font
-s/type1/urw/times/utmri8a.pfb>
-Output written on report.pdf (10 pages, 706173 bytes).
+2014/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2014/texmf-
+dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2014/texmf-dist/fonts/
+type1/urw/times/utmb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/
+times/utmr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/times/utmr
+i8a.pfb>
+Output written on report.pdf (10 pages, 739900 bytes).
 PDF statistics:
- 233 PDF objects out of 1000 (max. 8388607)
- 202 compressed objects within 3 object streams
- 57 named destinations out of 1000 (max. 500000)
- 198 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 242 PDF objects out of 1000 (max. 8388607)
+ 207 compressed objects within 3 object streams
+ 58 named destinations out of 1000 (max. 500000)
+ 203 words of extra memory for PDF output out of 10000 (max. 10000000)
 
